@@ -1,28 +1,20 @@
 package model.VO;
 
-import java.util.UUID;
+import errors.ValidationException;
 
-public class Apartment {
-    private UUID id;
+public class Apartment extends Entity {
     private User owner;
     private Address address;
     private Aspects aspects;
     private double rent;
     private String image;
 
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
-    }
-
     public User getOwner() {
         return owner;
     }
 
-    public void setOwner(User owner) {
+    public void setOwner(User owner) throws ValidationException {
+        verifyNull(owner, "owner");
         this.owner = owner;
     }
 
@@ -30,7 +22,8 @@ public class Apartment {
         return address;
     }
 
-    public void setAddress(Address address) {
+    public void setAddress(Address address) throws ValidationException {
+        verifyNull(address, "address");
         this.address = address;
     }
 
@@ -38,7 +31,8 @@ public class Apartment {
         return aspects;
     }
 
-    public void setAspects(Aspects aspects) {
+    public void setAspects(Aspects aspects) throws ValidationException {
+        verifyNull(aspects, "aspects");
         this.aspects = aspects;
     }
 
@@ -54,7 +48,8 @@ public class Apartment {
         return image;
     }
 
-    public void setImage(String image) {
+    public void setImage(String image) throws ValidationException {
+        verifyNull(image, "image");
         this.image = image;
     }
 }

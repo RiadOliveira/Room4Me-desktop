@@ -1,9 +1,8 @@
 package model.VO;
 
-import java.util.UUID;
+import errors.ValidationException;
 
-public class Address {
-    private UUID id;
+public class Address extends Entity {
     private String city;
     private String district;
     private String street;
@@ -11,19 +10,12 @@ public class Address {
     private String apartmentNumber;
     private int zipCode;
 
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
-    }
-
     public String getCity() {
         return city;
     }
 
-    public void setCity(String city) {
+    public void setCity(String city) throws ValidationException {
+        verifyNull(city, "city");
         this.city = city;
     }
 
@@ -31,7 +23,8 @@ public class Address {
         return district;
     }
 
-    public void setDistrict(String district) {
+    public void setDistrict(String district) throws ValidationException {
+        verifyNull(district, "district");
         this.district = district;
     }
 
@@ -39,7 +32,8 @@ public class Address {
         return street;
     }
 
-    public void setStreet(String street) {
+    public void setStreet(String street) throws ValidationException {
+        verifyNull(street, "street");
         this.street = street;
     }
 
@@ -47,7 +41,8 @@ public class Address {
         return complement;
     }
 
-    public void setComplement(String complement) {
+    public void setComplement(String complement) throws ValidationException {
+        verifyNull(complement, "complement");
         this.complement = complement;
     }
 
@@ -55,7 +50,8 @@ public class Address {
         return apartmentNumber;
     }
 
-    public void setApartmentNumber(String apartmentNumber) {
+    public void setApartmentNumber(String apartmentNumber) throws ValidationException {
+        verifyNull(apartmentNumber, "apartmentNumber");
         this.apartmentNumber = apartmentNumber;
     }
 

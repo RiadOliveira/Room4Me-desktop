@@ -1,21 +1,12 @@
 package model.VO;
 
-import java.util.UUID;
+import errors.ValidationException;
 
-public class Aspects {
-    private UUID id;
+public class Aspects extends Entity {
     private int bedroomsQuantity;
     private boolean availableToDivide;
     private String description;
     private int capacity;
-
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
-    }
 
     public int getBedroomsQuantity() {
         return bedroomsQuantity;
@@ -37,7 +28,8 @@ public class Aspects {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(String description) throws ValidationException {
+        verifyNull(description, "description");
         this.description = description;
     }
 

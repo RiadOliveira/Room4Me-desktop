@@ -1,29 +1,21 @@
 package model.VO;
 
-import java.util.UUID;
+import errors.ValidationException;
 import utils.UserType;
 
-public class User {
-    private UUID id;
+public class User extends Entity {
     private String name;
     private String email;
     private String phoneNumber;
     private String avatar;
     private UserType type;
 
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(String name) throws ValidationException {
+        verifyNull(name, "name");
         this.name = name;
     }
 
@@ -31,7 +23,8 @@ public class User {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(String email) throws ValidationException {
+        verifyNull(email, "email");
         this.email = email;
     }
 
@@ -39,7 +32,8 @@ public class User {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) throws ValidationException {
+        verifyNull(phoneNumber, "phoneNumber");
         this.phoneNumber = phoneNumber;
     }
 
@@ -47,7 +41,8 @@ public class User {
         return avatar;
     }
 
-    public void setAvatar(String avatar) {
+    public void setAvatar(String avatar) throws ValidationException {
+        verifyNull(avatar, "avatar");
         this.avatar = avatar;
     }
 
@@ -55,7 +50,8 @@ public class User {
         return type;
     }
 
-    public void setType(UserType type) {
+    public void setType(UserType type) throws ValidationException {
+        verifyNull(type, "type");
         this.type = type;
     }
 }
