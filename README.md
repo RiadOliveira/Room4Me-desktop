@@ -47,7 +47,8 @@ Tools used on this project:
 
   - id: UUID
   - city: string
-  - street: number
+  - district: string
+  - street: string
   - complement: string/null
   - apartment_number: string
   - zip_code: integer
