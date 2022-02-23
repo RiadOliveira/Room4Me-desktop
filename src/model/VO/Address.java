@@ -6,7 +6,7 @@ public class Address extends Entity {
     private String city;
     private String district;
     private String street;
-    private String complement;
+    private String complement = null;
     private String apartmentNumber;
     private int zipCode;
 
@@ -74,7 +74,13 @@ public class Address extends Entity {
         return zipCode;
     }
 
-    public void setZipCode(int zipCode) {
+    public void setZipCode(int zipCode) throws ValidationException {
+        if(String.valueOf(zipCode).length() != 8) {
+            throw new ValidationException(
+                "Zip code must be equal to 8 in length."
+            );
+        }
+
         this.zipCode = zipCode;
     }
 }
