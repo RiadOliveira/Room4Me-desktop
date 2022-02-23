@@ -49,7 +49,10 @@ public class Apartment extends Entity {
     }
 
     public void setImage(String image) throws ValidationException {
-        verifyNull(image, "image");
+        String propertyName = "image";
+        verifyNull(image, propertyName);
+        verifyStringLength(image, propertyName);
+
         this.image = image;
     }
 }

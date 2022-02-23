@@ -15,7 +15,10 @@ public class Address extends Entity {
     }
 
     public void setCity(String city) throws ValidationException {
-        verifyNull(city, "city");
+        String propertyName = "city";
+        verifyNull(city, propertyName);
+        verifyStringLength(city, propertyName);
+
         this.city = city;
     }
 
@@ -24,7 +27,10 @@ public class Address extends Entity {
     }
 
     public void setDistrict(String district) throws ValidationException {
-        verifyNull(district, "district");
+        String propertyName = "district";
+        verifyNull(district, propertyName);
+        verifyStringLength(district, propertyName);
+
         this.district = district;
     }
 
@@ -33,7 +39,10 @@ public class Address extends Entity {
     }
 
     public void setStreet(String street) throws ValidationException {
-        verifyNull(street, "street");
+        String propertyName = "street";
+        verifyNull(street, propertyName);
+        verifyStringLength(street, propertyName);
+
         this.street = street;
     }
 
@@ -42,7 +51,10 @@ public class Address extends Entity {
     }
 
     public void setComplement(String complement) throws ValidationException {
-        verifyNull(complement, "complement");
+        String propertyName = "complement";
+        verifyNull(complement, propertyName);
+        verifyStringLength(complement, propertyName);
+
         this.complement = complement;
     }
 
@@ -51,7 +63,10 @@ public class Address extends Entity {
     }
 
     public void setApartmentNumber(String apartmentNumber) throws ValidationException {
-        verifyNull(apartmentNumber, "apartmentNumber");
+        String propertyName = "apartmentNumber";
+        verifyNull(apartmentNumber, propertyName);
+        verifyStringLength(apartmentNumber, propertyName);
+
         this.apartmentNumber = apartmentNumber;
     }
 

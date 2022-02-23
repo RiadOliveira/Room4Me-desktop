@@ -29,7 +29,10 @@ public class Aspects extends Entity {
     }
 
     public void setDescription(String description) throws ValidationException {
-        verifyNull(description, "description");
+        String propertyName = "description";
+        verifyNull(description, propertyName);
+        verifyStringLength(description, propertyName);
+
         this.description = description;
     }
 

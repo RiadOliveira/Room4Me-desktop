@@ -15,7 +15,10 @@ public class User extends Entity {
     }
 
     public void setName(String name) throws ValidationException {
-        verifyNull(name, "name");
+        String propertyName = "name";
+        verifyNull(name, propertyName);
+        verifyStringLength(name, propertyName);
+
         this.name = name;
     }
 
@@ -24,7 +27,10 @@ public class User extends Entity {
     }
 
     public void setEmail(String email) throws ValidationException {
-        verifyNull(email, "email");
+        String propertyName = "email";
+        verifyNull(email, propertyName);
+        verifyStringLength(email, propertyName);
+
         this.email = email;
     }
 
@@ -33,7 +39,10 @@ public class User extends Entity {
     }
 
     public void setPhoneNumber(String phoneNumber) throws ValidationException {
-        verifyNull(phoneNumber, "phoneNumber");
+        String propertyName = "phoneNumber";
+        verifyNull(phoneNumber, propertyName);
+        verifyStringLength(phoneNumber, propertyName);
+
         this.phoneNumber = phoneNumber;
     }
 
@@ -42,7 +51,10 @@ public class User extends Entity {
     }
 
     public void setAvatar(String avatar) throws ValidationException {
-        verifyNull(avatar, "avatar");
+        String propertyName = "avatar";
+        verifyNull(avatar, propertyName);
+        verifyStringLength(avatar, propertyName);
+
         this.avatar = avatar;
     }
 
