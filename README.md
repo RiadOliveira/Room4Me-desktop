@@ -82,7 +82,7 @@ Tools used on this project:
 </br>
 
 <h2 id="license">:memo: License</h2>
-This project is MIT Licensed. See <a href="https://github.com/RiadOliveira/Highedit/blob/main/LICENSE">LICENSE</a> file for more details.
+This project is MIT Licensed. See <a href="https://github.com/RiadOliveira/Room4Me/blob/main/LICENSE">LICENSE</a> file for more details.
 
 </br>
 
