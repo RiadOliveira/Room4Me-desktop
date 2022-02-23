@@ -2,7 +2,7 @@ package model.VO;
 
 import errors.ValidationException;
 
-public class Address extends Entity {
+public class AddressVO extends Entity {
     private String city;
     private String district;
     private String street;

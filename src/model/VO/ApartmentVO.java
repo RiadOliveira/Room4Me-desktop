@@ -3,18 +3,18 @@ package model.VO;
 import errors.ValidationException;
 import utils.UserType;
 
-public class Apartment extends Entity {
-    private User owner;
-    private Address address;
-    private Aspects aspects;
+public class ApartmentVO extends Entity {
+    private UserVO owner;
+    private AddressVO address;
+    private AspectsVO aspects;
     private double rent;
-    private String image;
+    private String image = null;
 
-    public User getOwner() {
+    public UserVO getOwner() {
         return owner;
     }
 
-    public void setOwner(User owner) throws ValidationException {
+    public void setOwner(UserVO owner) throws ValidationException {
         verifyNull(owner, "owner");
         if(owner.getType() == UserType.renter) {
             throw new ValidationException(
@@ -25,20 +25,20 @@ public class Apartment extends Entity {
         this.owner = owner;
     }
 
-    public Address getAddress() {
+    public AddressVO getAddress() {
         return address;
     }
 
-    public void setAddress(Address address) throws ValidationException {
+    public void setAddress(AddressVO address) throws ValidationException {
         verifyNull(address, "address");
         this.address = address;
     }
 
-    public Aspects getAspects() {
+    public AspectsVO getAspects() {
         return aspects;
     }
 
-    public void setAspects(Aspects aspects) throws ValidationException {
+    public void setAspects(AspectsVO aspects) throws ValidationException {
         verifyNull(aspects, "aspects");
         this.aspects = aspects;
     }

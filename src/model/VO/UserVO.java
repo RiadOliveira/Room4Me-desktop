@@ -3,12 +3,12 @@ package model.VO;
 import errors.ValidationException;
 import utils.UserType;
 
-public class User extends Entity {
+public class UserVO extends Entity {
     private String name;
     private String email;
     private String password;
     private String phoneNumber;
-    private String avatar;
+    private String avatar = null;
     private UserType type;
 
     public String getName() {

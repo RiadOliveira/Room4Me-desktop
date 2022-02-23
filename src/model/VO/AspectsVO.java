@@ -2,7 +2,7 @@ package model.VO;
 
 import errors.ValidationException;
 
-public class Aspects extends Entity {
+public class AspectsVO extends Entity {
     private int bedroomsQuantity;
     private boolean availableToDivide;
     private String description;
