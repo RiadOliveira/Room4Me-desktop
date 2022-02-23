@@ -12,8 +12,15 @@ public class Aspects extends Entity {
         return bedroomsQuantity;
     }
 
-    public void setBedroomsQuantity(int bedroomsQuantity) {
-        this.bedroomsQuantity = bedroomsQuantity;
+    public void setBedroomsQuantity(int bedroomsQuantity) throws ValidationException {
+        int parsedQuantity = Math.abs(bedroomsQuantity);
+        if(parsedQuantity == 0) {
+            throw new ValidationException(
+                "Bedrooms quantity of an apartment must be greater than 0."
+            );
+        }
+
+        this.bedroomsQuantity = parsedQuantity;
     }
 
     public boolean getAvailableToDivide() {
@@ -40,7 +47,14 @@ public class Aspects extends Entity {
         return capacity;
     }
 
-    public void setCapacity(int capacity) {
-        this.capacity = capacity;
+    public void setCapacity(int capacity) throws ValidationException {
+        int parsedCapacity = Math.abs(capacity);
+        if(parsedCapacity == 0) {
+            throw new ValidationException(
+                "Apartment capacity must be greater than 0."
+            );
+        }
+
+        this.capacity = parsedCapacity;
     }
 }
