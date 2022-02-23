@@ -1,6 +1,7 @@
 package model.VO;
 
 import errors.ValidationException;
+import utils.UserType;
 
 public class Apartment extends Entity {
     private User owner;
@@ -15,6 +16,12 @@ public class Apartment extends Entity {
 
     public void setOwner(User owner) throws ValidationException {
         verifyNull(owner, "owner");
+        if(owner.getType() == UserType.renter) {
+            throw new ValidationException(
+                "A renter user can't be the owner of an apartment."
+            );
+        }
+
         this.owner = owner;
     }
 
@@ -40,8 +47,15 @@ public class Apartment extends Entity {
         return rent;
     }
 
-    public void setRent(double rent) {
-        this.rent = rent;
+    public void setRent(double rent) throws ValidationException {
+        double parsedRent = Math.abs(rent);
+        if(parsedRent == 0) {
+            throw new ValidationException(
+                "Apartment rent must be greater than 0."
+            );
+        }
+
+        this.rent = parsedRent;
     }
 
     public String getImage() {
