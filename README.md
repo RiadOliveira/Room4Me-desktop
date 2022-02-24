@@ -1,4 +1,8 @@
-<h1 align="center">Room4Me</h1>
+<h1 align="center">
+
+![Logo bold](https://user-images.githubusercontent.com/69125013/155432234-8550aa68-6fa0-4973-9ad5-899ad4fdeb04.png)
+
+</h1>
 
 <p align="center">
   An application designed to help students find apartments to rent or divide with other students. This project has been developed during Java classes at college.
@@ -14,6 +18,11 @@ Contents
 =================
 <!--ts-->
    * [🛠 Technologies](#technologies)
+   * [:floppy_disk: Entities](#entities)
+      * [User](#entity-user)
+      * [Address](#entity-address)
+      * [Aspects](#entity-aspects)
+      * [Apartment](#entity-apartment)
    * [:gear: Features](#features)
    * [:memo: License](#license)
    * [:wrench: Authors](#authors)
@@ -26,12 +35,59 @@ Tools used on this project:
 - [Java](https://www.java.com/)
 - [Postgresql](https://www.postgresql.org/) </br></br>
 
+<h2 id="entities">:floppy_disk: Entities</h2>
+
+- <h3 id="entity-user">User</h3>
+
+  - id: UUID
+  - name: string
+  - email: string
+  - password: string
+  - phone_number: string
+  - avatar: string/null (name of the file)
+  - type: boolean (0: renter, 1: owner)
+
+- <h3 id="entity-address">Address</h3>
+
+  - id: UUID
+  - city: string
+  - district: string
+  - street: string
+  - complement: string/null
+  - apartment_number: string
+  - zip_code: integer
+
+- <h3 id="entity-aspects">Aspects</h3>
+
+  - id: UUID
+  - bedrooms_quantity: integer
+  - available_to_divide: boolean
+  - description: string
+  - capacity: integer
+
+- <h3 id="entity-apartment">Apartment</h3>
+
+  - id: UUID
+  - <a href="#entity-user">owner</a>: UUID
+  - <a href="#entity-address">address</a>: UUID
+  - <a href="#entity-aspects">aspects</a>: UUID
+  - rent: double
+  - image: string/null (name of the file)
+
+</br>
+
 <h2 id="features">:gear: Features</h2>
+
+- [ ] Accounts creation (As owner or renter), update and delete.
+- [ ] Change account type(owner to renter or renter to owner).
+- [ ] (Owner) Register, update and delete apartments.
+- [ ] (Renter) Can contact the apartment owner. 
+- [ ] Search apartments by(And/Or): name, preferences (bedrooms quantity, capacity ...), price and location.
 
 </br>
 
 <h2 id="license">:memo: License</h2>
-This project is MIT Licensed. See <a href="https://github.com/RiadOliveira/Highedit/blob/main/LICENSE">LICENSE</a> file for more details.
+This project is MIT Licensed. See <a href="https://github.com/RiadOliveira/Room4Me/blob/main/LICENSE">LICENSE</a> file for more details.
 
 </br>
 
