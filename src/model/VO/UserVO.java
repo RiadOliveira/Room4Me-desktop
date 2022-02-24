@@ -8,7 +8,7 @@ public class UserVO extends Entity {
     private String email;
     private String password;
     private String phoneNumber;
-    private String avatar = null;
+    private String avatar;
     private UserType type;
 
     public String getName() {

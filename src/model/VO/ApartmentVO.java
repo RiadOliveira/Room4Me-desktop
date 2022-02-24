@@ -8,7 +8,7 @@ public class ApartmentVO extends Entity {
     private AddressVO address;
     private AspectsVO aspects;
     private double rent;
-    private String image = null;
+    private String image;
 
     public UserVO getOwner() {
         return owner;
