@@ -1,4 +1,8 @@
-<h1 align="center">Room4Me</h1>
+<h1 align="center">
+
+![Logo bold](https://user-images.githubusercontent.com/69125013/155432234-8550aa68-6fa0-4973-9ad5-899ad4fdeb04.png)
+
+</h1>
 
 <p align="center">
   An application designed to help students find apartments to rent or divide with other students. This project has been developed during Java classes at college.
