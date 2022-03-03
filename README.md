@@ -1,6 +1,6 @@
 <h1 align="center">
 
-![Logo bold](https://user-images.githubusercontent.com/69125013/155432234-8550aa68-6fa0-4973-9ad5-899ad4fdeb04.png)
+![Logo png](https://user-images.githubusercontent.com/88398990/156489186-24d246c7-fa32-4793-ae59-e29bc99e09ce.png)
 
 </h1>
 
