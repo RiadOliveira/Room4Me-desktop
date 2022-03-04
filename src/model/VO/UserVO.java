@@ -1,7 +1,6 @@
 package model.VO;
 
 import errors.ValidationException;
-import utils.UserType;
 
 public class UserVO extends Entity {
     private String name;
@@ -9,7 +8,6 @@ public class UserVO extends Entity {
     private String password;
     private String phoneNumber;
     private String avatar;
-    private UserType type;
 
     public String getName() {
         return name;
@@ -83,14 +81,5 @@ public class UserVO extends Entity {
         verifyStringLength(avatar, propertyName);
 
         this.avatar = avatar;
-    }
-
-    public UserType getType() {
-        return type;
-    }
-
-    public void setType(UserType type) throws ValidationException {
-        verifyNull(type, "type");
-        this.type = type;
     }
 }

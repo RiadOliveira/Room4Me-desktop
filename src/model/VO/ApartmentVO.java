@@ -1,7 +1,6 @@
 package model.VO;
 
 import errors.ValidationException;
-import utils.UserType;
 
 public class ApartmentVO extends Entity {
     private UserVO owner;
@@ -16,12 +15,6 @@ public class ApartmentVO extends Entity {
 
     public void setOwner(UserVO owner) throws ValidationException {
         verifyNull(owner, "owner");
-        if(owner.getType() == UserType.renter) {
-            throw new ValidationException(
-                "A renter user can't be the owner of an apartment."
-            );
-        }
-
         this.owner = owner;
     }
 
