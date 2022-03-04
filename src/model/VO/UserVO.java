@@ -7,6 +7,7 @@ public class UserVO extends Entity {
     private String email;
     private String password;
     private String phoneNumber;
+    private boolean gender;
     private String avatar;
 
     public String getName() {
@@ -69,6 +70,14 @@ public class UserVO extends Entity {
         }
 
         this.phoneNumber = parsedPhoneNumber;
+    }
+
+    public boolean getGender() {
+        return gender;
+    }
+
+    public void setGender(boolean gender) {
+        this.gender = gender;
     }
 
     public String getAvatar() {

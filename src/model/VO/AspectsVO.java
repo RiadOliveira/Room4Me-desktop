@@ -1,11 +1,13 @@
 package model.VO;
 
 import errors.ValidationException;
+import utils.AllowedGender;
 
 public class AspectsVO extends Entity {
     private int bedroomsQuantity;
     private boolean availableToDivide;
     private String description;
+    private AllowedGender allowedGender;
     private int capacity;
 
     public int getBedroomsQuantity() {
@@ -41,6 +43,14 @@ public class AspectsVO extends Entity {
         verifyStringLength(description, propertyName);
 
         this.description = description;
+    }
+
+    public AllowedGender getAllowedGender() {
+        return allowedGender;
+    }
+
+    public void setAllowedGender(AllowedGender allowedGender) {
+        this.allowedGender = allowedGender;
     }
 
     public int getCapacity() {
