@@ -1,7 +1,9 @@
 package model.DAO;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import model.VO.AddressVO;
 import model.VO.ApartmentVO;
@@ -19,6 +21,23 @@ public class ApartmentDAO<VO extends ApartmentVO> extends BaseDAO<VO> {
     }
 
     public ResultSet findAll() throws SQLException {
-        return null;
+        Connection connection = getConnection();
+
+        String query = "SELECT * FROM Room4Me.Apartment";
+
+        Statement statement = connection.createStatement();
+        ResultSet findedCustomers = statement.executeQuery(query);
+
+        return findedCustomers;
+    }
+
+    public void update(VO apartment) throws SQLException, Exception {
+        AddressDAO<AddressVO> addressDAO = new AddressDAO<AddressVO>();
+        addressDAO.update(apartment.getAddress());
+
+        AspectsDAO<AspectsVO> aspectsDAO = new AspectsDAO<AspectsVO>();
+        aspectsDAO.update(apartment.getAspects());
+
+        super.update(apartment);
     }
 }
