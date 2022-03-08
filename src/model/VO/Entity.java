@@ -1,5 +1,9 @@
 package model.VO;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 import errors.ValidationException;
 
@@ -23,6 +27,31 @@ public abstract class Entity {
                 propertyName + " can't be null."
             );
         }
+    }
+
+    // Utils
+    public String[] getFieldsNames() {
+        Field[] fields = this.getClass().getDeclaredFields();
+        String fieldsNames[] = new String[fields.length];
+
+        for(int ind=0 ; ind<fields.length ; ind++) {
+            fieldsNames[ind] = fields[ind].getName();
+        }
+
+        return fieldsNames;
+    }
+
+    public List<Method> getGetterMethods() {
+        Method methods[] = this.getClass().getDeclaredMethods();
+        List<Method> parsedMethods = new ArrayList<Method>();
+
+        for(int ind=0 ; ind<methods.length ; ind++) {
+            if(methods[ind].getName().contains("get")) {
+                parsedMethods.add(methods[ind]);
+            }
+        }
+
+        return parsedMethods;
     }
 
     // Getter and Setter.

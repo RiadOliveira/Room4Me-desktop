@@ -8,7 +8,4 @@ import model.VO.UserVO;
 public class UserDAO<VO extends UserVO> extends BaseDAO<VO> {
     public void insert(VO user) throws SQLException, ValidationException {
     }
-
-    public void update(VO user) throws SQLException {
-    }
 }

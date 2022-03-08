@@ -1,13 +1,14 @@
 package model.VO;
 
 import errors.ValidationException;
+import utils.Gender;
 
 public class UserVO extends Entity {
     private String name;
     private String email;
     private String password;
     private String phoneNumber;
-    private boolean gender;
+    private Gender gender;
     private String avatar;
 
     public String getName() {
@@ -72,11 +73,11 @@ public class UserVO extends Entity {
         this.phoneNumber = parsedPhoneNumber;
     }
 
-    public boolean getGender() {
+    public Gender getGender() {
         return gender;
     }
 
-    public void setGender(boolean gender) {
+    public void setGender(Gender gender) {
         this.gender = gender;
     }
 

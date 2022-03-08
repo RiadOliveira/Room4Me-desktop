@@ -7,7 +7,4 @@ import model.VO.AspectsVO;
 public class AspectsDAO<VO extends AspectsVO> extends BaseDAO<VO> {
     public void insert(VO aspects) throws SQLException, ValidationException {
     }
-
-    public void update(VO aspects) throws SQLException {
-    }
 }

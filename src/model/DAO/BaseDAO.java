@@ -2,6 +2,8 @@ package model.DAO;
 
 import io.github.cdimascio.dotenv.Dotenv;
 import model.VO.Entity;
+import utils.ConvertCamelCaseToSnakeCase;
+import utils.FillStatement;
 
 import java.sql.SQLException;
 import java.sql.Connection;
@@ -43,6 +45,29 @@ public abstract class BaseDAO<VO extends Entity> implements IBaseDAO<VO> {
         return findedEntity;
     }
 
+    public void update(VO entity) throws SQLException, Exception {
+        Connection connection = getConnection();
+
+        String query = "UPDATE Room4Me." + entityName + " SET ";
+        String fieldsNames[] = entity.getFieldsNames();
+
+        for(int ind=0 ; ind<fieldsNames.length ; ind++) {
+            query += ConvertCamelCaseToSnakeCase.execute(fieldsNames[ind]);
+            query += "=?";
+
+            if(ind != fieldsNames.length - 1) query += ", ";
+        }
+        query += " WHERE id=?::uuid";
+
+        PreparedStatement statement;
+        statement = connection.prepareStatement(query);
+
+        FillStatement fillStatement = new FillStatement(entity, statement);
+        fillStatement.execute();
+
+        statement.execute();
+    }
+
     public void delete(VO entity) throws SQLException {
         Connection connection = getConnection();
 
@@ -51,7 +76,6 @@ public abstract class BaseDAO<VO extends Entity> implements IBaseDAO<VO> {
 
         statement = connection.prepareStatement(query);
         statement.setString(1, entity.getId().toString());
-
         statement.execute();
     }
 }

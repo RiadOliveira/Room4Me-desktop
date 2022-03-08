@@ -13,7 +13,4 @@ public class ApartmentDAO<VO extends ApartmentVO> extends BaseDAO<VO> {
     public ResultSet findAll() throws SQLException {
         return null;
     }
-
-    public void update(VO apartment) throws SQLException {
-    }
 }
