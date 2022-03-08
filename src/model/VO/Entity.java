@@ -3,6 +3,8 @@ package model.VO;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.UUID;
 import errors.ValidationException;
@@ -30,13 +32,20 @@ public abstract class Entity {
     }
 
     // Utils
-    public String[] getFieldsNames() {
+    public List<String> getFieldsNames() {
         Field[] fields = this.getClass().getDeclaredFields();
-        String fieldsNames[] = new String[fields.length];
+        List<String> fieldsNames = new ArrayList<String>();
 
         for(int ind=0 ; ind<fields.length ; ind++) {
-            fieldsNames[ind] = fields[ind].getName();
+            fieldsNames.add(fields[ind].getName());
         }
+
+        Collections.sort(fieldsNames, new Comparator<String>() {
+            @Override
+            public int compare(String left, String right) {
+                return left.compareTo(right);
+            }
+        });
 
         return fieldsNames;
     }
@@ -50,6 +59,13 @@ public abstract class Entity {
                 parsedMethods.add(methods[ind]);
             }
         }
+
+        Collections.sort(parsedMethods, new Comparator<Method>() {
+            @Override
+            public int compare(Method left, Method right) {
+                return left.getName().compareTo(right.getName());
+            }
+        });
 
         return parsedMethods;
     }

@@ -1,6 +1,5 @@
 package utils;
 
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -48,13 +47,13 @@ public class FillStatement {
             default: {
                 if(type.contains("VO")) {
                     String entityId = ((Entity) property).getId().toString();
-                    statement.setString(index, entityId);
+                    statement.setString(index, entityId + "::uuid");
                 }
             }
         }
     }
 
-    public void execute() throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, SQLException {
+    public void execute(boolean isUpdate) throws SQLException, Exception {
         for(int ind=0 ; ind<getterMethods.size() ; ind++) {
             Method method = getterMethods.get(ind);
             String type = method.getReturnType().getSimpleName();
@@ -63,6 +62,6 @@ public class FillStatement {
             typeSwitch(type, ind+1, property);
         }
 
-        statement.setString(getterMethods.size()+1, entity.getId().toString());
+        if(isUpdate) statement.setString(getterMethods.size()+1, entity.getId().toString());
     }
 }

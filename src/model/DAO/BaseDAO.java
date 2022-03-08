@@ -6,6 +6,9 @@ import utils.ConvertCamelCaseToSnakeCase;
 import utils.FillStatement;
 
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.List;
+import java.util.UUID;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -30,6 +33,36 @@ public abstract class BaseDAO<VO extends Entity> implements IBaseDAO<VO> {
 		if(connection != null) connection.close();
 	}
 
+    public void insert(VO entity) throws SQLException, Exception {
+        Connection connection = getConnection();
+
+        List<String> fieldsNames = entity.getFieldsNames();
+        int fieldsQuantity = fieldsNames.size();
+        String query = "INSERT INTO Room4Me." + entityName + '(';
+
+        for(int ind=0 ; ind<fieldsQuantity ; ind++) {
+            query += ConvertCamelCaseToSnakeCase.execute(fieldsNames.get(ind));
+            if(ind != fieldsQuantity - 1) query += ", ";
+            else query += ") values (";
+        }
+
+        for(int ind=0 ; ind<fieldsQuantity ; ind++) {
+            query += '?';
+            if(ind != fieldsQuantity - 1) query += ", ";
+            else query += ')';
+        }
+
+        PreparedStatement statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+        FillStatement fillStatement = new FillStatement(entity, statement);
+        fillStatement.execute(false);
+
+        statement.execute();
+        ResultSet generatedKeys = statement.getGeneratedKeys();
+
+        if(generatedKeys.next()) entity.setId(UUID.fromString(generatedKeys.getString(1)));
+        else throw new SQLException(entityName + " ID not found on database.");
+    }
+
 	public ResultSet findById(VO entity) throws SQLException {
         Connection connection = getConnection();
 
@@ -49,13 +82,13 @@ public abstract class BaseDAO<VO extends Entity> implements IBaseDAO<VO> {
         Connection connection = getConnection();
 
         String query = "UPDATE Room4Me." + entityName + " SET ";
-        String fieldsNames[] = entity.getFieldsNames();
+        List<String> fieldsNames = entity.getFieldsNames();
 
-        for(int ind=0 ; ind<fieldsNames.length ; ind++) {
-            query += ConvertCamelCaseToSnakeCase.execute(fieldsNames[ind]);
+        for(int ind=0 ; ind<fieldsNames.size() ; ind++) {
+            query += ConvertCamelCaseToSnakeCase.execute(fieldsNames.get(ind));
             query += "=?";
 
-            if(ind != fieldsNames.length - 1) query += ", ";
+            if(ind != fieldsNames.size() - 1) query += ", ";
         }
         query += " WHERE id=?::uuid";
 
@@ -63,7 +96,7 @@ public abstract class BaseDAO<VO extends Entity> implements IBaseDAO<VO> {
         statement = connection.prepareStatement(query);
 
         FillStatement fillStatement = new FillStatement(entity, statement);
-        fillStatement.execute();
+        fillStatement.execute(true);
 
         statement.execute();
     }
