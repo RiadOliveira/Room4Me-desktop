@@ -46,8 +46,7 @@ public class FillStatement {
 
             default: {
                 if(type.contains("VO")) {
-                    String entityId = ((Entity) property).getId().toString();
-                    statement.setString(index, entityId + "::uuid");
+                    statement.setObject(index, ((Entity) property).getId());
                 }
             }
         }
