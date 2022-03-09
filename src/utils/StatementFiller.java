@@ -7,12 +7,12 @@ import java.util.List;
 
 import model.VO.Entity;
 
-public class FillStatement {
+public class StatementFiller {
     private Entity entity;
     private PreparedStatement statement;
     private List<Method> getterMethods;
 
-    public FillStatement(Entity entity, PreparedStatement statement) {
+    public StatementFiller(Entity entity, PreparedStatement statement) {
         this.entity = entity;
         this.statement = statement;
         this.getterMethods = entity.getGetterMethods();

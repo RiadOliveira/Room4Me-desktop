@@ -2,8 +2,8 @@ package model.DAO;
 
 import io.github.cdimascio.dotenv.Dotenv;
 import model.VO.Entity;
-import utils.ConvertCamelCaseToSnakeCase;
-import utils.FillStatement;
+import utils.CamelCaseToSnakeCaseConverter;
+import utils.StatementFiller;
 
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -41,7 +41,7 @@ public abstract class BaseDAO<VO extends Entity> implements IBaseDAO<VO> {
         String query = "INSERT INTO Room4Me." + entityName + '(';
 
         for(int ind=0 ; ind<fieldsQuantity ; ind++) {
-            query += ConvertCamelCaseToSnakeCase.execute(fieldsNames.get(ind));
+            query += CamelCaseToSnakeCaseConverter.execute(fieldsNames.get(ind));
             if(ind != fieldsQuantity - 1) query += ", ";
             else query += ") values (";
         }
@@ -53,8 +53,8 @@ public abstract class BaseDAO<VO extends Entity> implements IBaseDAO<VO> {
         }
 
         PreparedStatement statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-        FillStatement fillStatement = new FillStatement(entity, statement);
-        fillStatement.execute(false);
+        StatementFiller statementFiller = new StatementFiller(entity, statement);
+        statementFiller.execute(false);
 
         statement.execute();
         ResultSet generatedKeys = statement.getGeneratedKeys();
@@ -85,7 +85,7 @@ public abstract class BaseDAO<VO extends Entity> implements IBaseDAO<VO> {
         List<String> fieldsNames = entity.getFieldsNames();
 
         for(int ind=0 ; ind<fieldsNames.size() ; ind++) {
-            query += ConvertCamelCaseToSnakeCase.execute(fieldsNames.get(ind));
+            query += CamelCaseToSnakeCaseConverter.execute(fieldsNames.get(ind));
             query += "=?";
 
             if(ind != fieldsNames.size() - 1) query += ", ";
@@ -95,8 +95,8 @@ public abstract class BaseDAO<VO extends Entity> implements IBaseDAO<VO> {
         PreparedStatement statement;
         statement = connection.prepareStatement(query);
 
-        FillStatement fillStatement = new FillStatement(entity, statement);
-        fillStatement.execute(true);
+        StatementFiller statementFiller = new StatementFiller(entity, statement);
+        statementFiller.execute(true);
 
         statement.execute();
     }
