@@ -24,6 +24,13 @@ Contents
       * [Aspects](#entity-aspects)
       * [Apartment](#entity-apartment)
    * [:gear: Features](#features)
+   * [:camera: Wireframe](#wireframe)
+      * [Login](#login)
+      * [SignUp](#sign-up)
+      * [Search](#search)
+      * [Apartment Details](#apartment-details)
+      * [Announce](#announce)
+      * [Create Apartment](#create-apartment)
    * [:memo: License](#license)
    * [:wrench: Authors](#authors)
 <!--te-->
@@ -86,6 +93,36 @@ Tools used on this project:
 - [ ] (Owner) Register, update and delete apartments.
 - [ ] (Renter) Can contact the apartment owner. 
 - [ ] Search apartments by(And/Or): name, preferences (bedrooms quantity, capacity ...), price and location.
+
+</br>
+
+<h2 id="wireframe">:camera: Wireframe</h2>
+
+- <h3 id="login">Login</h3>
+![LOGIN](https://user-images.githubusercontent.com/88398990/158809949-26035b52-fd5a-4706-a3df-8ef2ee0ea901.png)
+
+- <h3 id="sign-up">SignUp</h3>
+ ![CADASTRAR](https://user-images.githubusercontent.com/88398990/158810112-74159d52-bf73-4b9e-b991-4606f2abfcc4.png)
+
+- <h3 id="search">Search</h3>
+![PROCURAR](https://user-images.githubusercontent.com/88398990/158810145-0c931d42-1ccd-46b9-af96-337fc9084ee5.png)
+
+- <h3 id="apartment-details">Apartment Details</h3>
+![PROCURAR-MAX](https://user-images.githubusercontent.com/88398990/158810451-584f9fd0-e14d-49b7-a7bb-542e074ce013.png)
+
+- <h3 id="announce">Announce</h3>
+![ANUNCIAR](https://user-images.githubusercontent.com/88398990/158810333-02ee346e-19a6-4a83-92f9-55ccab4d6604.png)
+
+- <h3 id="create-apartment">Create Apartment</h3>
+
+  - #### Address
+  ![Cadastrar-1](https://user-images.githubusercontent.com/88398990/158810857-365dd580-365f-4e69-be7d-e0354155cf12.png)
+  
+  - #### Aspects
+  ![Cadastrar-12](https://user-images.githubusercontent.com/88398990/158812809-3495d914-c5de-4414-8c94-87bb6c1efd2f.png)
+
+  - #### Finalization
+  ![Cadastrar-3](https://user-images.githubusercontent.com/88398990/158810885-cebbbd4c-601a-4b12-8b32-05bedcb6717d.png)
 
 </br>
 
