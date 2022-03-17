@@ -33,6 +33,9 @@ Contents
 Tools used on this project:
 
 - [Java](https://www.java.com/)
+  - [Java-dotenv](https://jar-download.com/artifact-search/java-dotenv)
+  - [PostgreSQL JDBC Driver](https://jdbc.postgresql.org/download.html)
+  - [JavaFX](https://openjfx.io/)
 - [Postgresql](https://www.postgresql.org/) </br></br>
 
 <h2 id="entities">:floppy_disk: Entities</h2>
