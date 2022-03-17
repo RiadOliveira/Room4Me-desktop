@@ -10,14 +10,14 @@ import java.util.UUID;
 import errors.ValidationException;
 
 public abstract class Entity {
+    private final String entityName = this.getClass().getSimpleName().split("VO")[0];
     private UUID id;
 
     // Validation functions.
     protected void verifyStringLength(String value, String propertyName) throws ValidationException {
         if(value.length() == 0) {
             throw new ValidationException(
-                this.getClass().getSimpleName() + ' ' +
-                propertyName + " must be greater than 0 in length."
+                entityName + ' ' + propertyName + " must be greater than 0 in length."
             );
         }
     }
@@ -25,8 +25,7 @@ public abstract class Entity {
     protected void verifyNull(Object property, String propertyName) throws ValidationException {
         if(property == null) {
             throw new ValidationException(
-                this.getClass().getSimpleName() + ' ' +
-                propertyName + " can't be null."
+                entityName + ' ' + propertyName + " can't be null."
             );
         }
     }
