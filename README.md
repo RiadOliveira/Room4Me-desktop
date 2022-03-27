@@ -18,6 +18,7 @@ Contents
 =================
 <!--ts-->
    * [🛠 Technologies](#technologies)
+   * [🔨 Architecture ](#architecture )
    * [:floppy_disk: Entities](#entities)
       * [User](#entity-user)
       * [Address](#entity-address)
@@ -44,6 +45,10 @@ Tools used on this project:
   - [PostgreSQL JDBC Driver](https://jdbc.postgresql.org/download.html)
   - [JavaFX](https://openjfx.io/)
 - [Postgresql](https://www.postgresql.org/) </br></br>
+
+<h2 id="architecture">:hammer: Architecture</h2>
+This project uses the MVC (Model-View-Controller) architecture.
+</br> </br> 
 
 <h2 id="entities">:floppy_disk: Entities</h2>
 
