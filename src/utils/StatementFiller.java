@@ -40,7 +40,7 @@ public class StatementFiller {
             }
 
             case "Gender": {
-                statement.setBoolean(index, ((Gender) property).ordinal() == 1);
+                statement.setInt(index, ((Gender) property).ordinal());
                 break;
             }
 
