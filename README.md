@@ -17,8 +17,9 @@
 Contents
 =================
 <!--ts-->
+   * [💡 Proposal](#proposal)
    * [🛠 Technologies](#technologies)
-   * [🔨 Architecture ](#architecture )
+   * [🗂  Architecture ](#architecture )
    * [:floppy_disk: Entities](#entities)
       * [User](#entity-user)
       * [Address](#entity-address)
@@ -33,9 +34,11 @@ Contents
       * [Announce](#announce)
       * [Create Apartment](#create-apartment)
    * [:memo: License](#license)
-   * [:wrench: Authors](#authors)
+   * [👨‍💻 Authors](#authors)
 <!--te-->
 </br>
+<h2 id="proposal">💡 Proposal</h2>
+Room4Me is a software developed mainly for university students, as it seeks to make it easier for them to find a place to live during their courses, with the differential of looking for apartments to share with other people (mainly other students). This simplicity can prove to be quite effective, given the difficulty, especially for students from other cities, to locate themselves in places close to their universities and in an economically viable way.
 
 <h2 id="technologies">🛠 Technologies</h2>
 Tools used on this project:
@@ -46,7 +49,7 @@ Tools used on this project:
   - [JavaFX](https://openjfx.io/)
 - [Postgresql](https://www.postgresql.org/) </br></br>
 
-<h2 id="architecture">:hammer: Architecture</h2>
+<h2 id="architecture">🗂 Architecture</h2>
 This project uses the MVC (Model-View-Controller) architecture.
 </br> </br> 
 
@@ -147,32 +150,32 @@ This project is MIT Licensed. See <a href="https://github.com/RiadOliveira/Room4
 
 </br>
 
-<h2 id="authors">:wrench: Authors</h2>
+<h2 id="authors">👨‍💻 Authors</h2>
 
 <table>
   <tr>
     <td align="center">
       <a href="https://github.com/RiadOliveira">
         <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/69125013?v=4" width="100px;" alt=""/>
-        <br /><sub><b>Ríad Oliveira</b></sub>
+        <br /><sub><b>👨‍💻 Ríad Oliveira</b></sub>
       </a>
     </td>
     <td align="center">
       <a href="https://github.com/DaviEmanuelll">
         <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/88398990?v=4" width="100px;" alt=""/>
-        <br /><sub><b>Davi Emanuel</b></sub>
+        <br /><sub><b>👨‍💻 Davi Emanuel</b></sub>
       </a>
     </td>
     <td align="center">
       <a href="https://github.com/isabeleLima">
         <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/58983203?v=4" width="100px;" alt=""/>
-        <br /><sub><b>Isabele Cristina</b></sub>
+        <br /><sub><b>👩‍💻 Isabele Cristina</b></sub>
       </a>
     </td>
     <td align="center">
       <a href="https://github.com/HugoGomes35">
         <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/88948975?v=4" width="100px;" alt=""/>
-        <br /><sub><b>Hugo Gomes</b></sub>
+        <br /><sub><b>👨‍💻 Hugo Gomes</b></sub>
       </a>
     </td>
   </tr>
