@@ -105,13 +105,16 @@ Tools used on this project:
  ![CADASTRAR](https://user-images.githubusercontent.com/88398990/158810112-74159d52-bf73-4b9e-b991-4606f2abfcc4.png)
 
 - <h3 id="search">Search</h3>
-![PROCURAR](https://user-images.githubusercontent.com/88398990/158810145-0c931d42-1ccd-46b9-af96-337fc9084ee5.png)
+![PROCURAR](https://user-images.githubusercontent.com/88398990/160292004-c5debad7-c1b0-42c0-bc06-481c70850de3.png)
+
 
 - <h3 id="apartment-details">Apartment Details</h3>
-![PROCURAR-MAX](https://user-images.githubusercontent.com/88398990/158810451-584f9fd0-e14d-49b7-a7bb-542e074ce013.png)
+![PROCURAR-MAX](https://user-images.githubusercontent.com/88398990/160292016-f734b579-61c9-4df1-b3bc-e30c99c1d060.png)
+
 
 - <h3 id="announce">Announce</h3>
-![ANUNCIAR](https://user-images.githubusercontent.com/88398990/158810333-02ee346e-19a6-4a83-92f9-55ccab4d6604.png)
+![ANUNCIAR](https://user-images.githubusercontent.com/88398990/160292025-526b5c8e-6af0-48bf-b0a4-3bcbd26a0db7.png)
+
 
 - <h3 id="create-apartment">Create Apartment</h3>
 
@@ -119,7 +122,8 @@ Tools used on this project:
   ![Cadastrar-1](https://user-images.githubusercontent.com/88398990/158810857-365dd580-365f-4e69-be7d-e0354155cf12.png)
   
   - #### Aspects
-  ![Cadastrar-12](https://user-images.githubusercontent.com/88398990/158812809-3495d914-c5de-4414-8c94-87bb6c1efd2f.png)
+   ![Cadastrar-2](https://user-images.githubusercontent.com/88398990/160292032-4fc210cf-42f5-41b4-a9e9-3166e9be4cdc.png)
+
 
   - #### Finalization
   ![Cadastrar-3](https://user-images.githubusercontent.com/88398990/158810885-cebbbd4c-601a-4b12-8b32-05bedcb6717d.png)
