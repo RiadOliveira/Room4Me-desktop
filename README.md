@@ -90,11 +90,16 @@ Tools used on this project:
 
 <h2 id="features">:gear: Features</h2>
 
-- [ ] Accounts creation (As owner or renter), update and delete.
-- [ ] Change account type(owner to renter or renter to owner).
-- [ ] (Owner) Register, update and delete apartments.
-- [ ] (Renter) Can contact the apartment owner. 
-- [ ] Search apartments by(And/Or): name, preferences (bedrooms quantity, capacity ...), price and location.
+- [ ] Accounts creation, update and delete. (Using JDBC)
+  - Creation: It fills an object in Java, then sends it to the Database.
+  - Update: After gets an user (Using find methods from database), updates the object with the new data, then sends it to the Database.
+  - Delete: After gets an user (Using find methods from database), sends its ID with delete query to the Database.
+- [ ] Users can register, update and delete the apartments they own. (Using JDBC)
+  - Register: It fills an object in Java, then sends it to the Database.
+  - Update: After gets an apartment (Using find methods from database), updates the object with the new data, then sends it to the Database.
+  - Delete: After gets an apartment (Using find methods from database), sends its ID with delete query to the Database.
+- [ ] Users can access contacts details from the owners of the apartments they searched for (When accessing some apartment data, its owner data is also present in the object).
+- [ ] Search apartments by(And/Or): name, preferences (bedrooms quantity, capacity, allowed gender and/or available to divide), price and location (Whenever a filter is changed, a new query is generated, and all specified apartments are obtained).
 
 </br>
 
