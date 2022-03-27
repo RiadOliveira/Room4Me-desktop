@@ -54,8 +54,8 @@ Tools used on this project:
   - email: string
   - password: string
   - phone_number: string
-  - avatar: string/null (name of the file)
-  - type: boolean (0: renter, 1: owner)
+  - avatar: string
+  - gender: int 
 
 - <h3 id="entity-address">Address</h3>
 
@@ -74,6 +74,8 @@ Tools used on this project:
   - available_to_divide: boolean
   - description: string
   - capacity: integer
+  - allowed_gender: smallint
+  - description: text
 
 - <h3 id="entity-apartment">Apartment</h3>
 
@@ -82,7 +84,7 @@ Tools used on this project:
   - <a href="#entity-address">address</a>: UUID
   - <a href="#entity-aspects">aspects</a>: UUID
   - rent: double
-  - image: string/null (name of the file)
+  - image: string
 
 </br>
 
