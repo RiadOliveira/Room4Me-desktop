@@ -109,6 +109,7 @@ This project uses the MVC (Model-View-Controller) architecture.
   - Delete: After gets an apartment (Using find methods from database), sends its ID with delete query to the Database.
 - [ ] Users can access contacts details from the owners of the apartments they searched for (When accessing some apartment data, its owner data is also present in the object).
 - [ ] Search apartments by(And/Or): name, preferences (bedrooms quantity, capacity, allowed gender and/or available to divide), price and location (Whenever a filter is changed, a new query is generated, and all specified apartments are obtained).
+- [ ] Generate a CSV file containing all apartments (Including their data) searched by the user.
 
 </br>
 
