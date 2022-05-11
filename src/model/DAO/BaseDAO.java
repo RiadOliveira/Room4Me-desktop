@@ -63,7 +63,7 @@ public abstract class BaseDAO<VO extends Entity> implements IBaseDAO<VO> {
         else throw new SQLException(entityName + " ID not found on database.");
     }
 
-	public ResultSet findById(VO entity) throws SQLException {
+	public ResultSet findById(VO entity) throws SQLException, Exception {
         Connection connection = getConnection();
 
         String query = "SELECT * FROM Room4Me." + entityName + " WHERE id=?::uuid";
@@ -74,7 +74,7 @@ public abstract class BaseDAO<VO extends Entity> implements IBaseDAO<VO> {
         statement.setString(1, entity.getId().toString());
         findedEntity = statement.executeQuery();
 
-        if(!findedEntity.next()) return null;
+        if(!findedEntity.next()) throw new Exception(entityName + " not found.");
         return findedEntity;
     }
 

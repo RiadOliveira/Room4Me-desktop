@@ -3,7 +3,7 @@ package model.BO;
 import model.DAO.UserDAO;
 import model.VO.UserVO;
 
-public class UserBO implements IBaseBO<UserVO> {
+public class UserBO extends BaseBO<UserVO> {
     private static UserDAO<UserVO> userDAO = new UserDAO<UserVO>();
 
     public void insert(UserVO entity) throws Exception {

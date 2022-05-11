@@ -5,7 +5,7 @@ import java.util.List;
 import model.DAO.ApartmentDAO;
 import model.VO.ApartmentVO;
 
-public class ApartmentBO implements IBaseBO<ApartmentVO> {
+public class ApartmentBO extends BaseBO<ApartmentVO> {
     private static ApartmentDAO<ApartmentVO> apartmentDAO = new ApartmentDAO<ApartmentVO>();
 
     public void insert(ApartmentVO apartment) throws Exception {
