@@ -69,6 +69,27 @@ public abstract class Entity {
         return parsedMethods;
     }
 
+    public String toString() {
+        List<Method> getterMethods = getGetterMethods();
+        List<String> fieldsNames = getFieldsNames();
+
+        String propertiesString = "id: " + getId() + '\n';
+
+        for(int ind=0 ; ind<getterMethods.size() ; ind++) {
+            Method method = getterMethods.get(ind);
+            String fieldName = fieldsNames.get(ind);
+
+            try {
+                Object property = method.invoke(this);
+                propertiesString += fieldName + ": " + property + '\n';
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        return propertiesString;
+    }
+
     // Getter and Setter.
     public UUID getId() {
         return id;
