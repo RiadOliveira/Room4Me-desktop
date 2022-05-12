@@ -6,7 +6,7 @@ import model.DAO.ApartmentDAO;
 import model.VO.ApartmentVO;
 
 public class ApartmentBO extends BaseBO<ApartmentVO> {
-    private static ApartmentDAO<ApartmentVO> apartmentDAO = new ApartmentDAO<ApartmentVO>();
+    private static ApartmentDAO apartmentDAO = new ApartmentDAO();
 
     public void insert(ApartmentVO apartment) throws Exception {
     	  verifyIsNull(apartment);
@@ -36,5 +36,6 @@ public class ApartmentBO extends BaseBO<ApartmentVO> {
     }
 
     public ApartmentVO findById(ApartmentVO apartment) {
+        return null;
     }
 }

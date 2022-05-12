@@ -1,14 +1,13 @@
 package model.BO;
 
 import java.sql.ResultSet;
-import java.util.UUID;
 
 import model.DAO.AspectsDAO;
 import model.VO.AspectsVO;
 import utils.AllowedGender;
 
 public class AspectsBO extends BaseBO<AspectsVO> {
-    private static AspectsDAO<AspectsVO> aspectsDAO = new AspectsDAO<AspectsVO>();
+    private static AspectsDAO aspectsDAO = new AspectsDAO();
 
     public void insert(AspectsVO aspects) throws Exception {
         verifyIsNull(aspects);
@@ -40,7 +39,6 @@ public class AspectsBO extends BaseBO<AspectsVO> {
             ResultSet findedAspectsDB = aspectsDAO.findById(aspects);
             AspectsVO findedAspects = new AspectsVO();
 
-            findedAspects.setId(UUID.fromString(findedAspectsDB.getString("id")));
             findedAspects.setBedroomsQuantity(findedAspectsDB.getInt("bedrooms_quantity"));
             findedAspects.setAvailableToDivide(findedAspectsDB.getBoolean("available_to_divide"));
             findedAspects.setCapacity(findedAspectsDB.getInt("capacity"));

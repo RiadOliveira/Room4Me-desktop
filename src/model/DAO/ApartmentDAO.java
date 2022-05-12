@@ -5,16 +5,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import model.VO.AddressVO;
 import model.VO.ApartmentVO;
-import model.VO.AspectsVO;
 
-public class ApartmentDAO<VO extends ApartmentVO> extends BaseDAO<VO> {
-    public void insert(VO apartment) throws SQLException, Exception {
-        AddressDAO<AddressVO> addressDAO = new AddressDAO<AddressVO>();
+public class ApartmentDAO extends BaseDAO<ApartmentVO> {
+    public void insert(ApartmentVO apartment) throws SQLException, Exception {
+        AddressDAO addressDAO = new AddressDAO();
         addressDAO.insert(apartment.getAddress());
 
-        AspectsDAO<AspectsVO> aspectsDAO = new AspectsDAO<AspectsVO>();
+        AspectsDAO aspectsDAO = new AspectsDAO();
         aspectsDAO.insert(apartment.getAspects());
 
         super.insert(apartment);
@@ -31,11 +29,11 @@ public class ApartmentDAO<VO extends ApartmentVO> extends BaseDAO<VO> {
         return findedCustomers;
     }
 
-    public void update(VO apartment) throws SQLException, Exception {
-        AddressDAO<AddressVO> addressDAO = new AddressDAO<AddressVO>();
+    public void update(ApartmentVO apartment) throws SQLException, Exception {
+        AddressDAO addressDAO = new AddressDAO();
         addressDAO.update(apartment.getAddress());
 
-        AspectsDAO<AspectsVO> aspectsDAO = new AspectsDAO<AspectsVO>();
+        AspectsDAO aspectsDAO = new AspectsDAO();
         aspectsDAO.update(apartment.getAspects());
 
         super.update(apartment);
