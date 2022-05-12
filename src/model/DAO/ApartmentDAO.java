@@ -24,9 +24,9 @@ public class ApartmentDAO extends BaseDAO<ApartmentVO> {
         String query = "SELECT * FROM Room4Me.Apartment";
 
         Statement statement = connection.createStatement();
-        ResultSet findedCustomers = statement.executeQuery(query);
+        ResultSet findedApartments = statement.executeQuery(query);
 
-        return findedCustomers;
+        return findedApartments;
     }
 
     public void update(ApartmentVO apartment) throws SQLException, Exception {

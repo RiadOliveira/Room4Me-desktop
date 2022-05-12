@@ -28,6 +28,12 @@ public class ApartmentBO extends BaseBO<ApartmentVO> {
              throw new Exception("Requested apartment do not exist.");
          }
 
+         AddressBO addressBO = new AddressBO();
+         addressBO.delete(apartment.getAddress());
+
+         AspectsBO aspectsBO = new AspectsBO();
+         aspectsBO.delete(apartment.getAspects());
+
          apartmentDAO.delete(apartment);
     }
 
