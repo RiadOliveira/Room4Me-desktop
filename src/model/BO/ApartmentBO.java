@@ -102,16 +102,14 @@ public class ApartmentBO extends BaseBO<ApartmentVO> {
 		}
 	}
 
-	public FilterList<ApartmentVO> FilterGender(AllowedGender gender, int bedrooms_quantity, int capacity,
-			boolean avaiable_to_divide) {
+	public FilterList<ApartmentVO> FilterGender(AddressVO adress,AspectsVO aspects ) {
 		FilterList<ApartmentVO> apartmentsList = new FilterList<ApartmentVO>();
 		try {
 			ApartmentBO apartmentBO = new ApartmentBO();
 			List<ApartmentVO> allApartment = apartmentBO.findAll();
 
 			for (ApartmentVO apartment : allApartment) {
-				boolean isAllowed = VerifyFilter.satisfyRequirements(apartment, gender, bedrooms_quantity, capacity,
-						avaiable_to_divide);
+				boolean isAllowed = VerifyFilter.satisfyRequirements(apartment, adress,aspects);
 				if (isAllowed) {
 					apartmentsList.add(apartment);
 				}
