@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="1080.0" maxWidth="1920.0" minHeight="795.0" minWidth="1440.0" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane prefHeight="1080.0" prefWidth="1920.0">
+         <children>
+            <HBox prefHeight="1083.0" prefWidth="1920.0">
+               <children>
+                  <ImageView fitHeight="1080.0" fitWidth="840.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/Fundo-Banner.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="1080.0" fitWidth="1080.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/Fundo-Padrão.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+         </children>
+      </Pane>
+      <VBox layoutX="1151.0" layoutY="3.0" prefHeight="1080.0" prefWidth="450.0" spacing="4.0">
+         <children>
+            <Pane prefHeight="300.0" prefWidth="200.0" />
+            <Label text="USUÁRIO" textFill="#ff6700">
+               <font>
+                  <Font name="Microsoft YaHei Bold" size="30.0" />
+               </font>
+            </Label>
+            <TextField prefHeight="72.0" style="-fx-background-color: rgba(39, 31, 48, 1); -fx-text-fill: rgba(183, 168, 199, 1);">
+               <font>
+                  <Font name="Microsoft YaHei Bold" size="30.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </TextField>
+            <Label text="SENHA" textFill="#ff6700">
+               <font>
+                  <Font name="Microsoft YaHei Bold" size="30.0" />
+               </font>
+            </Label>
+            <PasswordField prefHeight="72.0" style="-fx-background-color: rgba(39, 31, 48, 1); -fx-text-fill: rgba(183, 168, 199, 1);">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+               <font>
+                  <Font name="Microsoft YaHei" size="30.0" />
+               </font>
+            </PasswordField>
+            <Label prefHeight="34.0" prefWidth="206.0" text="Recuperar Senha" textAlignment="CENTER" textFill="#407899" VBox.vgrow="ALWAYS">
+               <font>
+                  <Font name="Microsoft YaHei Bold" size="24.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="128.0" />
+               </VBox.margin>
+            </Label>
+            <Pane prefHeight="100.0" prefWidth="200.0" />
+            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="72.0" prefWidth="450.0" style="-fx-background-color: 0;">
+               <graphic>
+                  <ImageView fitHeight="72.0" fitWidth="450.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/Button-Login.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Label prefHeight="34.0" prefWidth="180.0" text="CRIAR CONTA" textAlignment="CENTER" textFill="#407899" textOverrun="CENTER_ELLIPSIS" VBox.vgrow="ALWAYS">
+               <font>
+                  <Font name="Microsoft YaHei Bold" size="24.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="145.0" />
+               </VBox.margin>
+            </Label>
+         </children>
+      </VBox>
+   </children>
+</Pane>
