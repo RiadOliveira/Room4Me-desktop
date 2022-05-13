@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="1080.0" maxWidth="1920.0" minHeight="795.0" minWidth="1440.0" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="1080.0" maxWidth="1920.0" minHeight="795.0" minWidth="1440.0" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
    <children>
       <Pane prefHeight="1080.0" prefWidth="1920.0">
          <children>
@@ -33,15 +33,15 @@
             </HBox>
          </children>
       </Pane>
-      <VBox layoutX="1151.0" layoutY="3.0" prefHeight="1080.0" prefWidth="450.0" spacing="4.0">
+      <VBox layoutX="1160.0" layoutY="3.0" prefHeight="1080.0" prefWidth="450.0" spacing="4.0">
          <children>
-            <Pane prefHeight="300.0" prefWidth="200.0" />
+            <Pane prefHeight="326.0" prefWidth="450.0" />
             <Label text="USUÁRIO" textFill="#ff6700">
                <font>
                   <Font name="Microsoft YaHei Bold" size="30.0" />
                </font>
             </Label>
-            <TextField prefHeight="72.0" style="-fx-background-color: rgba(39, 31, 48, 1); -fx-text-fill: rgba(183, 168, 199, 1);">
+            <TextField prefHeight="72.0" style="-fx-background-color: rgba(39, 31, 48, 1); -fx-background-radius: 16; -fx-text-fill: rgba(64, 120, 153, 1);">
                <font>
                   <Font name="Microsoft YaHei Bold" size="30.0" />
                </font>
@@ -54,7 +54,7 @@
                   <Font name="Microsoft YaHei Bold" size="30.0" />
                </font>
             </Label>
-            <PasswordField prefHeight="72.0" style="-fx-background-color: rgba(39, 31, 48, 1); -fx-text-fill: rgba(183, 168, 199, 1);">
+            <PasswordField prefHeight="72.0" style="-fx-background-color: rgba(39, 31, 48, 1); -fx-background-radius: 16; -fx-text-fill: rgba(64, 120, 153, 1);">
                <cursor>
                   <Cursor fx:constant="TEXT" />
                </cursor>
@@ -62,35 +62,26 @@
                   <Font name="Microsoft YaHei" size="30.0" />
                </font>
             </PasswordField>
-            <Label prefHeight="34.0" prefWidth="206.0" text="Recuperar Senha" textAlignment="CENTER" textFill="#407899" VBox.vgrow="ALWAYS">
-               <font>
-                  <Font name="Microsoft YaHei Bold" size="24.0" />
-               </font>
-               <VBox.margin>
-                  <Insets left="128.0" />
-               </VBox.margin>
-            </Label>
-            <Pane prefHeight="100.0" prefWidth="200.0" />
-            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="72.0" prefWidth="450.0" style="-fx-background-color: 0;">
-               <graphic>
-                  <ImageView fitHeight="72.0" fitWidth="450.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/Button-Login.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
+            <Pane prefHeight="130.0" prefWidth="200.0" />
+            <Button fx:id="loginButton" alignment="CENTER" mnemonicParsing="false" onAction="#login" prefHeight="72.0" prefWidth="450.0" style="-fx-background-color: #ff6700; -fx-background-radius: 16;" text="LOGIN" textFill="#403645">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <font>
+                  <Font name="Microsoft YaHei Bold" size="36.0" />
+               </font>
             </Button>
-            <Label prefHeight="34.0" prefWidth="180.0" text="CRIAR CONTA" textAlignment="CENTER" textFill="#407899" textOverrun="CENTER_ELLIPSIS" VBox.vgrow="ALWAYS">
+            <Button fx:id="signUpButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#signUp" prefHeight="50.0" prefWidth="210.0" style="-fx-background-color: 0;" text="CRIAR CONTA" textFill="#407899" textOverrun="CENTER_ELLIPSIS">
                <font>
                   <Font name="Microsoft YaHei Bold" size="24.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
                <VBox.margin>
-                  <Insets left="145.0" />
+                  <Insets left="120.0" />
                </VBox.margin>
-            </Label>
+            </Button>
          </children>
       </VBox>
    </children>

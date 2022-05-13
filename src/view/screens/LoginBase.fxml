@@ -5,10 +5,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginBaseController">
    <children>
-      <HBox prefHeight="1083.0" prefWidth="1920.0">
+      <HBox maxWidth="1920.0" prefHeight="782.0" prefWidth="1368.0">
          <children>
             <ImageView fitHeight="1080.0" fitWidth="840.0" pickOnBounds="true" preserveRatio="true">
                <image>
