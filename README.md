@@ -174,11 +174,5 @@ This project is MIT Licensed. See <a href="https://github.com/RiadOliveira/Room4
         <br /><sub><b>👩‍💻 Isabele Cristina</b></sub>
       </a>
     </td>
-    <td align="center">
-      <a href="https://github.com/HugoGomes35">
-        <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/88948975?v=4" width="100px;" alt=""/>
-        <br /><sub><b>👨‍💻 Hugo Gomes</b></sub>
-      </a>
-    </td>
   </tr>
 </table>
