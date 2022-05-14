@@ -43,7 +43,7 @@ public class MainScreen extends Application{
         pricipal.getIcons().add(icon);
 
         pricipal.setTitle("Room4Me");
-        load(ScreensName.Login); //Tela que irá aparecer quano programa iniciar
+        load(ScreensName.Login);
         pricipal.show();
     }
 

@@ -16,4 +16,8 @@ public class changeScreen {
     public void search(){
         MainScreen.load(ScreensName.Search);
     }
+    
+    public void announce(){
+        MainScreen.load(ScreensName.Announce);
+    }
 }

@@ -1,7 +1,8 @@
 package view.screens;
 
 public enum ScreensName {
-    Login("Login"), LoginBase("LoginBase"), Search("Search");
+    LoginBase("LoginBase"), Base("Base"),
+    Login("Login"), Search("Search"), Announce("Announce");
 
     private String ScreensName;
 
