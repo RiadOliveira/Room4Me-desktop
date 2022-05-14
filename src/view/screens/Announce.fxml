@@ -30,7 +30,7 @@
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="120.0" prefWidth="1240.0" spacing="40.0">
                            <children>
-                            <Button fx:id="searchButton" mnemonicParsing="false" prefHeight="72.0" prefWidth="260.0" style="-fx-background-color: 0;">
+                            <Button fx:id="searchButton" mnemonicParsing="false" onAction="#changeSearch" prefHeight="72.0" prefWidth="260.0" style="-fx-background-color: 0;">
                                  <graphic>
                                     <ImageView fitHeight="72.0" fitWidth="270.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -63,7 +63,7 @@
                                     <Font name="Microsoft YaHei Bold" size="36.0" />
                                  </font>
                               </Label>
-                              <Button fx:id="userButton" mnemonicParsing="false" prefHeight="82.0" prefWidth="69.0" style="-fx-background-color: 0;">
+                              <Button fx:id="userButton" mnemonicParsing="false" onAction="#logout" prefHeight="82.0" prefWidth="69.0" style="-fx-background-color: 0;">
                                  <graphic>
                                     <ImageView fitHeight="72.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
                                        <image>

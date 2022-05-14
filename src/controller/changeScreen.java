@@ -9,7 +9,7 @@ public class changeScreen {
         MainScreen.load(ScreensName.Login);
     }
 
-    public void singUp(){
+    public void signUp(){
         MainScreen.load(ScreensName.LoginBase);
     }
     

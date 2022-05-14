@@ -36,7 +36,7 @@
       <VBox layoutX="1160.0" layoutY="3.0" prefHeight="1080.0" prefWidth="450.0" spacing="4.0">
          <children>
             <Pane prefHeight="326.0" prefWidth="450.0" />
-            <Label text="USUÁRIO" textFill="#ff6700">
+            <Label text="EMAIL" textFill="#ff6700">
                <font>
                   <Font name="Microsoft YaHei Bold" size="30.0" />
                </font>

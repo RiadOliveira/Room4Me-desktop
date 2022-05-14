@@ -1,7 +1,10 @@
 package controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import view.MainScreen;
+import view.screens.ScreensName;
 
 public class BaseController {
 
@@ -13,5 +16,20 @@ public class BaseController {
 
     @FXML
     private Button userButton;
+
+    @FXML
+    void changeAnnounce(ActionEvent event) {
+        MainScreen.load(ScreensName.Announce);
+    }
+
+    @FXML
+    void changeSearch(ActionEvent event) {
+        MainScreen.load(ScreensName.Search);
+    }
+
+    @FXML
+    void logout(ActionEvent event) {
+        MainScreen.load(ScreensName.Login);
+    }
 
 }
