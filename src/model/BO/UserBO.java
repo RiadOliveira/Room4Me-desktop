@@ -1,6 +1,7 @@
 package model.BO;
 
 import java.sql.ResultSet;
+import java.util.UUID;
 
 import model.DAO.UserDAO;
 import model.VO.UserVO;
@@ -39,19 +40,18 @@ public class UserBO extends BaseBO<UserVO> {
              ResultSet findedUserDB = userDAO.findById(user);
              UserVO findedUser = new UserVO();
              
+             findedUser.setId(UUID.fromString(findedUserDB.getString("id")));
              findedUser.setName(findedUserDB.getString("name"));
              findedUser.setEmail(findedUserDB.getString("email"));
              findedUser.setPassword(findedUserDB.getString("password"));
              findedUser.setPhoneNumber(findedUserDB.getString("phone_number"));
              
              int genderValue = findedUserDB.getInt("gender");
-             findedUser.setGender(Gender.values()[genderValue]);
-             
+             findedUser.setGender(Gender.values()[genderValue]);             
              findedUser.setAvatar(findedUserDB.getString("avatar"));
              
              return findedUser;
     	 } catch(Exception exception) {
-             System.out.println(exception);
     		 return null;
     	 }    
     }

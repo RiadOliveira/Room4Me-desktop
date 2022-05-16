@@ -1,6 +1,7 @@
 package model.BO;
 
 import java.sql.ResultSet;
+import java.util.UUID;
 
 import model.DAO.AddressDAO;
 import model.VO.AddressVO;
@@ -38,6 +39,7 @@ public class AddressBO extends BaseBO<AddressVO> {
             ResultSet findedAddressDB = addressDAO.findById(address);
             AddressVO findedAddress = new AddressVO();
 
+            findedAddress.setId(UUID.fromString(findedAddressDB.getString("id")));
             findedAddress.setCity(findedAddressDB.getString("city"));
             findedAddress.setDistrict(findedAddressDB.getString("district"));
             findedAddress.setStreet(findedAddressDB.getString("street"));

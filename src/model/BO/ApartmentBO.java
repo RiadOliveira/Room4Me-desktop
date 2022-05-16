@@ -2,14 +2,15 @@ package model.BO;
 
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
+import java.util.UUID;
 
 import filter.FilterList;
 import model.DAO.ApartmentDAO;
 import model.VO.AddressVO;
 import model.VO.ApartmentVO;
 import model.VO.AspectsVO;
+import model.VO.UserVO;
 import utils.AllowedGender;
 import utils.VerifyFilter;
 
@@ -45,45 +46,54 @@ public class ApartmentBO extends BaseBO<ApartmentVO> {
 		apartmentDAO.delete(apartment);
 	}
 
+	private ApartmentVO getApartmentFromResultSet(
+		ResultSet findedApartmentDB
+	) throws Exception {
+		AddressVO findedAddress = new AddressVO();
+
+		findedAddress.setId(UUID.fromString(findedApartmentDB.getString("address")));
+		findedAddress.setCity(findedApartmentDB.getString("city"));
+		findedAddress.setDistrict(findedApartmentDB.getString("district"));
+		findedAddress.setStreet(findedApartmentDB.getString("street"));
+		findedAddress.setComplement(findedApartmentDB.getString("complement"));
+		findedAddress.setApartmentNumber(findedApartmentDB.getString("apartment_number"));
+		findedAddress.setZipCode(findedApartmentDB.getInt("zip_code"));
+
+		AspectsVO findedAspects = new AspectsVO();
+
+		findedAspects.setId(UUID.fromString(findedApartmentDB.getString("aspects")));
+		findedAspects.setBedroomsQuantity(findedApartmentDB.getInt("bedrooms_quantity"));
+		findedAspects.setAvailableToDivide(findedApartmentDB.getBoolean("available_to_divide"));
+		findedAspects.setCapacity(findedApartmentDB.getInt("capacity"));
+		findedAspects.setDescription(findedApartmentDB.getString("description"));
+
+		int allowedGenderValue = findedApartmentDB.getInt("allowed_gender");
+		findedAspects.setAllowedGender(AllowedGender.values()[allowedGenderValue]);
+
+		ApartmentVO findedApartment = new ApartmentVO();
+		findedApartment.setId(UUID.fromString(findedApartmentDB.getString("id")));
+		findedApartment.setImage(findedApartmentDB.getString("image"));
+		findedApartment.setRent(findedApartmentDB.getDouble("rent"));
+		findedApartment.setAspects(findedAspects);
+		findedApartment.setAddress(findedAddress);
+
+		return findedApartment;
+	}
+
 	public List<ApartmentVO> findAll() {
 		List<ApartmentVO> apartmentsList = new ArrayList<ApartmentVO>();
 		try {
 			ResultSet findedApartmentDB = apartmentDAO.findAll();
 
 			while (findedApartmentDB.next()) {
-				AddressVO findedAddress = new AddressVO();
-
-				findedAddress.setCity(findedApartmentDB.getString("city"));
-				findedAddress.setDistrict(findedApartmentDB.getString("district"));
-				findedAddress.setStreet(findedApartmentDB.getString("street"));
-				findedAddress.setComplement(findedApartmentDB.getString("complement"));
-				findedAddress.setApartmentNumber(findedApartmentDB.getString("apartment_number"));
-				findedAddress.setZipCode(findedApartmentDB.getInt("zip_code"));
-
-				AspectsVO findedAspects = new AspectsVO();
-
-				findedAspects.setBedroomsQuantity(findedApartmentDB.getInt("bedrooms_quantity"));
-				findedAspects.setAvailableToDivide(findedApartmentDB.getBoolean("available_to_divide"));
-				findedAspects.setCapacity(findedApartmentDB.getInt("capacity"));
-				findedAspects.setDescription(findedApartmentDB.getString("description"));
-
-				int allowedGenderValue = findedApartmentDB.getInt("allowed_gender");
-				findedAspects.setAllowedGender(AllowedGender.values()[allowedGenderValue]);
-
-				ApartmentVO findedApartment = new ApartmentVO();
-				findedApartment.setImage(findedApartmentDB.getString("image"));
-				findedApartment.setRent(findedApartmentDB.getDouble("rent"));
-				findedApartment.setAspects(findedAspects);
-				findedApartment.setAddress(findedAddress);
-
+				ApartmentVO findedApartment = getApartmentFromResultSet(findedApartmentDB);
 				apartmentsList.add(findedApartment);
-
 			}
 
+			return apartmentsList;
 		} catch (Exception exception) {
 			return null;
 		}
-		return apartmentsList;
 	}
 
 	public ApartmentVO findById(ApartmentVO apartment) {
@@ -91,10 +101,13 @@ public class ApartmentBO extends BaseBO<ApartmentVO> {
 			verifyIsNull(apartment);
 
 			ResultSet findedApartmentDB = apartmentDAO.findById(apartment);
-			ApartmentVO findedApartment = new ApartmentVO();
+			ApartmentVO findedApartment = getApartmentFromResultSet(findedApartmentDB);
 
-			findedApartment.setImage(findedApartmentDB.getString("image"));
-			findedApartment.setRent(findedApartmentDB.getDouble("rent"));
+			UserVO user = new UserVO();
+			UserBO userBO = new UserBO();
+
+			user.setId(UUID.fromString(findedApartmentDB.getString("owner")));
+			findedApartment.setOwner(userBO.findById(user));
 
 			return findedApartment;
 		} catch (Exception exception) {
@@ -114,9 +127,10 @@ public class ApartmentBO extends BaseBO<ApartmentVO> {
 					apartmentsList.add(apartment);
 				}
 			}
+
+			return apartmentsList;
 		} catch (Exception exception) {
 			return null;
 		}
-		return apartmentsList;
 	}
 }
