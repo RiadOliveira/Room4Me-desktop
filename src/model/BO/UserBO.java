@@ -33,24 +33,28 @@ public class UserBO extends BaseBO<UserVO> {
          userDAO.delete(user);
     }
 
+    public UserVO getEntityFromResultSet(ResultSet findedUserDB) throws Exception {
+        UserVO findedUser = new UserVO();
+             
+        findedUser.setId(UUID.fromString(findedUserDB.getString("id")));
+        findedUser.setName(findedUserDB.getString("name"));
+        findedUser.setEmail(findedUserDB.getString("email"));
+        findedUser.setPassword(findedUserDB.getString("password"));
+        findedUser.setPhoneNumber(findedUserDB.getString("phone_number"));
+        
+        int genderValue = findedUserDB.getInt("gender");
+        findedUser.setGender(Gender.values()[genderValue]);             
+        findedUser.setAvatar(findedUserDB.getString("avatar"));
+
+        return findedUser;
+    }
+
     public UserVO findById(UserVO user) {
     	 try {
     		 verifyIsNull(user);
 
              ResultSet findedUserDB = userDAO.findById(user);
-             UserVO findedUser = new UserVO();
-             
-             findedUser.setId(UUID.fromString(findedUserDB.getString("id")));
-             findedUser.setName(findedUserDB.getString("name"));
-             findedUser.setEmail(findedUserDB.getString("email"));
-             findedUser.setPassword(findedUserDB.getString("password"));
-             findedUser.setPhoneNumber(findedUserDB.getString("phone_number"));
-             
-             int genderValue = findedUserDB.getInt("gender");
-             findedUser.setGender(Gender.values()[genderValue]);             
-             findedUser.setAvatar(findedUserDB.getString("avatar"));
-             
-             return findedUser;
+             return getEntityFromResultSet(findedUserDB);
     	 } catch(Exception exception) {
     		 return null;
     	 }    

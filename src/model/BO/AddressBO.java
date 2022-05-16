@@ -32,23 +32,31 @@ public class AddressBO extends BaseBO<AddressVO> {
         addressDAO.delete(address);
     }
 
+    public AddressVO getEntityFromResultSet(
+		ResultSet findedAddressDB
+	) throws Exception {
+		AddressVO findedAddress = new AddressVO();
+
+		findedAddress.setId(UUID.fromString(findedAddressDB.getString("id")));
+        findedAddress.setState(findedAddressDB.getString("state"));
+		findedAddress.setCity(findedAddressDB.getString("city"));
+		findedAddress.setDistrict(findedAddressDB.getString("district"));
+		findedAddress.setStreet(findedAddressDB.getString("street"));
+		findedAddress.setComplement(findedAddressDB.getString("complement"));
+		findedAddress.setApartmentNumber(findedAddressDB.getString("apartment_number"));
+		findedAddress.setZipCode(findedAddressDB.getInt("zip_code"));
+
+		return findedAddress;
+	}
+
     public AddressVO findById(AddressVO address) {
         try {
             verifyIsNull(address);
 
             ResultSet findedAddressDB = addressDAO.findById(address);
-            AddressVO findedAddress = new AddressVO();
-
-            findedAddress.setId(UUID.fromString(findedAddressDB.getString("id")));
-            findedAddress.setCity(findedAddressDB.getString("city"));
-            findedAddress.setDistrict(findedAddressDB.getString("district"));
-            findedAddress.setStreet(findedAddressDB.getString("street"));
-            findedAddress.setComplement(findedAddressDB.getString("complement"));
-            findedAddress.setApartmentNumber(findedAddressDB.getString("apartment_number"));
-            findedAddress.setZipCode(findedAddressDB.getInt("zip_code"));
-
-            return findedAddress;
+            return getEntityFromResultSet(findedAddressDB);
         } catch (Exception exception) {
+            exception.printStackTrace();
             return null;
         }
     }

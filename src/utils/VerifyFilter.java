@@ -7,37 +7,43 @@ import model.VO.AspectsVO;
 public class VerifyFilter {
 	public static boolean satisfyRequirements(ApartmentVO apartment, AddressVO adress, AspectsVO aspects) {
 		//ASPECTS
-		if (apartment.getAspects().getAllowedGender() != aspects.getAllowedGender()) {
+		AspectsVO comparativeAspects = apartment.getAspects();
+
+		if (comparativeAspects.getAllowedGender() != aspects.getAllowedGender()) {
 			return false;
 		}
 
-		if (apartment.getAspects().getBedroomsQuantity() != aspects.getBedroomsQuantity()) {
+		if (comparativeAspects.getBedroomsQuantity() != aspects.getBedroomsQuantity()) {
 			return false;
 		}
 
-		if (apartment.getAspects().getCapacity() != aspects.getCapacity()) {
+		if (comparativeAspects.getCapacity() != aspects.getCapacity()) {
 			return false;
 		}
 
-		if (apartment.getAspects().getAvailableToDivide() != aspects.getAvailableToDivide()) {
+		if (comparativeAspects.getAvailableToDivide() != aspects.getAvailableToDivide()) {
 			return false;
 		}
+
 		//ADRESS
-		if (apartment.getAddress().getCity() != adress.getCity()) {
+		AddressVO comparativeAddress = apartment.getAddress();
+
+		if (!comparativeAddress.getCity().equals(adress.getCity())) {
 			return false;
 		}
 
-		if (apartment.getAddress().getDistrict() != adress.getDistrict()) {
+		if (!comparativeAddress.getDistrict().equals(adress.getDistrict())) {
 			return false;
 		}
 
-		if (apartment.getAddress().getZipCode() != adress.getZipCode()) {
+		if (comparativeAddress.getZipCode() != adress.getZipCode()) {
 			return false;
 		}
 
-		if (apartment.getAddress().getStreet() != adress.getStreet()) {
+		if (!comparativeAddress.getStreet().equals(adress.getStreet())) {
 			return false;
 		}
+
 		return true;
 	}
 }
