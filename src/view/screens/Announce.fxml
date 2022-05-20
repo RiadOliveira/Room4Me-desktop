@@ -84,7 +84,7 @@
                   </HBox>
                </children>
             </Pane>
-            <Button fx:id="addButton" alignment="CENTER" mnemonicParsing="false" prefHeight="80.0" prefWidth="1240.0" style="-fx-background-color: rgba(64, 120, 153, 1); -fx-background-radius: 16;" text="ADICIONAR" textFill="#fffcf9">
+            <Button fx:id="announceButton" alignment="CENTER" mnemonicParsing="false" onAction="#announce" prefHeight="80.0" prefWidth="1240.0" style="-fx-background-color: rgba(64, 120, 153, 1); -fx-background-radius: 16;" text="ADICIONAR" textFill="#fffcf9">
                <VBox.margin>
                   <Insets top="40.0" />
                </VBox.margin>

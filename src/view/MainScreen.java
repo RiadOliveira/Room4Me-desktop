@@ -10,14 +10,14 @@ import view.screens.ScreensName;
 
 public class MainScreen extends Application{
 
-    private static Stage principal;
+    private static Stage mainScreen;
 
-    public static Stage getPrincipal() {
-        return principal;
+    public static Stage getMainScreen() {
+        return mainScreen;
     }
 
-    public static void setPrincipal(Stage principal) {
-        MainScreen.principal = principal;
+    public static void setMainScreen(Stage mainScreen) {
+        MainScreen.mainScreen = mainScreen;
     }
     
     public static void main(String args[]) {
@@ -29,14 +29,14 @@ public class MainScreen extends Application{
             Parent root = FXMLLoader.load(MainScreen.class.getResource("./screens/" + ScreensName + ".fxml"));
             Scene scene = new Scene(root);
     
-            principal.setScene(scene);
+            mainScreen.setScene(scene);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
 
     public void start(Stage pricipal) throws Exception {
-        setPrincipal(pricipal);
+        setMainScreen(pricipal);
 
         Image icon = new Image("view/images/Icon.png");
 

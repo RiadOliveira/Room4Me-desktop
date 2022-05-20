@@ -35,13 +35,20 @@
       </Pane>
       <VBox layoutX="1160.0" layoutY="3.0" prefHeight="1080.0" prefWidth="450.0" spacing="4.0">
          <children>
-            <Pane prefHeight="326.0" prefWidth="450.0" />
-            <Label text="EMAIL" textFill="#ff6700">
+            <Pane prefHeight="326.0" prefWidth="450.0">
+               <children>
+                  <Label fx:id="escuro" layoutX="24.0" layoutY="43.0" style="visibility: false;" text="Email ou Senha incorreto!" textFill="#ff6700">
+                     <font>
+                        <Font name="Microsoft YaHei Bold" size="30.0" />
+                     </font>
+                  </Label>
+               </children></Pane>
+            <Label text="EMAIL" textFill="#407899">
                <font>
                   <Font name="Microsoft YaHei Bold" size="30.0" />
                </font>
             </Label>
-            <TextField prefHeight="72.0" style="-fx-background-color: rgba(39, 31, 48, 1); -fx-background-radius: 16; -fx-text-fill: rgba(64, 120, 153, 1);">
+            <TextField prefHeight="72.0" style="-fx-background-color: rgba(39, 31, 48, 1); -fx-background-radius: 16; -fx-text-fill: ff6700;">
                <font>
                   <Font name="Microsoft YaHei Bold" size="30.0" />
                </font>
@@ -49,12 +56,12 @@
                   <Cursor fx:constant="TEXT" />
                </cursor>
             </TextField>
-            <Label text="SENHA" textFill="#ff6700">
+            <Label text="SENHA" textFill="#407899">
                <font>
                   <Font name="Microsoft YaHei Bold" size="30.0" />
                </font>
             </Label>
-            <PasswordField prefHeight="72.0" style="-fx-background-color: rgba(39, 31, 48, 1); -fx-background-radius: 16; -fx-text-fill: rgba(64, 120, 153, 1);">
+            <PasswordField prefHeight="72.0" style="-fx-background-color: rgba(39, 31, 48, 1); -fx-background-radius: 16; -fx-text-fill: ff6700;">
                <cursor>
                   <Cursor fx:constant="TEXT" />
                </cursor>
