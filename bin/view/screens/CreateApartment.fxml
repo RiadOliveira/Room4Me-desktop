@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="820.0" prefWidth="1320.0" style="-fx-background-color: rgba(255, 252, 249, 1);" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CreateApartmentScreenController.CreateApartmentController">
    <children>
       <HBox alignment="CENTER" layoutY="60.0" prefHeight="80.0" prefWidth="1320.0">
@@ -64,6 +63,6 @@
             </Button>
          </children>
       </HBox>
-      <Pane fx:id="pane" layoutX="80.0" layoutY="180.0" prefHeight="460.0" prefWidth="1160.0" />
+      <Pane fx:id="pane" layoutX="80.0" layoutY="180.0" prefHeight="480.0" prefWidth="1160.0" />
    </children>
 </Pane>

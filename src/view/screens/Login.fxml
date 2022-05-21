@@ -29,24 +29,21 @@
       </Pane>
       <VBox alignment="CENTER" layoutX="880.0" prefHeight="980.0" prefWidth="980.0">
          <children>
-            <ImageView fitHeight="560.0" fitWidth="720.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="626.0" fitWidth="720.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/Logo-Fundo.png" />
                </image>
             </ImageView>
          </children>
       </VBox>
-      <VBox alignment="CENTER_LEFT" layoutX="1210.0" prefHeight="980.0" prefWidth="320.0" spacing="4.0">
+      <VBox alignment="CENTER_LEFT" layoutX="1210.0" layoutY="10.0" prefHeight="970.0" prefWidth="320.0" spacing="16.0">
          <children>
-            <Pane prefHeight="70.0" prefWidth="320.0">
-               <children>
-                  <Label fx:id="escuro" layoutX="24.0" layoutY="43.0" style="visibility: false;" text="Email ou Senha incorreto!" textFill="#ff6700">
-                     <font>
-                        <Font name="Microsoft YaHei Bold" size="30.0" />
-                     </font>
-                  </Label>
-               </children>
-            </Pane>
+            <Pane prefHeight="70.0" prefWidth="320.0" />
+            <Label fx:id="escuro" style="visibility: false;" text="Email ou Senha incorreto!" textFill="#9c3848">
+               <font>
+                  <Font name="Microsoft YaHei Bold" size="24.0" />
+               </font>
+            </Label>
             <Label text="EMAIL" textFill="#407899">
                <font>
                   <Font name="Microsoft YaHei Bold" size="24.0" />
@@ -73,7 +70,7 @@
                   <Font name="Microsoft YaHei" size="30.0" />
                </font>
             </PasswordField>
-            <Pane prefHeight="74.0" prefWidth="320.0" />
+            <Pane prefHeight="73.0" prefWidth="320.0" />
             <Button fx:id="loginButton" alignment="CENTER" mnemonicParsing="false" onAction="#login" prefHeight="64.0" prefWidth="450.0" style="-fx-background-color: #ff6700; -fx-background-radius: 16;" text="LOGIN" textFill="#403645">
                <cursor>
                   <Cursor fx:constant="HAND" />

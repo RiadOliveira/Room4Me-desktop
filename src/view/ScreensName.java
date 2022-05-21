@@ -2,9 +2,12 @@ package view;
 
 public enum ScreensName {
     Base("Base"),
-    CreateApartment("CreateApartment"),
+    
     Login("Login"), SignUp("SignUp"),
-    Search("Search"), Announce("Announce");
+    Search("Search"), Announce("Announce"),
+    
+    CreateApartment("CreateApartment"),
+    Address("Address");
 
     private String ScreensName;
 

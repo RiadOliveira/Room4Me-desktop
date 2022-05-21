@@ -13,7 +13,7 @@ public class AnnounceController extends BaseController{
 
     @FXML
     void announce(ActionEvent event) {
-        CreateApartmentScreen.load(ScreensName.CreateApartment);
+        CreateApartmentScreen.load(ScreensName.Address);
     }
 
 }

@@ -23,6 +23,9 @@ public class CreateApartmentController {
     private Button returnScreenButton;
 
     @FXML
+    private Button cancelButton;
+
+    @FXML
     void adressScreen(ActionEvent event) {
 
     }
@@ -44,6 +47,11 @@ public class CreateApartmentController {
 
     @FXML
     void returnScreen(ActionEvent event) {
+        
+    }
+
+    @FXML
+    void cancel(ActionEvent event) {
         CreateApartmentScreen.fechar();
     }
 
