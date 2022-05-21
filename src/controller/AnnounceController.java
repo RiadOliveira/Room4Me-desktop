@@ -4,7 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import view.CreateApartmentScreen;
-import view.screens.ScreensName;
+import view.ScreensName;
 
 public class AnnounceController extends BaseController{
 

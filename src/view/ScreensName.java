@@ -1,7 +1,8 @@
-package view.screens;
+package view;
 
 public enum ScreensName {
-    Base("Base"), CreateApartment("CreateApartment"),
+    Base("Base"),
+    CreateApartment("CreateApartment"),
     Login("Login"), SignUp("SignUp"),
     Search("Search"), Announce("Announce");
 

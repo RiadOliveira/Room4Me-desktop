@@ -5,7 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import view.MainScreen;
-import view.screens.ScreensName;
+import view.ScreensName;
 
 public class LoginController{
     
@@ -27,7 +27,7 @@ public class LoginController{
 
     @FXML
     private Label escuro;
-    //escuro.setStyle(escuro.getStyle()+"visibility: true");
+    //escuro.setStyle(escuro.getStyle()+"visibility: true"); 
 
 }
 

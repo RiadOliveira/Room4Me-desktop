@@ -1,8 +1,9 @@
-package controller;
+package controller.CreateApartmentScreenController;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import view.CreateApartmentScreen;
 
 public class CreateApartmentController {
 
@@ -43,7 +44,7 @@ public class CreateApartmentController {
 
     @FXML
     void returnScreen(ActionEvent event) {
-
+        CreateApartmentScreen.fechar();
     }
 
 }

@@ -4,7 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import view.MainScreen;
-import view.screens.ScreensName;
+import view.ScreensName;
 
 public class BaseController {
 
