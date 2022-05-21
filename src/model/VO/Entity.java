@@ -73,7 +73,7 @@ public abstract class Entity {
         List<Method> getterMethods = getGetterMethods();
         List<String> fieldsNames = getFieldsNames();
 
-        String propertiesString = "id: " + getId() + '\n';
+        String propertiesString = "\nid: " + getId() + '\n';
 
         for(int ind=0 ; ind<getterMethods.size() ; ind++) {
             Method method = getterMethods.get(ind);

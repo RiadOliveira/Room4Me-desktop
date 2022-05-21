@@ -3,6 +3,7 @@ package model.VO;
 import errors.ValidationException;
 
 public class AddressVO extends Entity {
+    private String state;
     private String city;
     private String district;
     private String street;
@@ -11,6 +12,18 @@ public class AddressVO extends Entity {
     private int zipCode;
     //referencePoint
     //building
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) throws ValidationException {
+        String propertyName = "state";
+        verifyNull(state, propertyName);
+        verifyStringLength(state, propertyName);
+
+        this.state = state;
+    }
 
     public String getCity() {
         return city;

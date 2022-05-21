@@ -9,7 +9,7 @@ public class UserVO extends Entity {
     private String password;
     private String phoneNumber;
     private Gender gender;
-    private String avatar;
+    private String avatar = null;
 
     public String getName() {
         return name;
@@ -86,8 +86,12 @@ public class UserVO extends Entity {
     }
 
     public void setAvatar(String avatar) throws ValidationException {
+        if(avatar == null) {
+            this.avatar = null;
+            return;
+        }
+
         String propertyName = "avatar";
-        verifyNull(avatar, propertyName);
         verifyStringLength(avatar, propertyName);
 
         this.avatar = avatar;
