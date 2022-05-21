@@ -7,7 +7,7 @@ public enum ScreensName {
     Search("Search"), Announce("Announce"),
     
     CreateApartment("CreateApartment"),
-    Address("Address");
+    Address("Address"),Aspects("Aspects");
 
     private String ScreensName;
 

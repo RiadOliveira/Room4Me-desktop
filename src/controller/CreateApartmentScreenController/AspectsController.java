@@ -3,41 +3,40 @@ package controller.CreateApartmentScreenController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleButton;
 import view.CreateApartmentScreen;
 import view.ScreensName;
 
-public class AddressController extends CreateApartmentController{
+public class AspectsController extends CreateApartmentController{
+    
+    @FXML
+    private ToggleButton allowedGenderFemale;
 
     @FXML
-    private TextField apartmentNumberField;
+    private ToggleButton allowedGenderMale;
 
     @FXML
-    private TextField buildingField;
+    private ToggleButton allowedGenderOther;
 
     @FXML
-    private TextField cityField;
+    private CheckBox availableToDivide;
 
     @FXML
-    private TextField complementField;
+    private TextField bedroomsQuantityField;
 
     @FXML
-    private TextField districtField;
+    private TextField capacityField;
 
     @FXML
-    private TextField referencePointField;
-
-    @FXML
-    private TextField streetField;
-
-    @FXML
-    private TextField zipCodeField;
+    private TextField descriptionField;
 
     @FXML
     private Button nextScreenButton;
     @FXML
     void nextScreen(ActionEvent event) {
-        CreateApartmentScreen.load(ScreensName.Aspects);
+
     }
 
     @FXML
