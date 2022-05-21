@@ -49,7 +49,7 @@
                   <Font name="Microsoft YaHei Bold" size="24.0" />
                </font>
             </Label>
-            <TextField prefHeight="64.0" style="-fx-background-color: rgba(39, 31, 48, 1); -fx-background-radius: 16; -fx-text-fill: ff6700;">
+            <TextField fx:id="emailField" prefHeight="64.0" style="-fx-background-color: rgba(39, 31, 48, 1); -fx-background-radius: 16; -fx-text-fill: ff6700; -fx-border-color: #9c3848; -fx-border-radius: 16; -fx-border-width: 0;">
                <font>
                   <Font name="Microsoft YaHei Bold" size="30.0" />
                </font>
@@ -62,7 +62,7 @@
                   <Font name="Microsoft YaHei Bold" size="24.0" />
                </font>
             </Label>
-            <PasswordField prefHeight="64.0" style="-fx-background-color: rgba(39, 31, 48, 1); -fx-background-radius: 16; -fx-text-fill: ff6700;">
+            <PasswordField fx:id="passwordField" prefHeight="64.0" style="-fx-background-color: rgba(39, 31, 48, 1); -fx-background-radius: 16; -fx-text-fill: ff6700; -fx-border-color: #9c3848; -fx-border-radius: 16; -fx-border-width: 0;">
                <cursor>
                   <Cursor fx:constant="TEXT" />
                </cursor>

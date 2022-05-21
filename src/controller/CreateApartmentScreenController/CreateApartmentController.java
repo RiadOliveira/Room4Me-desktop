@@ -3,8 +3,8 @@ package controller.CreateApartmentScreenController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import utils.ScreensName;
 import view.CreateApartmentScreen;
-import view.ScreensName;
 
 public class CreateApartmentController {
 

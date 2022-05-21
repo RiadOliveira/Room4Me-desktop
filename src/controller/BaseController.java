@@ -3,8 +3,8 @@ package controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import utils.ScreensName;
 import view.MainScreen;
-import view.ScreensName;
 
 public class BaseController {
 

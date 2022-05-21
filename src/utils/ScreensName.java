@@ -1,4 +1,4 @@
-package view;
+package utils;
 
 public enum ScreensName {
     Login("Login"), SignUp("SignUp"),

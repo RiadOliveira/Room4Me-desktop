@@ -6,8 +6,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
+import utils.ScreensName;
 import view.CreateApartmentScreen;
-import view.ScreensName;
 
 public class AspectsController extends CreateApartmentController{
     
