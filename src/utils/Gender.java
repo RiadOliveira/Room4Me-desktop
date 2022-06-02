@@ -1,7 +1,9 @@
 package utils;
 
 public enum Gender {
-    male("Masculino"), female("Feminino"), other("Não se identificar");
+    male("Masculino"), 
+    female("Feminino"), 
+    other("Não se identificar");
     
     private String Gender;
 

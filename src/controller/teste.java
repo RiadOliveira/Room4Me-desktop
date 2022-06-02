@@ -75,3 +75,42 @@ FuncionarioVO authfunvo = new FuncionarioVO();
 	}
 }
 */
+/* 
+
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.CheckBox;
+import javafx.stage.Stage;
+
+public class CheckboxWhileKeyPressedNotWorking extends Application {
+
+    private final CheckBox checkbox = new CheckBox();
+    private boolean isControlKeyDown = false;
+
+    @Override
+    public void start(Stage primaryStage) {
+
+        checkbox.setText("Click me while pressing <CNTRL> key");
+        checkbox.setOnMouseClicked(e->{
+            if(isControlKeyDown){
+                checkbox.fire(); //change check box state
+            }
+        });
+
+        Scene scene = new Scene(checkbox, 300, 50);
+        scene.setOnKeyPressed(keyEvent -> {
+            isControlKeyDown = keyEvent.isControlDown();
+        });
+
+        scene.setOnKeyReleased(keyEvent -> {
+            isControlKeyDown = keyEvent.isControlDown();
+        });
+
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+}*/

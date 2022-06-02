@@ -47,7 +47,7 @@
                      <children>
                         <VBox prefHeight="133.0" prefWidth="560.0" spacing="4.0">
                            <children>
-                              <Label text="Capacidade" textFill="#403645">
+                              <Label prefHeight="64.0" text="Capacidade" textFill="#403645">
                                  <font>
                                     <Font name="Microsoft YaHei Bold" size="36.0" />
                                  </font>
@@ -59,7 +59,7 @@
                                     </ImageView>
                                  </graphic>
                               </Label>
-                              <TextField fx:id="capacityField" prefHeight="56.0" prefWidth="960.0" style="-fx-background-color: rgba(223, 212, 215, 1); -fx-background-radius: 16; -fx-text-fill: rgba(53, 45, 57, 1);">
+                              <TextField fx:id="capacityField" prefHeight="56.0" prefWidth="960.0" style="-fx-background-color: rgba(223, 212, 215, 1); -fx-background-radius: 16; -fx-text-fill: rgba(53, 45, 57, 1); -fx-border-color: #9c3848; -fx-border-radius: 16; -fx-border-width: 0;">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
@@ -69,9 +69,9 @@
                               </TextField>
                            </children>
                         </VBox>
-                        <VBox prefHeight="100.0" prefWidth="560.0" spacing="4.0">
+                        <VBox alignment="BOTTOM_LEFT" prefHeight="64.0" prefWidth="560.0" spacing="4.0">
                            <children>
-                              <Label text="Quartos" textFill="#403645">
+                              <Label prefHeight="64.0" prefWidth="237.0" text="Quartos" textFill="#403645">
                                  <font>
                                     <Font name="Microsoft YaHei Bold" size="36.0" />
                                  </font>
@@ -83,7 +83,7 @@
                                     </ImageView>
                                  </graphic>
                               </Label>
-                              <TextField fx:id="bedroomsQuantityField" prefHeight="56.0" prefWidth="960.0" style="-fx-background-color: rgba(223, 212, 215, 1); -fx-background-radius: 16; -fx-text-fill: rgba(53, 45, 57, 1);">
+                              <TextField fx:id="bedroomsQuantityField" prefHeight="56.0" prefWidth="960.0" style="-fx-background-color: rgba(223, 212, 215, 1); -fx-background-radius: 16; -fx-text-fill: rgba(53, 45, 57, 1); -fx-border-color: #9c3848; -fx-border-radius: 16; -fx-border-width: 0;">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
@@ -99,7 +99,7 @@
                      <children>
                         <VBox alignment="CENTER" prefHeight="133.0" prefWidth="560.0">
                            <children>
-                              <CheckBox fx:id="availableToDivide" mnemonicParsing="false" text="Deseja dividir?" textFill="#403645">
+                              <CheckBox fx:id="availableToDivide" mnemonicParsing="false" onAction="#availableToDivideChoice" style="-fx-border-color: #9c3848; -fx-border-radius: 8; -fx-border-width: 0;" text="Deseja dividir?" textFill="#403645">
                                  <font>
                                     <Font name="Microsoft YaHei Bold" size="36.0" />
                                  </font>
@@ -118,7 +118,7 @@
                         </VBox>
                         <VBox prefHeight="100.0" prefWidth="560.0" spacing="4.0">
                            <children>
-                              <Label text="Gênero Permitido" textFill="#403645">
+                              <Label prefHeight="64.0" text="Gênero Permitido" textFill="#403645">
                                  <font>
                                     <Font name="Microsoft YaHei Bold" size="36.0" />
                                  </font>
@@ -130,7 +130,7 @@
                                     </ImageView>
                                  </graphic>
                               </Label>
-                              <ChoiceBox fx:id="genderBox" prefHeight="56.0" prefWidth="960.0" style="-fx-background-color: rgba(223, 212, 215, 1); -fx-background-radius: 16; -fx-border-color: #9c3848; -fx-border-radius: 16; -fx-border-width: 0; -fx-font-family: 'Open Sans'; -fx-font-size: 24; -fx-text-fill: rgba(53, 45, 57, 1);" />
+                              <ChoiceBox fx:id="allowedGenderBox" prefHeight="56.0" prefWidth="960.0" style="-fx-background-color: rgba(223, 212, 215, 1); -fx-background-radius: 16; -fx-border-color: #9c3848; -fx-border-radius: 16; -fx-border-width: 0; -fx-font-family: 'Open Sans'; -fx-font-size: 24; -fx-text-fill: rgba(53, 45, 57, 1);" />
                            </children>
                         </VBox>
                      </children>
@@ -142,7 +142,7 @@
                               <Font name="Microsoft YaHei Bold" size="36.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="descriptionField" prefHeight="160.0" prefWidth="1160.0" style="-fx-background-color: rgba(223, 212, 215, 1); -fx-background-radius: 16; -fx-text-fill: rgba(53, 45, 57, 1);">
+                        <TextField fx:id="descriptionField" prefHeight="160.0" prefWidth="1160.0" style="-fx-background-color: rgba(223, 212, 215, 1); -fx-background-radius: 16; -fx-text-fill: rgba(53, 45, 57, 1); -fx-border-color: #9c3848; -fx-border-radius: 16; -fx-border-width: 0;">
                            <font>
                               <Font size="24.0" />
                            </font>
