@@ -67,7 +67,7 @@
                         <Font name="Microsoft YaHei Bold" size="24.0" />
                      </font>
                   </Label>
-                  <ChoiceBox fx:id="genderBox" prefHeight="64.0" prefWidth="594.0" style="-fx-background-color: rgba(39, 31, 48, 1); -fx-background-radius: 16; -fx-border-color: #9c3848; -fx-border-radius: 16; -fx-border-width: 0; -fx-font-family: 'Open Sans'; -fx-font-size: 24;" />
+                  <ChoiceBox fx:id="genderBox" prefHeight="64.0" prefWidth="594.0" style="-fx-background-color: rgba(39, 31, 48, 1); -fx-background-radius: 16; -fx-border-color: #9c3848; -fx-border-radius: 16; -fx-border-width: 0; -fx-font-family: 'Open Sans'; -fx-font-size: 24; -fx-text-fill: #ff6700;" />
                </children>
             </VBox>
             <VBox prefHeight="100.0" prefWidth="450.0">

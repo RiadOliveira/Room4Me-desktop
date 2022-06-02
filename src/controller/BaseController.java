@@ -6,7 +6,7 @@ import javafx.scene.control.Button;
 import utils.ScreensName;
 import view.MainScreen;
 
-public class BaseController {
+public class BaseController extends LoginController{
 
     @FXML
     private Button announceButton;

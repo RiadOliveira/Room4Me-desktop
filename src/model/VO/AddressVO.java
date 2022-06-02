@@ -10,8 +10,6 @@ public class AddressVO extends Entity {
     private String complement = null;
     private String apartmentNumber;
     private int zipCode;
-    //referencePoint
-    //building
 
     public String getState() {
         return state;

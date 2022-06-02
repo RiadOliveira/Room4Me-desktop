@@ -14,52 +14,6 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="820.0" prefWidth="1320.0" style="-fx-background-color: rgba(255, 252, 249, 1);" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CreateApartmentScreenController.ConcludeApartmentController">
    <children>
-      <HBox alignment="CENTER" layoutY="60.0" prefHeight="80.0" prefWidth="1320.0">
-         <children>
-            <Pane prefHeight="200.0" prefWidth="720.0" style="-fx-background-color: rgba(64, 54, 69, 1); -fx-background-radius: 20;">
-               <children>
-                  <HBox alignment="CENTER" prefHeight="80.0" prefWidth="720.0">
-                     <children>
-                        <Button fx:id="adressScreenButton" mnemonicParsing="false" onAction="#adressScreen" style="-fx-background-color: 0;" text="ENDEREÇO" textFill="#407899">
-                           <font>
-                              <Font name="Microsoft YaHei Bold" size="30.0" />
-                           </font>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Button>
-                        <Label text="&gt;&gt;" textFill="#407899">
-                           <font>
-                              <Font name="Microsoft YaHei Bold" size="30.0" />
-                           </font>
-                        </Label>
-                        <Button fx:id="aspectsScreenButton" mnemonicParsing="false" onAction="#aspectsScreen" style="-fx-background-color: 0;" text="ASPECTOS" textFill="#407899">
-                           <font>
-                              <Font name="Microsoft YaHei Bold" size="30.0" />
-                           </font>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Button>
-                        <Label text="&gt;&gt;" textFill="#407899">
-                           <font>
-                              <Font name="Microsoft YaHei Bold" size="30.0" />
-                           </font>
-                        </Label>
-                        <Button fx:id="concludeScreenButton" mnemonicParsing="false" onAction="#concludeScreen" style="-fx-background-color: 0;" text="CONCLUIR" textFill="#ff6700">
-                           <font>
-                              <Font name="Microsoft YaHei Bold" size="30.0" />
-                           </font>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Button>
-                     </children>
-                  </HBox>
-               </children>
-            </Pane>
-         </children>
-      </HBox>
       <HBox alignment="CENTER" layoutX="80.0" layoutY="720.0" prefHeight="60.0" prefWidth="1160.0" spacing="700.0">
          <children>
             <Button fx:id="returnScreenButton" mnemonicParsing="false" onAction="#returnScreen" prefHeight="60.0" prefWidth="230.0" style="-fx-background-color: rgba(64, 120, 153, 1); -fx-background-radius: 40;" text="Voltar" textFill="#fffcf9">
@@ -129,5 +83,63 @@
                </children>
             </VBox>
          </children></Pane>
+      <HBox alignment="CENTER" layoutY="36.0" prefHeight="116.0" prefWidth="1320.0">
+         <children>
+            <VBox alignment="CENTER" prefHeight="116.0" prefWidth="720.0">
+               <children>
+                  <Pane prefHeight="80.0" prefWidth="720.0" style="-fx-background-color: rgba(64, 54, 69, 1); -fx-background-radius: 20;">
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="80.0" prefWidth="720.0">
+                           <children>
+                              <Button fx:id="adressScreenButton" mnemonicParsing="false" onAction="#adressScreen" style="-fx-background-color: 0;" text="ENDEREÇO" textFill="#407899">
+                                 <font>
+                                    <Font name="Microsoft YaHei Bold" size="30.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Label text="&gt;&gt;" textFill="#407899">
+                                 <font>
+                                    <Font name="Microsoft YaHei Bold" size="30.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="aspectsScreenButton" mnemonicParsing="false" onAction="#aspectsScreen" style="-fx-background-color: 0;" text="ASPECTOS" textFill="#407899">
+                                 <font>
+                                    <Font name="Microsoft YaHei Bold" size="30.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Label text="&gt;&gt;" textFill="#407899">
+                                 <font>
+                                    <Font name="Microsoft YaHei Bold" size="30.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="concludeScreenButton" mnemonicParsing="false" onAction="#concludeScreen" style="-fx-background-color: 0;" text="CONCLUIR" textFill="#ff6700">
+                                 <font>
+                                    <Font name="Microsoft YaHei Bold" size="30.0" />
+                                 </font>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </children>
+                  </Pane>
+                  <Label fx:id="errorMessage" style="visibility: false;" text="Preencha todos os campos obrigatórios  " textFill="#9c3848">
+                     <font>
+                        <Font name="Microsoft YaHei Bold" size="30.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
    </children>
 </Pane>

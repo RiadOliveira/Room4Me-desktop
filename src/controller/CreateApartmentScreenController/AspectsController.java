@@ -1,27 +1,25 @@
 package controller.CreateApartmentScreenController;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleButton;
+import utils.AllowedGender;
 import utils.ScreensName;
 import view.CreateApartmentScreen;
 
-public class AspectsController extends CreateApartmentController{
+public class AspectsController extends CreateApartmentController implements Initializable{
+    
     
     @FXML
-    private ToggleButton allowedGenderFemale;
-    @FXML
-    private ToggleButton allowedGenderMale;
-    @FXML
-    private ToggleButton allowedGenderOther;
-    @FXML
-    void allowedGenderOtherAction(ActionEvent event) {
-        //allowedGenderOther.setStyle(allowedGenderOther.getStyle() + "-fx-background-color: #352D39;");
-    }
-
+    private ChoiceBox<AllowedGender> allowedGenderBox;
     @FXML
     private CheckBox availableToDivide;
     @FXML
@@ -30,9 +28,11 @@ public class AspectsController extends CreateApartmentController{
     private TextField capacityField;
     @FXML
     private TextField descriptionField;
-
+    @FXML
+    private Label errorMessage;
     @FXML
     private Button nextScreenButton;
+
     @FXML
     void nextScreen(ActionEvent event) {
         CreateApartmentScreen.load(ScreensName.ConcludeApartment);
@@ -44,4 +44,9 @@ public class AspectsController extends CreateApartmentController{
     void returnScreen(ActionEvent event) {
         CreateApartmentScreen.load(ScreensName.Address);
     }
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        
+    }
+    
 }
