@@ -45,9 +45,7 @@ public class ApartmentBO extends BaseBO<ApartmentVO> {
 		apartmentDAO.delete(apartment);
 	}
 
-	public ApartmentVO getEntityFromResultSet(
-		ResultSet findedApartmentDB
-	) throws Exception {
+	public ApartmentVO getEntityFromResultSet(ResultSet findedApartmentDB) throws Exception {
 		AddressVO findedAddress = new AddressBO().getEntityFromResultSet(findedApartmentDB);
 		findedAddress.setId(UUID.fromString(findedApartmentDB.getString("address")));
 
@@ -99,7 +97,7 @@ public class ApartmentBO extends BaseBO<ApartmentVO> {
 		}
 	}
 
-	public FilterList<ApartmentVO> FilterGender(AddressVO adress,AspectsVO aspects) {
+	public FilterList<ApartmentVO> FilterGender(AddressVO adress, AspectsVO aspects) {
 		FilterList<ApartmentVO> apartmentsList = new FilterList<ApartmentVO>();
 		try {
 			ApartmentBO apartmentBO = new ApartmentBO();
@@ -107,15 +105,43 @@ public class ApartmentBO extends BaseBO<ApartmentVO> {
 
 			for (int i = 0; i < allApartment.getSize(); i++) {
 				ApartmentVO apartment = allApartment.search(i);
-				
-				if(apartment !=null) {
-					boolean isAllowed = VerifyFilter.satisfyRequirements(apartment, adress,aspects);
-					if (isAllowed) apartmentsList.add(apartment);
+
+				if (apartment != null) {
+					boolean isAllowed = VerifyFilter.satisfyRequirements(apartment, adress, aspects);
+					if (isAllowed)
+						apartmentsList.add(apartment);
 				}
 			}
 			return apartmentsList;
 		} catch (Exception exception) {
 			return null;
 		}
+	}
+
+	public ArrayList<ApartmentVO> OrderByRent() {
+		ApartmentBO apartmentBO = new ApartmentBO();
+		FilterList<ApartmentVO> allApartment = apartmentBO.findAll();
+
+		ArrayList<ApartmentVO> array = new ArrayList<ApartmentVO>();
+		for (int i = 0; i < allApartment.getSize(); i++) {
+			array.add(allApartment.search(i));
+		}
+		int tamanho = array.size();
+
+		while (tamanho > 0) {
+			int ultimoModificado = 0;
+
+			for (int i = 0; i < array.size(); i++) {
+				if (array.get(i - 1).getRent().compareTo(array.get(i).getRent()) > 0) {
+					ApartmentVO aux = array.get(i - 1);
+					array.set((i - 1), array.get(i));
+					array.set(i, aux);
+					
+					ultimoModificado=i;
+				}
+			}
+			tamanho = ultimoModificado;
+		}
+		return array;
 	}
 }

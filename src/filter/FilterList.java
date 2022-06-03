@@ -1,5 +1,7 @@
 package filter;
 
+import model.VO.ApartmentVO;
+
 public class FilterList<T> {
 	class Node {
 		int id;
@@ -193,3 +195,6 @@ public class FilterList<T> {
 		return result;
 	}
 }
+
+
+
