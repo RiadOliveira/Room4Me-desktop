@@ -64,8 +64,8 @@ public class ApartmentBO extends BaseBO<ApartmentVO> {
 		return findedApartment;
 	}
 
-	public List<ApartmentVO> findAll() {
-		List<ApartmentVO> apartmentsList = new ArrayList<ApartmentVO>();
+	public FilterList<ApartmentVO> findAll() {
+		FilterList<ApartmentVO> apartmentsList = new FilterList<ApartmentVO>();
 		try {
 			ResultSet findedApartmentDB = apartmentDAO.findAll();
 
@@ -103,13 +103,16 @@ public class ApartmentBO extends BaseBO<ApartmentVO> {
 		FilterList<ApartmentVO> apartmentsList = new FilterList<ApartmentVO>();
 		try {
 			ApartmentBO apartmentBO = new ApartmentBO();
-			List<ApartmentVO> allApartment = apartmentBO.findAll();
+			FilterList<ApartmentVO> allApartment = apartmentBO.findAll();
 
-			for (ApartmentVO apartment : allApartment) {
-				boolean isAllowed = VerifyFilter.satisfyRequirements(apartment, adress,aspects);
-				if (isAllowed) apartmentsList.add(apartment);
+			for (int i = 0; i < allApartment.getSize(); i++) {
+				ApartmentVO apartment = allApartment.search(i);
+				
+				if(apartment !=null) {
+					boolean isAllowed = VerifyFilter.satisfyRequirements(apartment, adress,aspects);
+					if (isAllowed) apartmentsList.add(apartment);
+				}
 			}
-
 			return apartmentsList;
 		} catch (Exception exception) {
 			return null;
