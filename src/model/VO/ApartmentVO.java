@@ -6,7 +6,7 @@ public class ApartmentVO extends Entity {
     private UserVO owner;
     private AddressVO address;
     private AspectsVO aspects;
-    private double rent;
+    private Double rent;
     private String image = null;
 
     public UserVO getOwner() {
@@ -36,7 +36,7 @@ public class ApartmentVO extends Entity {
         this.aspects = aspects;
     }
 
-    public double getRent() {
+    public Double getRent() {
         return rent;
     }
 
