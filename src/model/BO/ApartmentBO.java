@@ -92,12 +92,6 @@ public class ApartmentBO extends BaseBO<ApartmentVO> {
 			ResultSet findedApartmentDB = apartmentDAO.findById(apartment);
 			ApartmentVO findedApartment = getEntityFromResultSet(findedApartmentDB);
 
-			UserVO user = new UserVO();
-			UserBO userBO = new UserBO();
-
-			user.setId(UUID.fromString(findedApartmentDB.getString("owner")));
-			findedApartment.setOwner(userBO.findById(user));
-
 			return findedApartment;
 		} catch (Exception exception) {
 			return null;
