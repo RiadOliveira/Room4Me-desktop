@@ -25,10 +25,14 @@ public class StatementFiller {
             case "String": statement.setString(index, (String)property);
             break;
 
+            case "Integer":
             case "int": statement.setInt(index, (int)property);
             break;
 
-            case "double": statement.setDouble(index, (double)property);
+            case "Double":
+            case "double":
+            case "float":
+            case "Float": statement.setDouble(index, (double)property);
             break;
 
             case "boolean": statement.setBoolean(index, (boolean) property);
