@@ -2,6 +2,7 @@ package model.BO;
 
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
 
@@ -123,9 +124,12 @@ public class ApartmentBO extends BaseBO<ApartmentVO> {
 		FilterList<ApartmentVO> allApartment = apartmentBO.findAll();
 
 		ArrayList<ApartmentVO> array = new ArrayList<ApartmentVO>();
-		for (int i = 0; i < allApartment.getSize(); i++) {
-			array.add(allApartment.search(i));
+		Iterator<ApartmentVO> it = allApartment.iterator();
+		
+		while(it.hasNext()) {
+			array.add(it.next());
 		}
+		
 		int tamanho = array.size();
 
 		while (tamanho > 0) {

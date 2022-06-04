@@ -1,8 +1,8 @@
 package filter;
 
-import model.VO.ApartmentVO;
+import java.util.Iterator;
 
-public class FilterList<T> {
+public class FilterList<T> implements Iterable<T>,Iterator<T>{
 	class Node {
 		int id;
 		T data;
@@ -21,6 +21,7 @@ public class FilterList<T> {
 	private Node head;
 	private Node tail;
 	private int size;
+	private Node iterationNode = null;
 
 	public int getSize() {
 		return size;
@@ -90,7 +91,6 @@ public class FilterList<T> {
 
 		return null;
 	}
-
 
 	public T peekFirst() {
 		if (head == null) return null;
@@ -194,7 +194,25 @@ public class FilterList<T> {
 		result = removed.data;
 		return result;
 	}
-}
 
+	@Override
+	public boolean hasNext() {
+		return iterationNode != tail;
+	}
+
+	@Override
+	public T next() {
+		if(iterationNode == null){
+			iterationNode = head;
+		} else iterationNode = iterationNode.next;
+		
+		return iterationNode.data;
+	}
+
+	@Override
+	public Iterator<T> iterator() {
+		return this;
+	}
+}
 
 

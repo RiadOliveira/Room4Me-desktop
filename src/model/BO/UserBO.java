@@ -59,4 +59,14 @@ public class UserBO extends BaseBO<UserVO> {
     		 return null;
     	 }    
     }
+    
+    public UserVO Auth(UserVO user) {
+    	try {
+    		 verifyIsNull(user);
+    		 ResultSet findedUserDB = userDAO.Auth(user);
+    		 return getEntityFromResultSet(findedUserDB);
+    	}catch(Exception exception) {
+   		 return null;
+   	 }  
+    }
 }
