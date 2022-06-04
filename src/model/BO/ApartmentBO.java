@@ -2,7 +2,6 @@ package model.BO;
 
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 import filter.FilterList;
@@ -46,6 +45,11 @@ public class ApartmentBO extends BaseBO<ApartmentVO> {
 	}
 
 	public ApartmentVO getEntityFromResultSet(ResultSet findedApartmentDB) throws Exception {
+		UserBO userBO = new UserBO();
+		UserVO findedUser = new UserVO();
+		findedUser.setId(UUID.fromString(findedApartmentDB.getString("owner")));
+		findedUser = userBO.findById(findedUser);
+
 		AddressVO findedAddress = new AddressBO().getEntityFromResultSet(findedApartmentDB);
 		findedAddress.setId(UUID.fromString(findedApartmentDB.getString("address")));
 
@@ -56,8 +60,10 @@ public class ApartmentBO extends BaseBO<ApartmentVO> {
 		findedApartment.setId(UUID.fromString(findedApartmentDB.getString("id")));
 		findedApartment.setImage(findedApartmentDB.getString("image"));
 		findedApartment.setRent(findedApartmentDB.getDouble("rent"));
+		
 		findedApartment.setAspects(findedAspects);
 		findedApartment.setAddress(findedAddress);
+		findedApartment.setOwner(findedUser);
 
 		return findedApartment;
 	}
@@ -74,6 +80,7 @@ public class ApartmentBO extends BaseBO<ApartmentVO> {
 
 			return apartmentsList;
 		} catch (Exception exception) {
+			System.out.println(exception.getMessage());
 			return null;
 		}
 	}
