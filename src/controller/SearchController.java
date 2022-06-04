@@ -79,13 +79,13 @@ public class SearchController extends BaseController implements Initializable{
         );
         rentColumn.setCellValueFactory(new PropertyValueFactory<ApartmentVO, Double>("rent"));
         capacityColumn.setCellValueFactory(capacity -> 
-            new SimpleStringProperty(capacity.getValue().getAspects().getCapacityString())
+            new SimpleStringProperty(capacity.getValue().getAspects().obtainCapacityString())
         );
         bedroomsQuantityColumn.setCellValueFactory(bedroomsQuantity -> 
-            new SimpleStringProperty(bedroomsQuantity.getValue().getAspects().getBedroomsQuantityString())
+            new SimpleStringProperty(bedroomsQuantity.getValue().getAspects().obtainBedroomsQuantityString())
         );
         availableToDivideColumn.setCellValueFactory(availableToDivide -> 
-            new SimpleStringProperty(availableToDivide.getValue().getAspects().getAvailableToDivideString())
+            new SimpleStringProperty(availableToDivide.getValue().getAspects().obtainAvailableToDivideText())
         );
         allowedGenderColumn.setCellValueFactory(allowedGender -> 
             new SimpleStringProperty(allowedGender.getValue().getAspects().getAllowedGender().toString())

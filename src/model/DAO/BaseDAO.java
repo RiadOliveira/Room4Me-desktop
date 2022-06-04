@@ -19,7 +19,7 @@ public abstract class BaseDAO<VO extends Entity> implements IBaseDAO<VO> {
 	private final String entityName = this.getClass().getSimpleName().split("DAO")[0];
     private static final String url = "jdbc:postgresql://localhost:5432/Room4ME";
     private static final String user = "postgres";
-    private static final String password = "1234";//Dotenv.load().get("DATABASE_PASSWORD");
+    private static final String password = "tradelous";//Dotenv.load().get("DATABASE_PASSWORD");
 	
 	protected static Connection getConnection() throws SQLException {
 		if (connection == null) {
