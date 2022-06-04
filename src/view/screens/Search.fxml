@@ -65,7 +65,7 @@
                   </HBox>
                   <HBox alignment="CENTER_RIGHT" prefHeight="120.0" prefWidth="400.0" HBox.hgrow="NEVER">
                      <children>
-                        <Label text="UserName" textFill="#407899">
+                        <Label fx:id="userName" textFill="#407899">
                            <font>
                               <Font name="Microsoft YaHei Bold" size="36.0" />
                            </font>

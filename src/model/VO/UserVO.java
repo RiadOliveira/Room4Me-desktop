@@ -11,6 +11,14 @@ public class UserVO extends Entity {
     private Gender gender;
     private String avatar = null;
 
+    public void Copy(UserVO user) {
+        this.name = user.name;
+        this.email = user.email;
+        this.password = user.password;
+        this.phoneNumber = user.phoneNumber;
+        this.gender = user.gender;
+    }
+
     public String getName() {
         return name;
     }

@@ -7,13 +7,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import model.BO.UserBO;
 import model.VO.UserVO;
 import utils.Gender;
 import utils.ScreensName;
 import view.MainScreen;
 
 public class LoginController{
+
+    static UserVO userLogin = new UserVO();
 	@FXML
 	private Label escuro;
 	
@@ -32,25 +33,21 @@ public class LoginController{
 		escuro.setStyle(escuro.getStyle()+"visibility: true"); 
 		// emailField.setStyle(emailField.getStyle() + "-fx-border-width: 4;");
 		// passwordField.setStyle(passwordField.getStyle() + "-fx-border-width: 4;");
-		// MainScreen.load(ScreensName.Search);
+        
         MainScreen.load(ScreensName.Search);
-        UserVO user = new UserVO();
-        UserBO userBO = new UserBO();
         
         try {
-            user.setName("Dewp");
-            user.setAvatar(null);
-            user.setEmail("Dewp@ufersa.com");
-            user.setGender(Gender.other);
-            user.setPassword("1234");
-            user.setPhoneNumber("+55(99)9.4444-4444");
-
-            userBO.insert(user);
+            userLogin.setName("Dewp");
+            userLogin.setAvatar(null);
+            userLogin.setEmail("Dewp@ufersa.com");
+            userLogin.setGender(Gender.other);
+            userLogin.setPassword("1234");
+            userLogin.setPhoneNumber("+55(99)9.4444-4444");
             
         } catch (ValidationException e) {
             e.printStackTrace();
         }
-            
+        
     }
     
     @FXML

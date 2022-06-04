@@ -48,7 +48,7 @@ public class AddressController extends CreateApartmentController{
             CreateApartmentController.address.setZipCode(zipCode);
             CreateApartmentController.address.setCity(cityField.getText());
             CreateApartmentController.address.setState(stateField.getText());
-            CreateApartmentController.address.setComplement(complementField.getText());
+            if(complementField!=null)CreateApartmentController.address.setComplement(complementField.getText());
 
             CreateApartmentScreen.load(ScreensName.Aspects);
     
@@ -86,11 +86,6 @@ public class AddressController extends CreateApartmentController{
                 stateField.setStyle(stateField.getStyle() + "-fx-border-width: 4;");
             } else {
                 stateField.setStyle(stateField.getStyle() + "-fx-border-width: 0;");
-            }
-            if(complementField.getText().trim().length()==0){
-                complementField.setStyle(complementField.getStyle() + "-fx-border-width: 4;");
-            } else {
-                complementField.setStyle(complementField.getStyle() + "-fx-border-width: 0;");
             }
             
         }

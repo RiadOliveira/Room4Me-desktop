@@ -4,7 +4,8 @@ public enum ScreensName {
     Login("Login"), SignUp("SignUp"),
     Search("Search"), Announce("Announce"),
     Address("Address"),Aspects("Aspects"),
-    ConcludeApartment("ConcludeApartment");
+    ConcludeApartment("ConcludeApartment"),
+    ConcludeMesage("ConcludeMesage");
 
     private String ScreensName;
 
