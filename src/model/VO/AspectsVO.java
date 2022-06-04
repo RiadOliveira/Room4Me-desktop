@@ -13,6 +13,10 @@ public class AspectsVO extends Entity {
     public int getBedroomsQuantity() {
         return bedroomsQuantity;
     }
+    public String getBedroomsQuantityString() {
+        String BedroomsQuantityString = String.valueOf(bedroomsQuantity);
+        return BedroomsQuantityString;
+    }
 
     public void setBedroomsQuantity(int bedroomsQuantity) throws ValidationException {
         int parsedQuantity = Math.abs(bedroomsQuantity);
@@ -27,6 +31,10 @@ public class AspectsVO extends Entity {
 
     public boolean getAvailableToDivide() {
         return availableToDivide;
+    }
+    public String getAvailableToDivideString(){
+        String availableToDivideString = (availableToDivide)? "Sim":"Não";
+        return availableToDivideString;
     }
 
     public void setAvailableToDivide(boolean availableToDivide) {
@@ -55,6 +63,11 @@ public class AspectsVO extends Entity {
 
     public int getCapacity() {
         return capacity;
+    }
+    
+    public String getCapacityString() {
+        String CapacityString = String.valueOf(capacity);
+        return CapacityString;
     }
 
     public void setCapacity(int capacity) throws ValidationException {
