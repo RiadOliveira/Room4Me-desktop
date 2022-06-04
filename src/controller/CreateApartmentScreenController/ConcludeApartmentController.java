@@ -22,16 +22,14 @@ public class ConcludeApartmentController extends CreateApartmentController {
     private Button concludeButton;
     @FXML
     void conclude(ActionEvent event) {
-        ApartmentBO apartmentBO = new ApartmentBO();
+        
 
         try {
-            apartment.setOwner(owner);
-            apartment.setAddress(address);
-            apartment.setAspects(aspects);
+            CreateApartmentController.apartment.setOwner(CreateApartmentController.owner);
+            CreateApartmentController.apartment.setAddress(CreateApartmentController.address);
+            CreateApartmentController.apartment.setAspects(CreateApartmentController.aspects);
             double rent = Double.parseDouble(rentField.getText());
-            apartment.setRent(rent);
-
-            apartmentBO.insert(apartment);
+            CreateApartmentController.apartment.setRent(rent);
             
             CreateApartmentScreen.load(ScreensName.ConcludeMesage);
             

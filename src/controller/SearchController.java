@@ -3,6 +3,7 @@ package controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import filter.FilterList;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -55,6 +56,7 @@ public class SearchController extends BaseController implements Initializable{
     @FXML
     private TableColumn<ApartmentVO, String> allowedGenderColumn;
     
+    static FilterList<ApartmentVO> apartmentList;
     ApartmentBO apartmentBo = new ApartmentBO();
 
     @Override
@@ -87,11 +89,16 @@ public class SearchController extends BaseController implements Initializable{
         );
         allowedGenderColumn.setCellValueFactory(allowedGender -> 
             new SimpleStringProperty(allowedGender.getValue().getAspects().getAllowedGender().toString())
-            );
-            
-            
-            searchTable.getItems().setAll(apartmentBo.findAll());
+        );
+
+        apartmentList = apartmentBo.findAll();
+        
+        for(ApartmentVO apartmentVo : apartmentList){
+            searchTable.getItems().add(apartmentVo);
+            System.out.println(apartmentVo);
         }
+           
+    }
 }
 
 // UserVO userTeste = new UserVO();

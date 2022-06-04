@@ -4,6 +4,8 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
@@ -83,7 +85,7 @@
             </HBox>
             <Button fx:id="announceButton" alignment="CENTER" mnemonicParsing="false" onAction="#announce" prefHeight="80.0" prefWidth="580.0" style="-fx-background-color: rgba(64, 120, 153, 1); -fx-background-radius: 16;" text="ADICIONAR" textFill="#fffcf9">
                <VBox.margin>
-                  <Insets top="40.0" />
+                  <Insets top="20.0" />
                </VBox.margin>
                <font>
                   <Font name="Microsoft YaHei Bold" size="40.0" />
@@ -92,6 +94,23 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
+            <HBox alignment="CENTER" prefHeight="740.0" prefWidth="200.0">
+               <children>
+                  <TableView fx:id="announceTable" prefHeight="720.0" prefWidth="1640.0" style="-fx-background-color: #403645;">
+                     <columns>
+                        <TableColumn fx:id="OwnerColumn" minWidth="200.0" prefWidth="75.0" style="-fx-alignment: CENTER; -fx-text-fill: #407899; -fx-font-family: 'Microsoft YaHei'; -fx-font-size: 24;" text="Proprietário" />
+                        <TableColumn fx:id="descriptionColumn" minWidth="640.0" prefWidth="75.0" style="-fx-alignment: CENTER;-fx-text-fill: rgba(64, 54, 69, 1); -fx-font-family: 'Microsoft YaHei'; -fx-font-size: 24;" text="Descrição" />
+                        <TableColumn fx:id="districtColumn" minWidth="160.0" prefWidth="75.0" style="-fx-alignment: CENTER; -fx-text-fill: rgba(64, 54, 69, 1); -fx-font-family: 'Microsoft YaHei'; -fx-font-size: 24;" text="Bairro" />
+                        <TableColumn fx:id="cityColumn" minWidth="160.0" prefWidth="75.0" style="-fx-alignment: CENTER; -fx-text-fill: rgba(64, 54, 69, 1); -fx-font-family: 'Microsoft YaHei'; -fx-font-size: 24;" text="Cidade" />
+                        <TableColumn fx:id="rentColumn" minWidth="160.0" prefWidth="75.0" style="-fx-alignment: CENTER; -fx-text-fill: rgba(255, 103, 0, 1); -fx-font-family: 'Microsoft YaHei'; -fx-font-size: 32;" text="Valor" />
+                        <TableColumn fx:id="aspectsColumn" minWidth="320.0" prefWidth="75.0" style="-fx-alignment: CENTER; -fx-text-fill: rgba(64, 54, 69, 1); -fx-font-family: 'Microsoft YaHei'; -fx-font-size: 24;" text="Aspectos" />
+                     </columns>
+                  </TableView>
+               </children>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </HBox>
          </children>
       </VBox>
    </children>

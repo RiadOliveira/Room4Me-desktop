@@ -4,6 +4,7 @@ import controller.BaseController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import model.BO.ApartmentBO;
 import model.VO.AddressVO;
 import model.VO.ApartmentVO;
 import model.VO.AspectsVO;
@@ -18,13 +19,21 @@ public class CreateApartmentController extends BaseController {
     public static AspectsVO aspects = new AspectsVO();
 
     public static ApartmentVO apartment = new ApartmentVO();
-    
+    public static ApartmentBO apartmentBO = new ApartmentBO();
+
     @FXML
     private Button concludeButton;
 
     @FXML
     void conclude(ActionEvent event) {
-        CreateApartmentScreen.fechar();
+        try {
+            apartmentBO.insert(apartment);
+            CreateApartmentScreen.fechar();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        
+       
     }
 
     

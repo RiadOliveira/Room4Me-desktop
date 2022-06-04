@@ -1,4 +1,4 @@
-package controller;
+/*package controller;
 
 import model.BO.ApartmentBO;
 
@@ -6,7 +6,7 @@ public class teste {
     public static void main(String args[]) {
         ApartmentBO apartment = new ApartmentBO();
         System.out.println(apartment.findAll());
-        /*UserBO userBO = new UserBO();
+        UserBO userBO = new UserBO();
         UserVO user = new UserVO();
 
         ApartmentVO apartment = new ApartmentVO();
@@ -48,7 +48,7 @@ public class teste {
             apartmentBO.insert(apartment);
         } catch (Exception e) {
             e.printStackTrace();
-        }*/
+        }
     }
 }
 

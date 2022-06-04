@@ -168,7 +168,7 @@
                <children>
                   <TableView fx:id="searchTable" prefHeight="720.0" prefWidth="1800.0" style="-fx-background-color: #403645;">
                     <columns>
-                        <TableColumn fx:id="OwnerColumn" minWidth="200.0" prefWidth="75.0" style="-fx-alignment: CENTER; -fx-text-fill: rgba(64, 54, 69, 1); -fx-font-family: 'Microsoft YaHei'; -fx-font-size: 24;" text="Proprietário" />
+                        <TableColumn fx:id="OwnerColumn" minWidth="200.0" prefWidth="75.0" style="-fx-alignment: CENTER; -fx-text-fill: rgba(64, 120, 153, 1); -fx-font-family: 'Microsoft YaHei'; -fx-font-size: 24;" text="Proprietário" />
                         <TableColumn fx:id="descriptionColumn" minWidth="640.0" prefWidth="75.0" style="-fx-alignment: CENTER;-fx-text-fill: rgba(64, 54, 69, 1); -fx-font-family: 'Microsoft YaHei'; -fx-font-size: 24;" text="Descrição" />
                         <TableColumn fx:id="districtColumn" minWidth="160.0" prefWidth="75.0" style="-fx-alignment: CENTER; -fx-text-fill: rgba(64, 54, 69, 1); -fx-font-family: 'Microsoft YaHei'; -fx-font-size: 24;" text="Bairro" />
                         <TableColumn fx:id="cityColumn" minWidth="160.0" prefWidth="75.0" style="-fx-alignment: CENTER; -fx-text-fill: rgba(64, 54, 69, 1); -fx-font-family: 'Microsoft YaHei'; -fx-font-size: 24;" text="Cidade" />
