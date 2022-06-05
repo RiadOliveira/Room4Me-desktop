@@ -13,7 +13,7 @@ public class AspectsVO extends Entity {
     public int getBedroomsQuantity() {
         return bedroomsQuantity;
     }
-    public String getBedroomsQuantityString() {
+    public String obtainBedroomsQuantityString() {
         String BedroomsQuantityString = String.valueOf(bedroomsQuantity);
         return BedroomsQuantityString;
     }
@@ -32,8 +32,9 @@ public class AspectsVO extends Entity {
     public boolean getAvailableToDivide() {
         return availableToDivide;
     }
-    public String getAvailableToDivideString(){
-        String availableToDivideString = (availableToDivide)? "Sim":"Não";
+
+    public String obtainAvailableToDivideText() {
+        String availableToDivideString = (availableToDivide) ? "Sim" : "Não";
         return availableToDivideString;
     }
 
@@ -65,7 +66,7 @@ public class AspectsVO extends Entity {
         return capacity;
     }
     
-    public String getCapacityString() {
+    public String obtainCapacityString() {
         String CapacityString = String.valueOf(capacity);
         return CapacityString;
     }
