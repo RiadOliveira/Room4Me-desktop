@@ -1,9 +1,7 @@
 package model.BO;
 
 import java.sql.ResultSet;
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 import java.util.UUID;
 
 import filter.FilterList;
@@ -100,14 +98,14 @@ public class ApartmentBO extends BaseBO<ApartmentVO> {
 		}
 	}
 
-	public FilterList<ApartmentVO> FilterGender(AddressVO adress, AspectsVO aspects) {
+	public FilterList<ApartmentVO> filterGender(AddressVO adress, AspectsVO aspects) {
 		FilterList<ApartmentVO> apartmentsList = new FilterList<ApartmentVO>();
 		try {
 			ApartmentBO apartmentBO = new ApartmentBO();
-			FilterList<ApartmentVO> allApartment = apartmentBO.findAll();
+			FilterList<ApartmentVO> allApartments = apartmentBO.findAll();
 
-			for (int i = 0; i < allApartment.getSize(); i++) {
-				ApartmentVO apartment = allApartment.search(i);
+			for (int i = 0; i < allApartments.getSize(); i++) {
+				ApartmentVO apartment = allApartments.search(i);
 
 				if (apartment != null) {
 					boolean isAllowed = VerifyFilter.satisfyRequirements(apartment, adress, aspects);
@@ -115,39 +113,31 @@ public class ApartmentBO extends BaseBO<ApartmentVO> {
 						apartmentsList.add(apartment);
 				}
 			}
+
 			return apartmentsList;
 		} catch (Exception exception) {
 			return null;
 		}
 	}
 
-	public ArrayList<ApartmentVO> OrderByRent() {
-		ApartmentBO apartmentBO = new ApartmentBO();
-		FilterList<ApartmentVO> allApartment = apartmentBO.findAll();
+	public void orderApartmentsListByRent(
+		FilterList<ApartmentVO> apartmentsList
+	) {
+		Iterator<ApartmentVO> iterator = apartmentsList.iterator();
+		int size = apartmentsList.getSize();
 
-		ArrayList<ApartmentVO> array = new ArrayList<ApartmentVO>();
-		Iterator<ApartmentVO> it = allApartment.iterator();
-		
-		while(it.hasNext()) {
-			array.add(it.next());
-		}
-		
-		int tamanho = array.size();
+		for(int ind=0 ; ind<size-1 ; ind++) {
+			ApartmentVO previousApartment = iterator.next();
 
-		while (tamanho > 0) {
-			int ultimoModificado = 0;
-
-			for (int i = 0; i < array.size(); i++) {
-				if (array.get(i - 1).getRent().compareTo(array.get(i).getRent()) > 0) {
-					ApartmentVO aux = array.get(i - 1);
-					array.set((i - 1), array.get(i));
-					array.set(i, aux);
-					
-					ultimoModificado=i;
+			while(iterator.hasNext()) {
+				ApartmentVO currentApartment = iterator.next();
+	
+				if(previousApartment.getRent() > currentApartment.getRent()) {
+					apartmentsList.switchPositionWithPrevious(currentApartment);
 				}
+
+				previousApartment = currentApartment;
 			}
-			tamanho = ultimoModificado;
 		}
-		return array;
 	}
 }

@@ -19,6 +19,16 @@ public class UserBO extends BaseBO<UserVO> {
     	userDAO.insert(user);
     }
 
+    public UserVO auth(UserVO user) {
+    	try {
+    		verifyIsNull(user);
+    		ResultSet findedUserDB = userDAO.auth(user);
+    		return getEntityFromResultSet(findedUserDB);
+    	} catch (Exception exception) {
+   		    return null;
+   	    }
+    }
+
     public void update(UserVO user) throws Exception {
     	 verifyIsNull(user);
          if(findById(user) == null) {
@@ -73,15 +83,5 @@ public class UserBO extends BaseBO<UserVO> {
         } catch(Exception exception) {
             return null;
         }
-   }
-    
-    public UserVO auth(UserVO user) {
-    	try {
-    		 verifyIsNull(user);
-    		 ResultSet findedUserDB = userDAO.auth(user);
-    		 return getEntityFromResultSet(findedUserDB);
-    	}catch(Exception exception) {
-   		 return null;
-   	 }  
     }
 }

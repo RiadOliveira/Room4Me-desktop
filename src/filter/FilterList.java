@@ -82,6 +82,17 @@ public class FilterList<T> implements Iterable<T>,Iterator<T>{
 		size++;
 	}
 
+	public Node searchNode(T data) {
+		Node p = head;
+
+		while (p != null) {
+			if (p.data == data) return p;
+			p = p.next;
+		}
+
+		return null;
+	}
+
 	public Node searchNode(int id) {
 		Node p = head;
 
@@ -151,14 +162,30 @@ public class FilterList<T> implements Iterable<T>,Iterator<T>{
 
 	public Node searchBefore(int id) {
 		Node p = head;
-		Node previus = null;
+		Node previous = null;
 
 		while (p != null) {
-			previus = p;
+			previous = p;
 			p = p.next;
 
 			if (p != null && p.id == id) {
-				return previus;
+				return previous;
+			}
+		}
+		
+		return null;
+	}
+
+	public Node searchBefore(T data) {
+		Node p = head;
+		Node previous = null;
+
+		while (p != null) {
+			previous = p;
+			p = p.next;
+
+			if (p != null && p.data == data) {
+				return previous;
 			}
 		}
 		
@@ -168,11 +195,11 @@ public class FilterList<T> implements Iterable<T>,Iterator<T>{
 	public T remove(int id) {
 		if (head == null) return null;
 		
-		Node previus = searchBefore(id);
+		Node previous = searchBefore(id);
 		Node removed = null;
 		T result = null;
 
-		if (previus == null) {
+		if (previous == null) {
 			removed = head;
 			if (head == tail) {
 				head = null;
@@ -182,12 +209,12 @@ public class FilterList<T> implements Iterable<T>,Iterator<T>{
 				removed.next = null;
 			}
 		} else {
-			removed = previus.next;
+			removed = previous.next;
 			if (removed == tail) {
-				tail = previus;
-				previus.next = null;
+				tail = previous;
+				previous.next = null;
 			} else {
-				previus.next = removed.next;
+				previous.next = removed.next;
 				removed.next = null;
 			}
 		}
@@ -196,17 +223,35 @@ public class FilterList<T> implements Iterable<T>,Iterator<T>{
 		return result;
 	}
 
+	public void switchPositionWithPrevious(
+		T positionData
+	) {
+		Node beforeNode = searchBefore(positionData);
+		Node previousBeforeNode = searchBefore(beforeNode.data);
+		Node currentNode = beforeNode.next;
+
+		previousBeforeNode.next = currentNode;
+		beforeNode.next = currentNode.next;
+		currentNode.next = beforeNode;
+
+		if(beforeNode == head) head = currentNode;
+		else if(currentNode == tail) tail = beforeNode;
+		iterationNode = beforeNode;
+	}
+
 	@Override
 	public boolean hasNext() {
-		return iterationNode != tail;
+		boolean verifyHasNext = iterationNode != tail;
+		if(!verifyHasNext) iterationNode = null;
+
+		return verifyHasNext;
 	}
 
 	@Override
 	public T next() {
-		if(iterationNode == null){
-			iterationNode = head;
-		} else iterationNode = iterationNode.next;
-		
+		if(iterationNode == null) iterationNode = head;
+		else iterationNode = iterationNode.next;
+
 		return iterationNode.data;
 	}
 
