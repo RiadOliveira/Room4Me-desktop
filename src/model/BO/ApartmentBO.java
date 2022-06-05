@@ -11,7 +11,7 @@ import model.VO.ApartmentVO;
 import model.VO.AspectsVO;
 import model.VO.UserVO;
 import utils.ApartmentDataToFilter;
-import utils.VerifyFilter;
+import utils.FilterChecker;
 
 public class ApartmentBO extends BaseBO<ApartmentVO> {
 	private static ApartmentDAO apartmentDAO = new ApartmentDAO();
@@ -99,26 +99,23 @@ public class ApartmentBO extends BaseBO<ApartmentVO> {
 		}
 	}
 
-	public FilterList<ApartmentVO> filterGender(AddressVO adress, AspectsVO aspects) {
-		FilterList<ApartmentVO> apartmentsList = new FilterList<ApartmentVO>();
-		try {
-			ApartmentBO apartmentBO = new ApartmentBO();
-			FilterList<ApartmentVO> allApartments = apartmentBO.findAll();
+	public FilterList<ApartmentVO> getFilteredApartmentByRequirements(
+		FilterList<ApartmentVO> apartmentsList, AddressVO searchedAddress,
+		AspectsVO searchedAspects, int searchedRent
+	) {
+		Iterator<ApartmentVO> iterator = apartmentsList.iterator();
+		FilterList<ApartmentVO> filteredList = new FilterList<ApartmentVO>();
+		
+		while(iterator.hasNext()) {
+			ApartmentVO apartment = iterator.next();
+			boolean satisfyRequirements = FilterChecker.verifyApartmentSatisfyRequirements(
+				apartment, searchedAddress, searchedAspects, searchedRent
+			);
 
-			for (int i = 0; i < allApartments.getSize(); i++) {
-				ApartmentVO apartment = allApartments.search(i);
-
-				if (apartment != null) {
-					boolean isAllowed = VerifyFilter.satisfyRequirements(apartment, adress, aspects);
-					if (isAllowed)
-						apartmentsList.add(apartment);
-				}
-			}
-
-			return apartmentsList;
-		} catch (Exception exception) {
-			return null;
+			if (satisfyRequirements) filteredList.add(apartment);
 		}
+
+		return filteredList;
 	}
 
 	private boolean verifyBubbleSortNeedsToExchangePositions(
@@ -144,15 +141,15 @@ public class ApartmentBO extends BaseBO<ApartmentVO> {
 		}
 	}
 
-	public FilterList<ApartmentVO> orderApartmentsList(
+	public FilterList<ApartmentVO> getSortedApartmentsList(
 		FilterList<ApartmentVO> apartmentsList,
 		ApartmentDataToFilter apartmentDataToFilter
 	) {
-		FilterList<ApartmentVO> filteredList = new FilterList<ApartmentVO>();
-		for(ApartmentVO apartment : apartmentsList) filteredList.add(apartment);
+		FilterList<ApartmentVO> sortedList = new FilterList<ApartmentVO>();
+		for(ApartmentVO apartment : apartmentsList) sortedList.add(apartment);
 
-		Iterator<ApartmentVO> iterator = filteredList.iterator();
-		int size = filteredList.getSize();
+		Iterator<ApartmentVO> iterator = sortedList.iterator();
+		int size = sortedList.getSize();
 
 		for(int ind=0 ; ind<size-1 ; ind++) {
 			ApartmentVO previousApartment = iterator.next();
@@ -161,13 +158,13 @@ public class ApartmentBO extends BaseBO<ApartmentVO> {
 				ApartmentVO currentApartment = iterator.next();
 	
 				boolean bubbleSortNeedsToExchangePositions = 
-				verifyBubbleSortNeedsToExchangePositions(
-					apartmentDataToFilter, previousApartment,
-					currentApartment
+					verifyBubbleSortNeedsToExchangePositions(
+						apartmentDataToFilter, previousApartment,
+						currentApartment
 					);
 				
 				if(bubbleSortNeedsToExchangePositions) {
-					filteredList.exchangePositionWithPrevious(
+					sortedList.exchangePositionWithPrevious(
 						currentApartment
 					);
 				}
@@ -176,6 +173,6 @@ public class ApartmentBO extends BaseBO<ApartmentVO> {
 			}
 		}
 
-		return filteredList;
+		return sortedList;
 	}
 }

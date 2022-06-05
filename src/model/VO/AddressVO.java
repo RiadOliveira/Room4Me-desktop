@@ -18,7 +18,6 @@ public class AddressVO extends Entity {
     public void setState(String state) throws ValidationException {
         String propertyName = "state";
         verifyNull(state, propertyName);
-        verifyStringLength(state, propertyName);
 
         this.state = state;
     }
@@ -30,7 +29,6 @@ public class AddressVO extends Entity {
     public void setCity(String city) throws ValidationException {
         String propertyName = "city";
         verifyNull(city, propertyName);
-        verifyStringLength(city, propertyName);
 
         this.city = city;
     }
