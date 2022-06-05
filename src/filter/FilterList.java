@@ -3,7 +3,7 @@ package filter;
 
 import java.util.Iterator;
 
-public class FilterList<T> implements Iterable<T>,Iterator<T>{
+public class FilterList<T> implements IFilterList<T>, Iterable<T>, Iterator<T> {
 	private class Node {
         public Node previous = null;
         public Node next = null;

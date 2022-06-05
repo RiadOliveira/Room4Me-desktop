@@ -1,5 +1,7 @@
 package model.BO;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.sql.ResultSet;
 import java.util.Iterator;
 import java.util.UUID;
@@ -11,6 +13,7 @@ import model.VO.ApartmentVO;
 import model.VO.AspectsVO;
 import model.VO.UserVO;
 import utils.ApartmentDataToFilter;
+import utils.DataConverter;
 import utils.FilterChecker;
 
 public class ApartmentBO extends BaseBO<ApartmentVO> {
@@ -81,7 +84,6 @@ public class ApartmentBO extends BaseBO<ApartmentVO> {
 
 			return apartmentsList;
 		} catch (Exception exception) {
-			System.out.println(exception.getMessage());
 			return null;
 		}
 	}
@@ -99,7 +101,58 @@ public class ApartmentBO extends BaseBO<ApartmentVO> {
 		}
 	}
 
-	public FilterList<ApartmentVO> getFilteredApartmentByRequirements(
+	private String getApartmentDataAsText(ApartmentVO apartment) {
+		String contentString = "";
+
+		//Apartment Owner
+		contentString += "Dono do apartamento: " + '\n';
+		contentString += apartment.getOwner().dataToText();
+		contentString += '\n';
+
+		//Apartment Address
+		contentString += "Endereço do apartamento: " + '\n';
+		contentString += apartment.getAddress().dataToText();
+		contentString += '\n';
+
+		//Apartment Aspects
+		contentString += "Aspectos do apartamento: " + '\n';
+		contentString += apartment.getAspects().dataToText();
+		contentString += '\n';
+
+		//Apartment Rent
+		String currencyValue = DataConverter.convertNumberToCurrencyValue(
+			apartment.getRent()
+		);
+		contentString += "Aluguel: " + currencyValue + '\n';
+
+		return contentString;
+	}
+
+	public void generateFileWithApartmentsList(
+		FilterList<ApartmentVO> apartmentsList
+	) {
+		try {
+			BufferedWriter bufferedWriter = new BufferedWriter(
+				new FileWriter("tmp/searchedApartments.txt")
+			);
+	
+			String fileContent = "";
+			for(ApartmentVO apartment : apartmentsList) {
+				fileContent += getApartmentDataAsText(apartment);
+
+				fileContent += '\n';
+				fileContent += "================================";
+				fileContent += "\n\n";
+			}
+	
+			bufferedWriter.append(fileContent);
+			bufferedWriter.close();
+		} catch (Exception err) {
+			System.out.println(err.getMessage());
+		}
+	}
+
+	public FilterList<ApartmentVO> getFilteredApartmentsByRequirements(
 		FilterList<ApartmentVO> apartmentsList, AddressVO searchedAddress,
 		AspectsVO searchedAspects, int searchedRent
 	) {
@@ -124,14 +177,14 @@ public class ApartmentBO extends BaseBO<ApartmentVO> {
 		ApartmentVO currentApartment
 	) {
 		switch(apartmentDataToFilter) {
-			case ByRent: return previousApartment.getRent() > currentApartment.getRent();
-			case ByCity: {
+			case byRent: return previousApartment.getRent() > currentApartment.getRent();
+			case byCity: {
 				String previousCity = previousApartment.getAddress().getCity();
 				String currentCity = currentApartment.getAddress().getCity();
 
 				return previousCity.compareTo(currentCity) >= 1;
 			}
-			case ByState: {
+			case byState: {
 				String previousState = previousApartment.getAddress().getState();
 				String currentState = currentApartment.getAddress().getState();
 
