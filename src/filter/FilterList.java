@@ -223,14 +223,14 @@ public class FilterList<T> implements Iterable<T>,Iterator<T>{
 		return result;
 	}
 
-	public void switchPositionWithPrevious(
+	public void exchangePositionWithPrevious(
 		T positionData
 	) {
 		Node beforeNode = searchBefore(positionData);
 		Node previousBeforeNode = searchBefore(beforeNode.data);
 		Node currentNode = beforeNode.next;
-
-		previousBeforeNode.next = currentNode;
+		
+		if(previousBeforeNode != null) previousBeforeNode.next = currentNode;
 		beforeNode.next = currentNode.next;
 		currentNode.next = beforeNode;
 

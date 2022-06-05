@@ -10,6 +10,7 @@ import model.VO.AddressVO;
 import model.VO.ApartmentVO;
 import model.VO.AspectsVO;
 import model.VO.UserVO;
+import utils.ApartmentDataToFilter;
 import utils.VerifyFilter;
 
 public class ApartmentBO extends BaseBO<ApartmentVO> {
@@ -120,11 +121,38 @@ public class ApartmentBO extends BaseBO<ApartmentVO> {
 		}
 	}
 
-	public void orderApartmentsListByRent(
-		FilterList<ApartmentVO> apartmentsList
+	private boolean verifyBubbleSortNeedsToExchangePositions(
+		ApartmentDataToFilter apartmentDataToFilter,
+		ApartmentVO previousApartment,
+		ApartmentVO currentApartment
 	) {
-		Iterator<ApartmentVO> iterator = apartmentsList.iterator();
-		int size = apartmentsList.getSize();
+		switch(apartmentDataToFilter) {
+			case ByRent: return previousApartment.getRent() > currentApartment.getRent();
+			case ByCity: {
+				String previousCity = previousApartment.getAddress().getCity();
+				String currentCity = currentApartment.getAddress().getCity();
+
+				return previousCity.compareTo(currentCity) >= 1;
+			}
+			case ByState: {
+				String previousState = previousApartment.getAddress().getState();
+				String currentState = currentApartment.getAddress().getState();
+
+				return previousState.compareTo(currentState) >= 1;
+			}
+			default: return false;
+		}
+	}
+
+	public FilterList<ApartmentVO> orderApartmentsList(
+		FilterList<ApartmentVO> apartmentsList,
+		ApartmentDataToFilter apartmentDataToFilter
+	) {
+		FilterList<ApartmentVO> filteredList = new FilterList<ApartmentVO>();
+		for(ApartmentVO apartment : apartmentsList) filteredList.add(apartment);
+
+		Iterator<ApartmentVO> iterator = filteredList.iterator();
+		int size = filteredList.getSize();
 
 		for(int ind=0 ; ind<size-1 ; ind++) {
 			ApartmentVO previousApartment = iterator.next();
@@ -132,12 +160,22 @@ public class ApartmentBO extends BaseBO<ApartmentVO> {
 			while(iterator.hasNext()) {
 				ApartmentVO currentApartment = iterator.next();
 	
-				if(previousApartment.getRent() > currentApartment.getRent()) {
-					apartmentsList.switchPositionWithPrevious(currentApartment);
+				boolean bubbleSortNeedsToExchangePositions = 
+				verifyBubbleSortNeedsToExchangePositions(
+					apartmentDataToFilter, previousApartment,
+					currentApartment
+					);
+				
+				if(bubbleSortNeedsToExchangePositions) {
+					filteredList.exchangePositionWithPrevious(
+						currentApartment
+					);
 				}
 
 				previousApartment = currentApartment;
 			}
 		}
+
+		return filteredList;
 	}
 }
