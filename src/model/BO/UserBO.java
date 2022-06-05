@@ -11,8 +11,12 @@ public class UserBO extends BaseBO<UserVO> {
     private static UserDAO userDAO = new UserDAO();
 
     public void insert(UserVO user) throws Exception {
-    	 verifyIsNull(user);
-    	 userDAO.insert(user);
+    	verifyIsNull(user);
+        if(findByEmail(user) != null) {
+            throw new Exception("Requested user email already exists.");
+        }
+
+    	userDAO.insert(user);
     }
 
     public void update(UserVO user) throws Exception {
@@ -59,11 +63,22 @@ public class UserBO extends BaseBO<UserVO> {
     		 return null;
     	 }    
     }
+
+    public UserVO findByEmail(UserVO user) {
+        try {
+            verifyIsNull(user);
+
+            ResultSet findedUserDB = userDAO.findByEmail(user);
+            return getEntityFromResultSet(findedUserDB);
+        } catch(Exception exception) {
+            return null;
+        }
+   }
     
-    public UserVO Auth(UserVO user) {
+    public UserVO auth(UserVO user) {
     	try {
     		 verifyIsNull(user);
-    		 ResultSet findedUserDB = userDAO.Auth(user);
+    		 ResultSet findedUserDB = userDAO.auth(user);
     		 return getEntityFromResultSet(findedUserDB);
     	}catch(Exception exception) {
    		 return null;
