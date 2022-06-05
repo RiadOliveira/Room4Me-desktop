@@ -4,235 +4,165 @@ package filter;
 import java.util.Iterator;
 
 public class FilterList<T> implements Iterable<T>,Iterator<T>{
-	class Node {
-		int id;
-		T data;
-		Node next;
+	private class Node {
+        public Node previous = null;
+        public Node next = null;
+        public T data;
 
-		public Node(T data) {
-			this.id = nextId;
-			nextId++;
+        public Node(T data) {
+            this.data = data;
+        }
+    }
 
-			this.data = data;
-			this.next = null;
-		}
-	}
-
-	private int nextId;
-	private Node head;
-	private Node tail;
-	private int size;
+    private int size = 0;
+    private Node head = null;
+    private Node tail = null;
 	private Node iterationNode = null;
 
 	public int getSize() {
 		return size;
 	}
 
-	public FilterList() {
-		head = null;
-		tail = null;
-		nextId = 1;
-		size = 0;
+    public boolean isEmpty() {
+        return size == 0;
+    }
+
+    public T peekFirst() throws Exception {
+        if(isEmpty()) return null;
+        return head.data;
+    }
+
+    public T peekLast() throws Exception {
+        if(isEmpty()) return null;
+        return tail.data;
+    }
+
+    private Node searchNode(T item) {
+        if(isEmpty()) return null;
+
+        Node iterationNode = head;
+        while(iterationNode != null) {
+            if(iterationNode.data.equals(item)) return iterationNode;
+            iterationNode = iterationNode.next;
+        }
+
+        return null;
+    }
+
+    public T search(T item) {
+        Node findedNode = searchNode(item);
+        return findedNode != null ? findedNode.data : null;
+    }
+
+    public void addFirst(T item) {
+        Node createdNode = new Node(item);
+        createdNode.next = head;
+
+        head = createdNode;
+        if(tail == null) tail = head;
+
+        size++;
+    }
+
+    public void addLast(T item) {
+        if(tail == null) addFirst(item);
+        else {
+            Node createdNode = new Node(item);
+            createdNode.previous = tail;
+            tail.next = createdNode;
+    
+            tail = createdNode;
+            if(head == null) head = tail;
+            
+            size++;
+        }
+    }
+
+	public void add(T item) {
+		addLast(item);
 	}
 
-	public void add(T data) {
-		addLast(data);
-	}
+    public void addAfter(T item, T comparativeItem) {
+        if(isEmpty()) return;
 
-	public void addLast(T data) {
-		Node nData = new Node(data); 
+        if(comparativeItem.equals(tail.data)) {
+            addLast(item);
+            return;
+        }
 
-		if (head == null) {
-			head = nData;
-			tail = nData;
-		} else {
-			tail.next = nData;
-			tail = nData;
-		}
+        Node comparativeNode = searchNode(comparativeItem);
+        if(comparativeNode == null) return;
 
-		size++;
-	}
+        Node createdNode = new Node(item);
+        Node nextNode = comparativeNode.next;
 
-	public void addFirst(T data) {
-		Node nData = new Node(data); 
+        createdNode.previous = comparativeNode;
+        createdNode.next = nextNode;
+        
+        comparativeNode.next = createdNode;
+        nextNode.previous = createdNode;
 
-		if (head == null) {
-			head = nData;
-			tail = nData;
-		} else {
-			nData.next = head;
-			head = nData;
-		}
+        size++;
+    }
 
-		size++;
-	}
+    public T removeFirst() {
+        if(isEmpty()) return null;
+        T removedHead = head.data;
 
-	public void addAfter(T data, int id) throws Exception {
-		Node p = searchNode(id);
+        if(head == tail) tail = null;
+        head = head.next;
+        head.previous = null;
 
-		if (p == null) throw new Exception();
-		else {
-			Node nData = new Node(data);
+        size--;
+        return removedHead;
+    }
 
-			if (p.next == null) tail = nData;
-			nData.next = p.next;
-			p.next = nData;
-		}
+    public T removeLast() {
+        if(isEmpty()) return null;
+        T removedTail = tail.data;
+        
+        if(tail == head) head = null;
+        tail = tail.previous;
+        tail.next = null;
 
-		size++;
-	}
+        size--;
+        return removedTail;
+    }
 
-	public Node searchNode(T data) {
-		Node p = head;
+    public void remove(T item) {
+        if(isEmpty()) return;
 
-		while (p != null) {
-			if (p.data == data) return p;
-			p = p.next;
-		}
+        Node findedNode = searchNode(item);
+        if(findedNode == null) return;
 
-		return null;
-	}
+        if(findedNode == head) removeFirst();
+        else if(findedNode == tail) removeLast();
+        else {
+            Node nextNode = findedNode.next;
+            Node beforeNode = findedNode.previous;
 
-	public Node searchNode(int id) {
-		Node p = head;
+            nextNode.previous = beforeNode;
+            beforeNode.next = nextNode;
 
-		while (p != null) {
-			if (p.id == id) return p;
-			p = p.next;
-		}
-
-		return null;
-	}
-
-	public T peekFirst() {
-		if (head == null) return null;
-		return head.data;
-	}
-
-	public T peekLast() {
-		if (tail == null) return null;
-		return tail.data;
-	}
-
-	public T search(int id) { 
-		Node p = searchNode(id);
-		
-		if (p == null) return null;
-		return p.data;
-	}
-
-	public T removeFirst() {
-		if (head == null) return null;
-
-		Node p = head;
-		T result = null;
-
-		result = p.data;
-		if (head == tail) {
-			head = null;
-			tail = null;
-		} else head = head.next;
-	
-		p.next = null;
-		size--;
-
-		return result;
-	}
-
-	public T removeLast() {
-		if (tail == null) return null;
-
-		T result = tail.data;
-		if (head == tail) {
-			head = null;
-			tail = null;
-		} else {
-			Node p = head;
-			while (p.next != tail) {
-				p = p.next;
-			}
-
-			tail = p;
-			tail.next = null;
-		}
-
-		size--;
-		return result;
-	}
-
-	public Node searchBefore(int id) {
-		Node p = head;
-		Node previous = null;
-
-		while (p != null) {
-			previous = p;
-			p = p.next;
-
-			if (p != null && p.id == id) {
-				return previous;
-			}
-		}
-		
-		return null;
-	}
-
-	public Node searchBefore(T data) {
-		Node p = head;
-		Node previous = null;
-
-		while (p != null) {
-			previous = p;
-			p = p.next;
-
-			if (p != null && p.data == data) {
-				return previous;
-			}
-		}
-		
-		return null;
-	}
-
-	public T remove(int id) {
-		if (head == null) return null;
-		
-		Node previous = searchBefore(id);
-		Node removed = null;
-		T result = null;
-
-		if (previous == null) {
-			removed = head;
-			if (head == tail) {
-				head = null;
-				tail = null;
-			} else {
-				head = head.next;
-				removed.next = null;
-			}
-		} else {
-			removed = previous.next;
-			if (removed == tail) {
-				tail = previous;
-				previous.next = null;
-			} else {
-				previous.next = removed.next;
-				removed.next = null;
-			}
-		}
-
-		result = removed.data;
-		return result;
-	}
+            size--;
+        }
+    }
 
 	public void exchangePositionWithPrevious(
 		T positionData
 	) {
-		Node beforeNode = searchBefore(positionData);
-		Node previousBeforeNode = searchBefore(beforeNode.data);
-		Node currentNode = beforeNode.next;
+		Node currentNode = searchNode(positionData);
+		Node beforeNode = currentNode.previous;
 		
+		Node afterCurrentNode = currentNode.next;
+		Node previousBeforeNode = beforeNode.previous;
 		if(previousBeforeNode != null) previousBeforeNode.next = currentNode;
-		beforeNode.next = currentNode.next;
+		if(afterCurrentNode != null) afterCurrentNode.previous = beforeNode; 
+
+		beforeNode.previous = currentNode;
+		beforeNode.next = afterCurrentNode;
 		currentNode.next = beforeNode;
+		currentNode.previous = previousBeforeNode;
 
 		if(beforeNode == head) head = currentNode;
 		else if(currentNode == tail) tail = beforeNode;
