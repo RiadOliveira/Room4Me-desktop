@@ -5,10 +5,27 @@ import model.VO.ApartmentVO;
 import model.VO.AspectsVO;
 
 public class FilterChecker {
-	public static boolean verifyApartmentSatisfyRequirements(
-		ApartmentVO apartment, AddressVO searchedAddress,
-		AspectsVO searchedAspects, int searchedRent
+	private static boolean checkString(
+		String comparativeString, String searchedString
 	) {
+		String parsedComparativeString = DataConverter.normalizeTextToCompare(
+			comparativeString
+		);
+		String parsedSearchedString = DataConverter.normalizeTextToCompare(
+			searchedString
+		);
+
+		return parsedComparativeString.contains(parsedSearchedString);
+	}
+
+	public static boolean verifyApartmentSatisfyRequirements(
+		ApartmentVO apartment, SearchApartmentData searchData
+	) {
+		int searchedRent = searchData.getSearchedRent();
+		boolean bothGenders = searchData.getBothGenders();
+		AddressVO searchedAddress = searchData.getSearchedAddress();
+		AspectsVO searchedAspects = searchData.getSearchedAspects();
+
 		//RENT
 		if(
 			searchedRent != 0 && 
@@ -19,8 +36,13 @@ public class FilterChecker {
 
 		//ASPECTS
 		AspectsVO comparativeAspects = apartment.getAspects();
+		boolean verifyBothGenders = bothGenders && 
+			comparativeAspects.getAllowedGender() != AllowedGender.both;
 
-		if (comparativeAspects.getAllowedGender() != searchedAspects.getAllowedGender()) {
+		if (
+			verifyBothGenders &&
+			comparativeAspects.getAllowedGender() != searchedAspects.getAllowedGender()
+		) {
 			return false;
 		}
 
@@ -45,22 +67,22 @@ public class FilterChecker {
 			return false;
 		}
 
-		//ADRESS
+		//ADDRESS
 		AddressVO comparativeAddress = apartment.getAddress();
 
-		if (!comparativeAddress.getCity().contains(searchedAddress.getCity())) {
+		if(!checkString(comparativeAddress.getCity(), searchedAddress.getCity())) {
 			return false;
 		}
 
-		if (!comparativeAddress.getState().contains(searchedAddress.getState())) {
+		if(!checkString(comparativeAddress.getState(), searchedAddress.getState())) {
 			return false;
 		}
 
-		if (!comparativeAddress.getDistrict().contains(searchedAddress.getDistrict())) {
+		if(!checkString(comparativeAddress.getDistrict(), searchedAddress.getDistrict())) {
 			return false;
 		}
 
-		if (!comparativeAddress.getStreet().contains(searchedAddress.getStreet())) {
+		if(!checkString(comparativeAddress.getStreet(), searchedAddress.getStreet())) {
 			return false;
 		}
 

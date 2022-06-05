@@ -1,5 +1,6 @@
 package utils;
 
+import java.text.Normalizer;
 import java.text.NumberFormat;
 import java.util.Locale;
 
@@ -44,5 +45,12 @@ public class DataConverter {
         ).toLowerCase();
         
         return parsedContent;
+    }
+
+    public static String normalizeTextToCompare(String text) {
+        String parsedText = Normalizer.normalize(text, Normalizer.Form.NFD);
+        parsedText = parsedText.replaceAll("[^\\p{ASCII}]", "");
+
+        return parsedText.toLowerCase();
     }
 }

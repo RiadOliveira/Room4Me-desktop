@@ -15,6 +15,7 @@ import model.VO.UserVO;
 import utils.ApartmentDataToFilter;
 import utils.DataConverter;
 import utils.FilterChecker;
+import utils.SearchApartmentData;
 
 public class ApartmentBO extends BaseBO<ApartmentVO> {
 	private static ApartmentDAO apartmentDAO = new ApartmentDAO();
@@ -153,8 +154,7 @@ public class ApartmentBO extends BaseBO<ApartmentVO> {
 	}
 
 	public FilterList<ApartmentVO> getFilteredApartmentsByRequirements(
-		FilterList<ApartmentVO> apartmentsList, AddressVO searchedAddress,
-		AspectsVO searchedAspects, int searchedRent
+		FilterList<ApartmentVO> apartmentsList, SearchApartmentData searchData
 	) {
 		Iterator<ApartmentVO> iterator = apartmentsList.iterator();
 		FilterList<ApartmentVO> filteredList = new FilterList<ApartmentVO>();
@@ -162,7 +162,7 @@ public class ApartmentBO extends BaseBO<ApartmentVO> {
 		while(iterator.hasNext()) {
 			ApartmentVO apartment = iterator.next();
 			boolean satisfyRequirements = FilterChecker.verifyApartmentSatisfyRequirements(
-				apartment, searchedAddress, searchedAspects, searchedRent
+				apartment, searchData
 			);
 
 			if (satisfyRequirements) filteredList.add(apartment);
