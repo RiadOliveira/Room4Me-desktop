@@ -228,11 +228,10 @@ public class ApartmentBO extends BaseBO<ApartmentVO> {
 
 		return sortedList;
 	}
-	public ArrayList<ApartmentVO> filterByCity(String city){
-		ResultSet findedApartmentDB = apartmentDAO.findAll();
+	public ArrayList<ApartmentVO> filterByCity(FilterList<ApartmentVO> apartmentsList, String city){
 		FilterList<ApartmentVO> sortedList = new FilterList<ApartmentVO>();
 		
-		sortedList = getSortedApartmentsList(findedApartmentDB, ApartmentDataToFilter.byCity);
+		sortedList = getSortedApartmentsList(apartmentsList, ApartmentDataToFilter.byCity);
 		
 		FilterList<ApartmentVO> filtedList = new FilterList<ApartmentVO>();
 				
@@ -242,17 +241,18 @@ public class ApartmentBO extends BaseBO<ApartmentVO> {
 		
 		while(inicio <= fim) {
 			int meio = inicio + fim /2;
-			String cityToCompare = sortedList.search(meio).getAddress().getCity();
+			String cityToCompare = normalizeTextToCompare(sortedList.search(meio).getAddress().getCity());
+			String cityNormalize = normalizeTextToCompare(city);
 			
-			if(city.compareTo(cityToCompare) < 0) {
-				inicio = meio +1;
+			if(cityNormalize.compareTo(cityToCompare) < 0) {
+				inicio = meio - 1;
 			}else {
-				if(data.compareTo(cityToCompare) > 0) {	
+				if(cityNormalize.compareTo(cityToCompare) > 0) {	
 					inicio = meio + 1;
 				}else{
-					String cityToadd = sortedList.search(meio);
+					String cityToAdd = sortedList.search(meio);
 					sortedList.remove(meio);
-					filtedList.add(cityToadd);
+					filtedList.add(cityToAdd);
 					inicio++;
 				}
 			
