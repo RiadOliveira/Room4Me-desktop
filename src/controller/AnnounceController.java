@@ -5,15 +5,17 @@ import java.util.ResourceBundle;
 
 import filter.FilterList;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
 import model.BO.ApartmentBO;
 import model.VO.ApartmentVO;
+import utils.DataConverter;
 import utils.ScreensName;
 import view.CreateApartmentScreen;
 
@@ -33,7 +35,7 @@ public class AnnounceController extends BaseController implements Initializable{
     @FXML
     private TableColumn<ApartmentVO, String> cityColumn;
     @FXML
-    private TableColumn<ApartmentVO, Double> rentColumn;
+    private TableColumn<ApartmentVO, String> rentColumn;
 
     @FXML
     void announce(ActionEvent event) {
@@ -58,7 +60,7 @@ public class AnnounceController extends BaseController implements Initializable{
         CreateApartmentScreen.fechar();
     }
 
-    static FilterList<ApartmentVO> apartmentList;
+    static FilterList<ApartmentVO> apartmentsList;
     ApartmentBO apartmentBo = new ApartmentBO();
     
     @Override
@@ -74,23 +76,21 @@ public class AnnounceController extends BaseController implements Initializable{
         cityColumn.setCellValueFactory((city -> 
         	new SimpleStringProperty(city.getValue().getAddress().getCity()))
         );
-        rentColumn.setCellValueFactory(new PropertyValueFactory<ApartmentVO, Double>("rent"));
+        rentColumn.setCellValueFactory(rent -> 
+            new SimpleStringProperty(DataConverter.convertNumberToCurrencyValue(rent.getValue().getRent()))
+        );
         
-        apartmentList = apartmentBo.findAll();
-        for(ApartmentVO apartmentVo : apartmentList){
-            announceTable.getItems().add(apartmentVo);
-            System.out.println(apartmentVo);
-        }
+        apartmentsList = apartmentBo.filterByOwnerWithBinarySearch(apartmentBo.findAll(), user);
+        for(ApartmentVO apartmentVo : apartmentsList) announceTable.getItems().add(apartmentVo);
     }
     
     @FXML
     public void loadAnnounceTable(){
-        apartmentList = apartmentBo.findAll();
-        for(ApartmentVO apartmentVo : apartmentList){
-            announceTable.getItems().remove(apartmentVo);
-            announceTable.getItems().add(apartmentVo);
-            System.out.println(apartmentVo);
-        }
+        apartmentsList = apartmentBo.filterByOwnerWithBinarySearch(apartmentBo.findAll(), user);
+        ObservableList<ApartmentVO> parsedApartments = FXCollections.observableArrayList();
+
+        for(ApartmentVO apartment : apartmentsList) parsedApartments.add(apartment);
+        announceTable.setItems(parsedApartments);
     }
 
 }

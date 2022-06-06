@@ -190,6 +190,12 @@ public class ApartmentBO extends BaseBO<ApartmentVO> {
 
 				return previousState.compareTo(currentState) >= 1;
 			}
+			case byOwnerEmail: {
+				String previousEmail = previousApartment.getOwner().getEmail();
+				String currentEmail = currentApartment.getOwner().getEmail();
+
+				return previousEmail.compareTo(currentEmail) >= 1;
+			}
 			default: return false;
 		}
 	}
@@ -228,36 +234,78 @@ public class ApartmentBO extends BaseBO<ApartmentVO> {
 
 		return sortedList;
 	}
-	public FilterList<ApartmentVO> filterByCity(FilterList<ApartmentVO> apartmentsList, String city){
-		FilterList<ApartmentVO> sortedList = new FilterList<ApartmentVO>();
-		
-		sortedList = getSortedApartmentsList(apartmentsList, ApartmentDataToFilter.byCity);
-		
-		FilterList<ApartmentVO> filteredList = new FilterList<ApartmentVO>();
-				
-		int inicio = 0;
-		int fim = sortedList.getSize();
-		int result = -1;
-		
-		while(inicio <= fim) {
-			int meio = inicio + fim /2;
-			String cityToCompare = DataConverter.normalizeTextToCompare(sortedList.search(meio).getAddress().getCity());
-			String cityNormalize = DataConverter.normalizeTextToCompare(city);
-			
-			if(cityNormalize.compareTo(cityToCompare) < 0) {
-				inicio = meio - 1;
-			}else {
-				if(cityNormalize.compareTo(cityToCompare) > 0) {	
-					inicio = meio + 1;
-				}else{
-					ApartmentVO apartmentToAdd = sortedList.search(meio);
-					sortedList.remove(meio);
-					filteredList.add(apartmentToAdd);
-					inicio++;
-				}
-			
-			}
+
+	private static int getMiddleOfLength(int length) {
+		if(length == 0) return -1;
+		return length/2;
+	}
+
+	private static String getOwnerEmailFromApartment(ApartmentVO apartment) {
+		if(apartment == null) return "";
+		return apartment.getOwner().getEmail();
+	}
+
+	private int binarySearchByOwner(
+		FilterList<ApartmentVO> apartmentsList, String searchedOwnerEmail
+	) {
+		int length = apartmentsList.getSize();
+
+		int ind = getMiddleOfLength(length);
+		ApartmentVO middlePosition = apartmentsList.search(ind);
+		boolean middleIsHigher = getOwnerEmailFromApartment(
+			middlePosition
+		).compareTo(searchedOwnerEmail) >= 1;
+
+		boolean needsCorrection = length % 2 == 0 && middleIsHigher;
+		int middleLength = ind + (needsCorrection ? 1 : 0);
+
+		while(
+			middleLength != -1 &&
+			!getOwnerEmailFromApartment(apartmentsList.search(ind)).equals(searchedOwnerEmail)
+		) {
+			middleLength = getMiddleOfLength(middleLength);
+			int parsedValue = middleLength == 0 ? 1 : middleLength;
+
+			String apartmentOwnerEmail = getOwnerEmailFromApartment(apartmentsList.search(ind));
+			ind += (apartmentOwnerEmail.compareTo(searchedOwnerEmail) < 0 ? parsedValue : -parsedValue);
 		}
+
+		return middleLength == -1 ? -1 : ind;
+	}
+
+	public FilterList<ApartmentVO> filterByOwnerWithBinarySearch(
+		FilterList<ApartmentVO> apartmentsList, UserVO searchedOwner
+	) {
+		FilterList<ApartmentVO> copyList = getSortedApartmentsList(
+			apartmentsList, ApartmentDataToFilter.byOwnerEmail
+		);
+
+		FilterList<ApartmentVO> filteredList = new FilterList<ApartmentVO>();
+		String searchedOwnerEmail = searchedOwner.getEmail();
+
+		int binaryFindedIndex = binarySearchByOwner(copyList, searchedOwnerEmail);
+		if(binaryFindedIndex == -1) return filteredList;
+
+		boolean hasOneMoreApartment = false;
+		do {
+			ApartmentVO deletedApartment = copyList.remove(binaryFindedIndex);
+			filteredList.add(deletedApartment);
+
+			ApartmentVO currentApartment = copyList.search(binaryFindedIndex);
+			ApartmentVO previousApartment = copyList.search(Math.abs(binaryFindedIndex - 1));
+
+			boolean validCurrentApartment = getOwnerEmailFromApartment(
+				currentApartment
+			).equals(searchedOwnerEmail);
+
+			boolean validPreviousApartment = getOwnerEmailFromApartment(
+				previousApartment
+			).equals(searchedOwnerEmail);
+			if(validPreviousApartment) binaryFindedIndex = Math.abs(binaryFindedIndex - 1);
+
+			hasOneMoreApartment = validCurrentApartment || validPreviousApartment;
+		} while(hasOneMoreApartment);
+
 		return filteredList;
 	}
 }

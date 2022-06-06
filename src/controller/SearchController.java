@@ -17,16 +17,19 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
 import model.BO.ApartmentBO;
 import model.VO.AddressVO;
 import model.VO.ApartmentVO;
 import model.VO.AspectsVO;
 import utils.ApartmentDataToFilter;
+import utils.DataConverter;
 import utils.SearchApartmentData;
 
 public class SearchController extends BaseController implements Initializable{
-    
+    static FilterList<ApartmentVO> apartmentsList;
+    static FilterList<ApartmentVO> filteredApartments;
+    ApartmentBO apartmentBo = new ApartmentBO();
+
     @FXML
     private ChoiceBox<String> bairroBox;
     @FXML
@@ -75,7 +78,7 @@ public class SearchController extends BaseController implements Initializable{
     @FXML
     private TableColumn<ApartmentVO, String> cityColumn;
     @FXML
-    private TableColumn<ApartmentVO, Double> rentColumn;
+    private TableColumn<ApartmentVO, String> rentColumn;
     @FXML
     private TableColumn<ApartmentVO, String> aspectsColumn;
     @FXML
@@ -114,7 +117,7 @@ public class SearchController extends BaseController implements Initializable{
         String rentText = valorBox.getValue();
         String parsedRent = rentText == null ? "0" : rentText;
 
-        FilterList<ApartmentVO> apartmentsFilteredList = apartmentBo.getSortedApartmentsList(
+        filteredApartments = apartmentBo.getSortedApartmentsList(
             apartmentsList, ApartmentDataToFilter.byCity
         );
         
@@ -123,12 +126,12 @@ public class SearchController extends BaseController implements Initializable{
             Double.valueOf(parsedRent), allowedGenderState
         );
 
-        apartmentsFilteredList = apartmentBo.getFilteredApartmentsByRequirements(
-            apartmentsFilteredList, searchData
+        filteredApartments = apartmentBo.getFilteredApartmentsByRequirements(
+            filteredApartments, searchData
         );
         
         ObservableList<ApartmentVO> parsedApartments = FXCollections.observableArrayList();
-        for(ApartmentVO apartment : apartmentsFilteredList) {
+        for(ApartmentVO apartment : filteredApartments) {
             parsedApartments.add(apartment);
         }
 
@@ -147,12 +150,8 @@ public class SearchController extends BaseController implements Initializable{
 
     @FXML
     void print(ActionEvent event) {
-        
+        apartmentBo.generateFileWithApartmentsList(filteredApartments);
     }
-        
-
-    static FilterList<ApartmentVO> apartmentsList;
-    ApartmentBO apartmentBo = new ApartmentBO();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -170,7 +169,12 @@ public class SearchController extends BaseController implements Initializable{
         cityColumn.setCellValueFactory((city -> 
         	new SimpleStringProperty(city.getValue().getAddress().getCity()))
         );
-        rentColumn.setCellValueFactory(new PropertyValueFactory<ApartmentVO, Double>("rent"));
+        rentColumn.setCellValueFactory(rent -> 
+            new SimpleStringProperty(DataConverter.convertNumberToCurrencyValue(rent.getValue().getRent()))
+        );
+        capacityColumn.setCellValueFactory(capacity -> 
+            new SimpleStringProperty(capacity.getValue().getAspects().obtainCapacityString())
+        );
         capacityColumn.setCellValueFactory(capacity -> 
             new SimpleStringProperty(capacity.getValue().getAspects().obtainCapacityString())
         );
@@ -189,14 +193,14 @@ public class SearchController extends BaseController implements Initializable{
         searchedAspects.setAllowedGender(user.getGender().convertToAllowedGender());
 
         SearchApartmentData searchData = new SearchApartmentData(
-            new AddressVO(), searchedAspects, 0, true
+            new AddressVO(), searchedAspects, 0, false
         );
 
-        apartmentsList = apartmentBo.getFilteredApartmentsByRequirements(
+        FilterList<ApartmentVO> apartmentsFilteredList = apartmentBo.getFilteredApartmentsByRequirements(
             apartmentsList, searchData
         );
 
-        for(ApartmentVO apartmentVo : apartmentsList){
+        for(ApartmentVO apartmentVo : apartmentsFilteredList){
             bairroBox.getItems().add(apartmentVo.getAddress().getDistrict());
             cidadeBox.getItems().add(apartmentVo.getAddress().getCity());
             estadoBox.getItems().add(apartmentVo.getAddress().getState());

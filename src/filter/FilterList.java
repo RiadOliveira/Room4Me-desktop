@@ -8,12 +8,9 @@ public class FilterList<T> implements IFilterList<T>, Iterable<T>, Iterator<T> {
         public Node previous = null;
         public Node next = null;
         public T data;
-        public int id;
 
         public Node(T data) {
             this.data = data;
-            this.id = nextId;
-            nextId++;
         }
     }
 
@@ -21,7 +18,6 @@ public class FilterList<T> implements IFilterList<T>, Iterable<T>, Iterator<T> {
     private Node head = null;
     private Node tail = null;
 	private Node iterationNode = null;
-    private int nextId = 0;
 
 	public int getSize() {
 		return size;
@@ -40,16 +36,17 @@ public class FilterList<T> implements IFilterList<T>, Iterable<T>, Iterator<T> {
         if(isEmpty()) return null;
         return tail.data;
     }
-    public Node searchNode(int id) {//busca um node ingual aos singly
-		Node p = head;
-		 while (p != null) {
-				 if(p.id == id) {
-					 return p;
-				 }
-				 p = p.next;
-		 }
-		 return null;
+    public Node searchNode(int position) {
+		Node iterationNode = head;
+
+        for(int ind=0 ; ind<position ; ind++) {
+            if(iterationNode == null) return null;
+            iterationNode = iterationNode.next;
+        }
+
+		return iterationNode;
 	}
+
     private Node searchNode(T item) {
         if(isEmpty()) return null;
 
@@ -61,15 +58,11 @@ public class FilterList<T> implements IFilterList<T>, Iterable<T>, Iterator<T> {
 
         return null;
     }
-    public T search(int id) {//recebe um especifico sem remover
-		Node p = searchNode(id);
-		
-		if(p == null) {
-			return null;
-		}else {
-			return p.data;
-		}
+    public T search(int position) {
+		Node findedNode = searchNode(position);
+        return findedNode == null ? null : findedNode.data;
 	}
+    
     public T search(T item) {
         Node findedNode = searchNode(item);
         return findedNode != null ? findedNode.data : null;
@@ -149,10 +142,10 @@ public class FilterList<T> implements IFilterList<T>, Iterable<T>, Iterator<T> {
         size--;
         return removedTail;
     }
-    public T remove(int id) {
+    public T remove(int position) {
 		if (head == null) return null;
 		
-		Node previous = searchNode(id).previous;
+		Node previous = searchNode(position).previous;
 		Node removed = null;
 		T result = null;
     
@@ -163,7 +156,7 @@ public class FilterList<T> implements IFilterList<T>, Iterable<T>, Iterator<T> {
 				tail = null;
 			} else {
 				head = head.next;
-				removed.next = null;
+                head.previous = null;
 			}
 		} else {
 			removed = previous.next;
@@ -172,13 +165,14 @@ public class FilterList<T> implements IFilterList<T>, Iterable<T>, Iterator<T> {
 				previous.next = null;
 			} else {
 				previous.next = removed.next;
-				removed.next = null;
+                removed.next.previous = previous;
 			}
 		}
 
 		result = removed.data;
 		return result;
 	}
+
     public void remove(T item) {
         if(isEmpty()) return;
 
