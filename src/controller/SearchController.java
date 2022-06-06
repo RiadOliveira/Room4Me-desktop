@@ -117,17 +117,17 @@ public class SearchController extends BaseController implements Initializable{
         String rentText = valorBox.getValue();
         String parsedRent = rentText == null ? "0" : rentText;
 
-        filteredApartments = apartmentBo.getSortedApartmentsList(
-            apartmentsList, ApartmentDataToFilter.byCity
-        );
-        
         SearchApartmentData searchData = new SearchApartmentData(
             searchedAddress, searchedAspects, 
             Double.valueOf(parsedRent), allowedGenderState
         );
 
         filteredApartments = apartmentBo.getFilteredApartmentsByRequirements(
-            filteredApartments, searchData
+            apartmentsList, searchData
+        );
+
+        filteredApartments = apartmentBo.getSortedApartmentsList(
+            filteredApartments, ApartmentDataToFilter.byCity
         );
         
         ObservableList<ApartmentVO> parsedApartments = FXCollections.observableArrayList();
@@ -206,6 +206,10 @@ public class SearchController extends BaseController implements Initializable{
 
         FilterList<ApartmentVO> apartmentsFilteredList = apartmentBo.getFilteredApartmentsByRequirements(
             apartmentsList, searchData
+        );
+
+        apartmentsFilteredList = apartmentBo.getSortedApartmentsList(
+            apartmentsFilteredList, ApartmentDataToFilter.byCity
         );
 
         for(ApartmentVO apartmentVo : apartmentsFilteredList) {

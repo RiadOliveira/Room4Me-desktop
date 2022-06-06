@@ -15,6 +15,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import model.BO.ApartmentBO;
 import model.VO.ApartmentVO;
+import utils.ApartmentDataToFilter;
 import utils.DataConverter;
 import utils.ScreensName;
 import view.CreateApartmentScreen;
@@ -81,6 +82,7 @@ public class AnnounceController extends BaseController implements Initializable{
         );
         
         apartmentsList = apartmentBo.filterByOwnerWithBinarySearch(apartmentBo.findAll(), user);
+        apartmentsList = apartmentBo.getSortedApartmentsList(apartmentsList, ApartmentDataToFilter.byRent);
         for(ApartmentVO apartmentVo : apartmentsList) announceTable.getItems().add(apartmentVo);
     }
     
