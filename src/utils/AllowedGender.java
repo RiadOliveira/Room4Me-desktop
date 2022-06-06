@@ -9,6 +9,13 @@ public enum AllowedGender {
         this.genderName = genderName;
     }
 
+    public AllowedGender getReverse() {
+        if(this == male) return female;
+        if(this == female) return male;
+
+        return null;
+    }
+
     @Override
     public String toString() {
         return genderName;

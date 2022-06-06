@@ -14,12 +14,12 @@ import model.VO.AspectsVO;
 public class SearchApartmentData implements Serializable {
     private AddressVO searchedAddress;
 	private AspectsVO searchedAspects;
-    private int searchedRent;
+    private double searchedRent;
 	private boolean bothGenders;
 
     public SearchApartmentData(
         AddressVO searchedAddress, AspectsVO searchedAspects,
-        int searchedRent, boolean bothGenders
+        double searchedRent, boolean bothGenders
     ) {
         this.searchedAddress = searchedAddress;
         this.searchedAspects = searchedAspects;
@@ -65,7 +65,7 @@ public class SearchApartmentData implements Serializable {
         return searchedAspects;
     }
 
-    public int getSearchedRent() {
+    public double getSearchedRent() {
         return searchedRent;
     }
 

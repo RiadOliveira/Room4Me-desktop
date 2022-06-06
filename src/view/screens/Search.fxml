@@ -164,7 +164,7 @@
                         </HBox>
                      </children>
                   </HBox>
-                  <Button fx:id="searchFiltredButton" mnemonicParsing="false" onAction="#searchFiltred" prefHeight="64.0" prefWidth="64.0" style="-fx-background-color: #407899; -fx-background-radius: 16;" textFill="#fffcf9">
+                  <Button fx:id="searchWithFiltersButton" mnemonicParsing="false" onAction="#searchWithFilters" prefHeight="64.0" prefWidth="64.0" style="-fx-background-color: #407899; -fx-background-radius: 16;" textFill="#fffcf9">
                      <font>
                         <Font name="Microsoft YaHei Bold" size="24.0" />
                      </font>
@@ -179,7 +179,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="searchDataButton" mnemonicParsing="false" onAction="#searchData" prefHeight="64.0" prefWidth="64.0" style="-fx-background-color: #407899; -fx-background-radius: 16;" textFill="#fffcf9">
+                  <Button fx:id="resetDataButton" mnemonicParsing="false" onAction="#resetData" prefHeight="64.0" prefWidth="64.0" style="-fx-background-color: #407899; -fx-background-radius: 16;" textFill="#fffcf9">
                      <font>
                         <Font name="Microsoft YaHei Bold" size="24.0" />
                      </font>

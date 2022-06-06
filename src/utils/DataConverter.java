@@ -48,6 +48,8 @@ public class DataConverter {
     }
 
     public static String normalizeTextToCompare(String text) {
+        if(text == null) return "";
+
         String parsedText = Normalizer.normalize(text, Normalizer.Form.NFD);
         parsedText = parsedText.replaceAll("[^\\p{ASCII}]", "");
 

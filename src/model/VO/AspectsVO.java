@@ -20,12 +20,6 @@ public class AspectsVO extends Entity {
 
     public void setBedroomsQuantity(int bedroomsQuantity) throws ValidationException {
         int parsedQuantity = Math.abs(bedroomsQuantity);
-        if(parsedQuantity == 0) {
-            throw new ValidationException(
-                "Bedrooms quantity of an apartment must be greater than 0."
-            );
-        }
-
         this.bedroomsQuantity = parsedQuantity;
     }
 
@@ -73,12 +67,6 @@ public class AspectsVO extends Entity {
 
     public void setCapacity(int capacity) throws ValidationException {
         int parsedCapacity = Math.abs(capacity);
-        if(parsedCapacity == 0) {
-            throw new ValidationException(
-                "Apartment capacity must be greater than 0."
-            );
-        }
-
         this.capacity = parsedCapacity;
     }
 

@@ -3,8 +3,11 @@ package controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import errors.ValidationException;
 import filter.FilterList;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -16,8 +19,11 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.BO.ApartmentBO;
+import model.VO.AddressVO;
 import model.VO.ApartmentVO;
+import model.VO.AspectsVO;
 import utils.ApartmentDataToFilter;
+import utils.SearchApartmentData;
 
 public class SearchController extends BaseController implements Initializable{
     
@@ -52,9 +58,9 @@ public class SearchController extends BaseController implements Initializable{
     private TextField capacidadeField;
 
     @FXML
-    private Button searchFiltredButton;
+    private Button searchWithFiltersButton;
     @FXML
-    private Button searchDataButton;
+    private Button resetButton;
     @FXML
     private Button printButton;
 
@@ -82,40 +88,70 @@ public class SearchController extends BaseController implements Initializable{
     private TableColumn<ApartmentVO, String> allowedGenderColumn;
 
     @FXML
-    void searchFiltred(ActionEvent event) {
-        valorBox.getValue();
-        bairroBox.getValue();
-        cidadeBox.getValue();
-        estadoBox.getValue();
-        // availableToDivideState;
-        // allowedGenderState;
-        capacidadeField.getText();
+    void searchWithFilters(ActionEvent event) {
+        AddressVO searchedAddress = new AddressVO();
+        AspectsVO searchedAspects = new AspectsVO();
+        String capacityText = capacidadeField.getText();
+        String parsedCapacity = capacityText.length() == 0 ? "0" : capacityText;
 
-        apartmentList = apartmentBo.findAll();
-        for(ApartmentVO apartmentVo : apartmentList){
-            searchTable.getItems().remove(apartmentVo);
+        String districtValue = bairroBox.getValue();
+        String cityValue = cidadeBox.getValue();
+        String stateValue = estadoBox.getValue();
+
+        try {
+            searchedAspects.setAllowedGender(user.getGender().convertToAllowedGender());
+            searchedAspects.setAvailableToDivide(availableToDivideState);
+            searchedAspects.setCapacity(Integer.valueOf(parsedCapacity));
+            searchedAspects.setBedroomsQuantity(0);
+
+            if(districtValue != null) searchedAddress.setDistrict(districtValue);
+            if(cityValue != null) searchedAddress.setCity(cityValue);
+            if(stateValue != null) searchedAddress.setState(stateValue);
+        } catch (ValidationException e) {
+            e.printStackTrace();
         }
 
-        FilterList<ApartmentVO> apartmentFiltredList;
-        apartmentFiltredList = apartmentBo.getSortedApartmentsList(apartmentList, ApartmentDataToFilter.byCity);
-        apartmentList = apartmentBo.filterByCity(apartmentFiltredList, cidadeBox.getValue());
+        String rentText = valorBox.getValue();
+        String parsedRent = rentText == null ? "0" : rentText;
+
+        FilterList<ApartmentVO> apartmentsFilteredList = apartmentBo.getSortedApartmentsList(
+            apartmentsList, ApartmentDataToFilter.byCity
+        );
         
-        for(ApartmentVO apartmentVo : apartmentList){
-            searchTable.getItems().add(apartmentVo);
+        SearchApartmentData searchData = new SearchApartmentData(
+            searchedAddress, searchedAspects, 
+            Double.valueOf(parsedRent), allowedGenderState
+        );
+
+        apartmentsFilteredList = apartmentBo.getFilteredApartmentsByRequirements(
+            apartmentsFilteredList, searchData
+        );
+        
+        ObservableList<ApartmentVO> parsedApartments = FXCollections.observableArrayList();
+        for(ApartmentVO apartment : apartmentsFilteredList) {
+            parsedApartments.add(apartment);
         }
+
+        searchTable.setItems(parsedApartments);
     }
     
     @FXML
-    void searchData(ActionEvent event) {
-        
+    void resetData(ActionEvent event) {
+        ObservableList<ApartmentVO> parsedApartments = FXCollections.observableArrayList();
+        for(ApartmentVO apartment : apartmentsList) {
+            parsedApartments.add(apartment);
+        }
+
+        searchTable.setItems(parsedApartments);
     }
+
     @FXML
     void print(ActionEvent event) {
         
     }
         
 
-    static FilterList<ApartmentVO> apartmentList;
+    static FilterList<ApartmentVO> apartmentsList;
     ApartmentBO apartmentBo = new ApartmentBO();
 
     @Override
@@ -148,11 +184,22 @@ public class SearchController extends BaseController implements Initializable{
             new SimpleStringProperty(allowedGender.getValue().getAspects().getAllowedGender().toString())
         );
 
-        apartmentList = apartmentBo.findAll();
-        for(ApartmentVO apartmentVo : apartmentList){
+        apartmentsList = apartmentBo.findAll();
+        AspectsVO searchedAspects = new AspectsVO();
+        searchedAspects.setAllowedGender(user.getGender().convertToAllowedGender());
+
+        SearchApartmentData searchData = new SearchApartmentData(
+            new AddressVO(), searchedAspects, 0, true
+        );
+
+        apartmentsList = apartmentBo.getFilteredApartmentsByRequirements(
+            apartmentsList, searchData
+        );
+
+        for(ApartmentVO apartmentVo : apartmentsList){
             bairroBox.getItems().add(apartmentVo.getAddress().getDistrict());
             cidadeBox.getItems().add(apartmentVo.getAddress().getCity());
-            estadoBox.getItems().add(apartmentVo.getAddress().getDistrict());
+            estadoBox.getItems().add(apartmentVo.getAddress().getState());
             valorBox.getItems().add(apartmentVo.getRent().toString());
 
             searchTable.getItems().add(apartmentVo);

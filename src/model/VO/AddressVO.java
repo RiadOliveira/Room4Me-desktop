@@ -4,13 +4,13 @@ import errors.ValidationException;
 import utils.DataConverter;
 
 public class AddressVO extends Entity {
-    private String state;
-    private String city;
-    private String district;
-    private String street;
+    private String state = "";
+    private String city = "";
+    private String district = "";
+    private String street = "";
     private String complement = null;
-    private String apartmentNumber;
-    private int zipCode;
+    private String apartmentNumber = "";
+    private int zipCode = 0;
 
     public String getState() {
         return state;

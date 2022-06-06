@@ -5,10 +5,10 @@ import utils.DataConverter;
 import utils.Gender;
 
 public class UserVO extends Entity {
-    private String name;
-    private String email;
-    private String password;
-    private String phoneNumber;
+    private String name = "";
+    private String email = "";
+    private String password = "";
+    private String phoneNumber = "";
     private Gender gender;
     private String avatar = null;
 

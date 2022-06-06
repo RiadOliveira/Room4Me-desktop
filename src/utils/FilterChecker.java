@@ -21,14 +21,14 @@ public class FilterChecker {
 	public static boolean verifyApartmentSatisfyRequirements(
 		ApartmentVO apartment, SearchApartmentData searchData
 	) {
-		int searchedRent = searchData.getSearchedRent();
+		double searchedRent = searchData.getSearchedRent();
 		boolean bothGenders = searchData.getBothGenders();
 		AddressVO searchedAddress = searchData.getSearchedAddress();
 		AspectsVO searchedAspects = searchData.getSearchedAspects();
 
 		//RENT
 		if(
-			searchedRent != 0 && 
+			searchedRent != 0.0 && 
 			apartment.getRent().doubleValue() > searchedRent
 		) {
 			return false;
@@ -36,12 +36,12 @@ public class FilterChecker {
 
 		//ASPECTS
 		AspectsVO comparativeAspects = apartment.getAspects();
-		boolean verifyBothGenders = bothGenders && 
-			comparativeAspects.getAllowedGender() != AllowedGender.both;
+		boolean verifyBothGenders = !bothGenders && 
+			comparativeAspects.getAllowedGender() == AllowedGender.both;
 
 		if (
-			verifyBothGenders &&
-			comparativeAspects.getAllowedGender() != searchedAspects.getAllowedGender()
+			verifyBothGenders ||
+			searchedAspects.getAllowedGender() == comparativeAspects.getAllowedGender().getReverse()
 		) {
 			return false;
 		}
