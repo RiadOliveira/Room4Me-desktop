@@ -212,25 +212,26 @@ public class SearchController extends BaseController implements Initializable{
             apartmentsFilteredList, ApartmentDataToFilter.byCity
         );
 
-        for(ApartmentVO apartmentVo : apartmentsFilteredList) {
-            if(!bairroBox.getItems().contains(apartmentVo.getAddress().getDistrict())) {
-                bairroBox.getItems().add(apartmentVo.getAddress().getDistrict());
-            }
-
-            if(!cidadeBox.getItems().contains(apartmentVo.getAddress().getCity())) {
-                cidadeBox.getItems().add(apartmentVo.getAddress().getCity());
-            }
-
-            if(!estadoBox.getItems().contains(apartmentVo.getAddress().getState())) {
-                estadoBox.getItems().add(apartmentVo.getAddress().getState());
-            }
-
-            if(!valorBox.getItems().contains(apartmentVo.getRent().toString())) {
-                valorBox.getItems().add(apartmentVo.getRent().toString());
-            }
-
-            searchTable.getItems().add(apartmentVo);
+        for(ApartmentVO apartment : apartmentsFilteredList) {
+            searchTable.getItems().add(apartment);
         }
-           
+
+        for(ApartmentVO apartment : apartmentsList) {
+            if(!bairroBox.getItems().contains(apartment.getAddress().getDistrict())) {
+                bairroBox.getItems().add(apartment.getAddress().getDistrict());
+            }
+
+            if(!cidadeBox.getItems().contains(apartment.getAddress().getCity())) {
+                cidadeBox.getItems().add(apartment.getAddress().getCity());
+            }
+
+            if(!estadoBox.getItems().contains(apartment.getAddress().getState())) {
+                estadoBox.getItems().add(apartment.getAddress().getState());
+            }
+
+            if(!valorBox.getItems().contains(apartment.getRent().toString())) {
+                valorBox.getItems().add(apartment.getRent().toString());
+            }
+        } 
     }
 }
