@@ -4,9 +4,9 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
@@ -16,52 +16,6 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="820.0" prefWidth="1320.0" style="-fx-background-color: rgba(255, 252, 249, 1);" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CreateApartmentScreenController.AspectsController">
    <children>
-      <HBox alignment="CENTER" layoutY="60.0" prefHeight="80.0" prefWidth="1320.0">
-         <children>
-            <Pane prefHeight="200.0" prefWidth="720.0" style="-fx-background-color: rgba(64, 54, 69, 1); -fx-background-radius: 20;">
-               <children>
-                  <HBox alignment="CENTER" prefHeight="80.0" prefWidth="720.0">
-                     <children>
-                        <Button fx:id="adressScreenButton" mnemonicParsing="false" onAction="#adressScreen" style="-fx-background-color: 0;" text="ENDEREÇO" textFill="#407899">
-                           <font>
-                              <Font name="Microsoft YaHei Bold" size="30.0" />
-                           </font>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Button>
-                        <Label text="&gt;&gt;" textFill="#407899">
-                           <font>
-                              <Font name="Microsoft YaHei Bold" size="30.0" />
-                           </font>
-                        </Label>
-                        <Button fx:id="aspectsScreenButton" mnemonicParsing="false" onAction="#aspectsScreen" style="-fx-background-color: 0;" text="ASPECTOS" textFill="#ff6700">
-                           <font>
-                              <Font name="Microsoft YaHei Bold" size="30.0" />
-                           </font>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Button>
-                        <Label text="&gt;&gt;" textFill="#407899">
-                           <font>
-                              <Font name="Microsoft YaHei Bold" size="30.0" />
-                           </font>
-                        </Label>
-                        <Button fx:id="concludeScreenButton" mnemonicParsing="false" onAction="#concludeScreen" style="-fx-background-color: 0;" text="CONCLUIR" textFill="#407899">
-                           <font>
-                              <Font name="Microsoft YaHei Bold" size="30.0" />
-                           </font>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Button>
-                     </children>
-                  </HBox>
-               </children>
-            </Pane>
-         </children>
-      </HBox>
       <HBox alignment="CENTER" layoutX="80.0" layoutY="720.0" prefHeight="60.0" prefWidth="1160.0" spacing="700.0">
          <children>
             <Button fx:id="returnScreenButton" mnemonicParsing="false" onAction="#returnScreen" prefHeight="60.0" prefWidth="230.0" style="-fx-background-color: rgba(64, 120, 153, 1); -fx-background-radius: 40;" text="Voltar" textFill="#fffcf9">
@@ -93,7 +47,7 @@
                      <children>
                         <VBox prefHeight="133.0" prefWidth="560.0" spacing="4.0">
                            <children>
-                              <Label text="Capacidade" textFill="#403645">
+                              <Label prefHeight="64.0" text="Capacidade" textFill="#403645">
                                  <font>
                                     <Font name="Microsoft YaHei Bold" size="36.0" />
                                  </font>
@@ -105,7 +59,7 @@
                                     </ImageView>
                                  </graphic>
                               </Label>
-                              <TextField fx:id="capacityField" prefHeight="56.0" prefWidth="960.0" style="-fx-background-color: rgba(223, 212, 215, 1); -fx-background-radius: 16; -fx-text-fill: rgba(53, 45, 57, 1);">
+                              <TextField fx:id="capacityField" prefHeight="56.0" prefWidth="960.0" style="-fx-background-color: rgba(223, 212, 215, 1); -fx-background-radius: 16; -fx-text-fill: rgba(53, 45, 57, 1); -fx-border-color: #9c3848; -fx-border-radius: 16; -fx-border-width: 0;">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
@@ -115,9 +69,9 @@
                               </TextField>
                            </children>
                         </VBox>
-                        <VBox prefHeight="100.0" prefWidth="560.0" spacing="4.0">
+                        <VBox alignment="BOTTOM_LEFT" prefHeight="64.0" prefWidth="560.0" spacing="4.0">
                            <children>
-                              <Label text="Quartos" textFill="#403645">
+                              <Label prefHeight="64.0" prefWidth="237.0" text="Quartos" textFill="#403645">
                                  <font>
                                     <Font name="Microsoft YaHei Bold" size="36.0" />
                                  </font>
@@ -129,7 +83,7 @@
                                     </ImageView>
                                  </graphic>
                               </Label>
-                              <TextField fx:id="bedroomsQuantityField" prefHeight="56.0" prefWidth="960.0" style="-fx-background-color: rgba(223, 212, 215, 1); -fx-background-radius: 16; -fx-text-fill: rgba(53, 45, 57, 1);">
+                              <TextField fx:id="bedroomsQuantityField" prefHeight="56.0" prefWidth="960.0" style="-fx-background-color: rgba(223, 212, 215, 1); -fx-background-radius: 16; -fx-text-fill: rgba(53, 45, 57, 1); -fx-border-color: #9c3848; -fx-border-radius: 16; -fx-border-width: 0;">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
@@ -145,7 +99,7 @@
                      <children>
                         <VBox alignment="CENTER" prefHeight="133.0" prefWidth="560.0">
                            <children>
-                              <CheckBox fx:id="availableToDivide" mnemonicParsing="false" text="Deseja dividir?" textFill="#403645">
+                              <CheckBox fx:id="availableToDivide" mnemonicParsing="false" onAction="#availableToDivideChoice" style="-fx-border-color: #9c3848; -fx-border-radius: 8; -fx-border-width: 0;" text="Deseja dividir?" textFill="#403645">
                                  <font>
                                     <Font name="Microsoft YaHei Bold" size="36.0" />
                                  </font>
@@ -162,46 +116,23 @@
                               </CheckBox>
                            </children>
                         </VBox>
-                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="560.0" spacing="32.0">
+                        <VBox prefHeight="100.0" prefWidth="560.0" spacing="4.0">
                            <children>
-                              <ToggleButton fx:id="allowedGenderMale" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: rgba(223, 212, 215, 1); -fx-background-radius: 16;">
+                              <Label prefHeight="64.0" text="Gênero Permitido" textFill="#403645">
+                                 <font>
+                                    <Font name="Microsoft YaHei Bold" size="36.0" />
+                                 </font>
                                  <graphic>
-                                    <ImageView fitHeight="72.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../images/AspectsIcon-Masculine.png" />
-                                       </image>
-                                    </ImageView>
-                                 </graphic>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </ToggleButton>
-                              <ToggleButton fx:id="allowedGenderFemale" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: rgba(223, 212, 215, 1); -fx-background-radius: 16;">
-                                 <graphic>
-                                    <ImageView fitHeight="72.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../images/AspectsIcon-Female.png" />
-                                       </image>
-                                    </ImageView>
-                                 </graphic>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </ToggleButton>
-                              <ToggleButton fx:id="allowedGenderOther" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: rgba(223, 212, 215, 1); -fx-background-radius: 16;">
-                                 <graphic>
-                                    <ImageView fitHeight="72.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@../images/AspectsIcon-Other.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </ToggleButton>
+                              </Label>
+                              <ChoiceBox fx:id="allowedGenderBox" prefHeight="56.0" prefWidth="960.0" style="-fx-background-color: rgba(223, 212, 215, 1); -fx-background-radius: 16; -fx-border-color: #9c3848; -fx-border-radius: 16; -fx-border-width: 0; -fx-font-family: 'Open Sans'; -fx-font-size: 24; -fx-text-fill: rgba(53, 45, 57, 1);" />
                            </children>
-                        </HBox>
+                        </VBox>
                      </children>
                   </HBox>
                   <VBox prefHeight="220.0" prefWidth="1160.0" spacing="4.0">
@@ -211,7 +142,7 @@
                               <Font name="Microsoft YaHei Bold" size="36.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="descriptionField" prefHeight="160.0" prefWidth="1160.0" style="-fx-background-color: rgba(223, 212, 215, 1); -fx-background-radius: 16; -fx-text-fill: rgba(53, 45, 57, 1);">
+                        <TextField fx:id="descriptionField" prefHeight="160.0" prefWidth="1160.0" style="-fx-background-color: rgba(223, 212, 215, 1); -fx-background-radius: 16; -fx-text-fill: rgba(53, 45, 57, 1); -fx-border-color: #9c3848; -fx-border-radius: 16; -fx-border-width: 0;">
                            <font>
                               <Font size="24.0" />
                            </font>
@@ -224,5 +155,63 @@
                </children>
             </VBox>
          </children></Pane>
+      <HBox alignment="CENTER" layoutY="36.0" prefHeight="116.0" prefWidth="1320.0">
+         <children>
+            <VBox alignment="CENTER" prefHeight="116.0" prefWidth="720.0">
+               <children>
+                  <Pane prefHeight="80.0" prefWidth="720.0" style="-fx-background-color: rgba(64, 54, 69, 1); -fx-background-radius: 20;">
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="80.0" prefWidth="720.0">
+                           <children>
+                              <Button fx:id="adressScreenButton" mnemonicParsing="false" onAction="#adressScreen" style="-fx-background-color: 0;" text="ENDEREÇO" textFill="#407899">
+                                 <font>
+                                    <Font name="Microsoft YaHei Bold" size="30.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Label text="&gt;&gt;" textFill="#407899">
+                                 <font>
+                                    <Font name="Microsoft YaHei Bold" size="30.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="aspectsScreenButton" mnemonicParsing="false" onAction="#aspectsScreen" style="-fx-background-color: 0;" text="ASPECTOS" textFill="#ff6700">
+                                 <font>
+                                    <Font name="Microsoft YaHei Bold" size="30.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Label text="&gt;&gt;" textFill="#407899">
+                                 <font>
+                                    <Font name="Microsoft YaHei Bold" size="30.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="concludeScreenButton" mnemonicParsing="false" onAction="#concludeScreen" style="-fx-background-color: 0;" text="CONCLUIR" textFill="#407899">
+                                 <font>
+                                    <Font name="Microsoft YaHei Bold" size="30.0" />
+                                 </font>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </children>
+                  </Pane>
+                  <Label fx:id="errorMessage" style="visibility: false;" text="Preencha todos os campos obrigatórios  " textFill="#9c3848">
+                     <font>
+                        <Font name="Microsoft YaHei Bold" size="30.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
    </children>
 </Pane>

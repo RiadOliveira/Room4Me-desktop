@@ -3,11 +3,17 @@ package controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import model.VO.UserVO;
+import utils.ScreensName;
 import view.MainScreen;
-import view.ScreensName;
 
-public class BaseController {
+public class BaseController extends LoginController{
+    public static UserVO user = LoginController.userLogin;
 
+    @FXML
+    public Label userName;
+    
     @FXML
     private Button announceButton;
 
@@ -19,7 +25,7 @@ public class BaseController {
 
     @FXML
     void changeAnnounce(ActionEvent event) {
-        MainScreen.load(ScreensName.Announce);
+        MainScreen.load(ScreensName.Announce);        
     }
 
     @FXML
@@ -31,5 +37,6 @@ public class BaseController {
     void logout(ActionEvent event) {
         MainScreen.load(ScreensName.Login);
     }
-
+        
+        
 }

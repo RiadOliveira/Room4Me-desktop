@@ -13,6 +13,10 @@ public class AspectsVO extends Entity {
     public int getBedroomsQuantity() {
         return bedroomsQuantity;
     }
+    public String obtainBedroomsQuantityString() {
+        String BedroomsQuantityString = String.valueOf(bedroomsQuantity);
+        return BedroomsQuantityString;
+    }
 
     public void setBedroomsQuantity(int bedroomsQuantity) throws ValidationException {
         int parsedQuantity = Math.abs(bedroomsQuantity);
@@ -60,6 +64,11 @@ public class AspectsVO extends Entity {
 
     public int getCapacity() {
         return capacity;
+    }
+    
+    public String obtainCapacityString() {
+        String CapacityString = String.valueOf(capacity);
+        return CapacityString;
     }
 
     public void setCapacity(int capacity) throws ValidationException {

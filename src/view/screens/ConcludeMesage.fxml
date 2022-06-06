@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="320.0" prefWidth="800.0" style="-fx-background-color: #352D39;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CreateApartmentScreenController.CreateApartmentController">
+   <children>
+      <VBox alignment="CENTER" prefHeight="320.0" prefWidth="800.0" spacing="24.0">
+         <children>
+            <Pane prefHeight="154.0" prefWidth="700.0" style="-fx-background-color: rgba(191, 172, 181, 1); -fx-background-radius: 16;">
+               <children>
+                  <Label prefHeight="154.0" prefWidth="699.0" text="Novo apartamento cadastrado com sucesso!!" textAlignment="CENTER" textFill="#403645" wrapText="true">
+                     <font>
+                        <Font name="Microsoft YaHei Bold" size="36.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane prefHeight="80.0" prefWidth="700.0" style="-fx-background-color: rgba(191, 172, 181, 1); -fx-background-radius: 16;">
+               <children>
+                  <Button fx:id="concludeButton" layoutX="235.0" layoutY="10.0" mnemonicParsing="false" onAction="#conclude" prefHeight="60.0" prefWidth="230.0" style="-fx-background-color: rgba(255, 103, 0, 1); -fx-background-radius: 40;" text="Concluir" textFill="#fffcf9">
+                     <font>
+                        <Font name="Microsoft YaHei Bold" size="30.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </Pane>
+         </children>
+         <padding>
+            <Insets bottom="32.0" left="50.0" right="50.0" top="32.0" />
+         </padding>
+      </VBox>
+   </children>
+</Pane>

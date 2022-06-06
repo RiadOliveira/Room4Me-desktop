@@ -228,12 +228,12 @@ public class ApartmentBO extends BaseBO<ApartmentVO> {
 
 		return sortedList;
 	}
-	public ArrayList<ApartmentVO> filterByCity(FilterList<ApartmentVO> apartmentsList, String city){
+	public FilterList<ApartmentVO> filterByCity(FilterList<ApartmentVO> apartmentsList, String city){
 		FilterList<ApartmentVO> sortedList = new FilterList<ApartmentVO>();
 		
 		sortedList = getSortedApartmentsList(apartmentsList, ApartmentDataToFilter.byCity);
 		
-		FilterList<ApartmentVO> filtedList = new FilterList<ApartmentVO>();
+		FilterList<ApartmentVO> filteredList = new FilterList<ApartmentVO>();
 				
 		int inicio = 0;
 		int fim = sortedList.getSize();
@@ -241,8 +241,8 @@ public class ApartmentBO extends BaseBO<ApartmentVO> {
 		
 		while(inicio <= fim) {
 			int meio = inicio + fim /2;
-			String cityToCompare = normalizeTextToCompare(sortedList.search(meio).getAddress().getCity());
-			String cityNormalize = normalizeTextToCompare(city);
+			String cityToCompare = DataConverter.normalizeTextToCompare(sortedList.search(meio).getAddress().getCity());
+			String cityNormalize = DataConverter.normalizeTextToCompare(city);
 			
 			if(cityNormalize.compareTo(cityToCompare) < 0) {
 				inicio = meio - 1;
@@ -250,13 +250,14 @@ public class ApartmentBO extends BaseBO<ApartmentVO> {
 				if(cityNormalize.compareTo(cityToCompare) > 0) {	
 					inicio = meio + 1;
 				}else{
-					String cityToAdd = sortedList.search(meio);
+					ApartmentVO apartmentToAdd = sortedList.search(meio);
 					sortedList.remove(meio);
-					filtedList.add(cityToAdd);
+					filteredList.add(apartmentToAdd);
 					inicio++;
 				}
 			
 			}
 		}
+		return filteredList;
 	}
 }

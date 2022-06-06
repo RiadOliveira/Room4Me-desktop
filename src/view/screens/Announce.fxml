@@ -4,6 +4,8 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
@@ -29,7 +31,7 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="120.0" prefWidth="1240.0" spacing="40.0">
                      <children>
-                      <Button fx:id="searchButton" mnemonicParsing="false" onAction="#changeSearch" prefHeight="72.0" prefWidth="260.0" style="-fx-background-color: 0;">
+                        <Button fx:id="searchButton" mnemonicParsing="false" onAction="#changeSearch" prefHeight="72.0" prefWidth="260.0" style="-fx-background-color: 0;">
                            <graphic>
                               <ImageView fitHeight="72.0" fitWidth="270.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -41,7 +43,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button fx:id="announceButton" mnemonicParsing="false" prefHeight="72.0" prefWidth="260.0" style="-fx-background-color: 0;">
+                        <Button fx:id="announceButton1" mnemonicParsing="false" prefHeight="72.0" prefWidth="260.0" style="-fx-background-color: 0;">
                            <graphic>
                               <ImageView fitHeight="72.0" fitWidth="270.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -57,7 +59,7 @@
                   </HBox>
                   <HBox alignment="CENTER_RIGHT" prefHeight="120.0" prefWidth="400.0" HBox.hgrow="NEVER">
                      <children>
-                        <Label text="UserName" textFill="#407899">
+                        <Label fx:id="userName" prefHeight="50.0" prefWidth="202.0" textFill="#407899">
                            <font>
                               <Font name="Microsoft YaHei Bold" size="36.0" />
                            </font>
@@ -81,17 +83,51 @@
                   <Insets left="80.0" right="80.0" />
                </padding>
             </HBox>
-            <Button fx:id="announceButton" alignment="CENTER" mnemonicParsing="false" onAction="#announce" prefHeight="80.0" prefWidth="580.0" style="-fx-background-color: rgba(64, 120, 153, 1); -fx-background-radius: 16;" text="ADICIONAR" textFill="#fffcf9">
+            <HBox alignment="CENTER_LEFT" prefHeight="120.0" prefWidth="200.0" spacing="440.0">
+               <children>
+                  <Button fx:id="announceButton" alignment="CENTER" layoutX="650.0" mnemonicParsing="false" onAction="#announce" prefHeight="80.0" prefWidth="580.0" style="-fx-background-color: rgba(64, 120, 153, 1); -fx-background-radius: 16;" text="ADICIONAR" textFill="#fffcf9">
+                     <font>
+                        <Font name="Microsoft YaHei Bold" size="40.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#delete" prefHeight="80.0" prefWidth="80.0" style="-fx-background-color: #9c3848; -fx-background-radius: 16;">
+                     <graphic>
+                        <ImageView fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/deleteicon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
                <VBox.margin>
-                  <Insets top="40.0" />
+                  <Insets left="650.0" right="110.0" />
                </VBox.margin>
-               <font>
-                  <Font name="Microsoft YaHei Bold" size="40.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="710.0" prefWidth="1860.0">
+               <children>
+                  <TableView fx:id="announceTable" prefHeight="720.0" prefWidth="1640.0" style="-fx-background-color: #403645;">
+                     <columns>
+                        <TableColumn fx:id="descriptionColumn" minWidth="1000.0" prefWidth="75.0" style="-fx-alignment: CENTER;-fx-text-fill: rgba(64, 54, 69, 1); -fx-font-family: 'Microsoft YaHei'; -fx-font-size: 24;" text="Descrição" />
+                        <TableColumn fx:id="districtColumn" minWidth="200.0" prefWidth="75.0" style="-fx-alignment: CENTER; -fx-text-fill: rgba(64, 54, 69, 1); -fx-font-family: 'Microsoft YaHei'; -fx-font-size: 24;" text="Bairro" />
+                        <TableColumn fx:id="cityColumn" minWidth="200.0" prefWidth="75.0" style="-fx-alignment: CENTER; -fx-text-fill: rgba(64, 54, 69, 1); -fx-font-family: 'Microsoft YaHei'; -fx-font-size: 24;" text="Cidade" />
+                        <TableColumn fx:id="rentColumn" minWidth="240.0" prefWidth="75.0" style="-fx-alignment: CENTER; -fx-text-fill: rgba(255, 103, 0, 1); -fx-font-family: 'Microsoft YaHei'; -fx-font-size: 32;" text="Valor" />
+                     </columns>
+                  </TableView>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
          </children>
       </VBox>
    </children>
