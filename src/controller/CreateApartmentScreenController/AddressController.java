@@ -41,14 +41,14 @@ public class AddressController extends CreateApartmentController{
     @FXML
     void nextScreen(ActionEvent event) {
         try {
-            CreateApartmentController.address.setStreet(streetField.getText());
-            CreateApartmentController.address.setApartmentNumber(apartmentNumberField.getText());
-            CreateApartmentController.address.setDistrict(districtField.getText());
+            address.setStreet(streetField.getText());
+            address.setApartmentNumber(apartmentNumberField.getText());
+            address.setDistrict(districtField.getText());
             int zipCode = Integer.parseInt(zipCodeField.getText());
-            CreateApartmentController.address.setZipCode(zipCode);
-            CreateApartmentController.address.setCity(cityField.getText());
-            CreateApartmentController.address.setState(stateField.getText());
-            if(complementField!=null)CreateApartmentController.address.setComplement(complementField.getText());
+            address.setZipCode(zipCode);
+            address.setCity(cityField.getText());
+            address.setState(stateField.getText());
+            address.setComplement(complementField.getText());
 
             CreateApartmentScreen.load(ScreensName.Aspects);
     
@@ -86,6 +86,11 @@ public class AddressController extends CreateApartmentController{
                 stateField.setStyle(stateField.getStyle() + "-fx-border-width: 4;");
             } else {
                 stateField.setStyle(stateField.getStyle() + "-fx-border-width: 0;");
+            }
+            if(complementField.getText().trim().length()==0){
+                complementField.setStyle(complementField.getStyle() + "-fx-border-width: 4;");
+            } else {
+                complementField.setStyle(complementField.getStyle() + "-fx-border-width: 0;");
             }
             
         }

@@ -3,9 +3,12 @@ package utils;
 public enum ScreensName {
     Login("Login"), SignUp("SignUp"),
     Search("Search"), Announce("Announce"),
+
     Address("Address"),Aspects("Aspects"),
     ConcludeApartment("ConcludeApartment"),
-    ConcludeMesage("ConcludeMesage");
+    ConcludeMesage("ConcludeMesage"),
+    
+    DeleteMesage("DeleteMesage");
 
     private String ScreensName;
 

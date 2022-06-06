@@ -1,17 +1,16 @@
 package utils;
 
 public enum AllowedGender {
-    male("Masculino"), 
-    female("Feminino"), 
-    both("Indefinido");
+    male("Masculino"), female("Feminino"), both("Ambos");
 
-    private String AllowedGender;
+    private final String genderName;
 
-    AllowedGender(String AllowedGender) {
-        this.AllowedGender = AllowedGender;
+    AllowedGender(final String genderName) {
+        this.genderName = genderName;
     }
 
+    @Override
     public String toString() {
-        return AllowedGender;
+        return genderName;
     }
 }

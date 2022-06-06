@@ -11,7 +11,7 @@ import model.VO.AddressVO;
 import model.VO.ApartmentVO;
 import model.VO.AspectsVO;
 import model.VO.Entity;
-import utils.CamelCaseToSnakeCaseConverter;
+import utils.DataConverter;
 
 public class ApartmentDAO extends BaseDAO<ApartmentVO> {
     private static String findApartmentsQuery = null;
@@ -40,7 +40,7 @@ public class ApartmentDAO extends BaseDAO<ApartmentVO> {
         String queryPropsFromEntity = "";
 
         for(String entityField: entityFields) {
-            String parsedField = CamelCaseToSnakeCaseConverter.execute(entityField);
+            String parsedField = DataConverter.convertCamelCaseToSnakeCase(entityField);
             queryPropsFromEntity += entityName + '.' + parsedField + ", ";
         }
 

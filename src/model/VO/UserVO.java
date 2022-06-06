@@ -1,6 +1,7 @@
 package model.VO;
 
 import errors.ValidationException;
+import utils.DataConverter;
 import utils.Gender;
 
 public class UserVO extends Entity {
@@ -103,5 +104,18 @@ public class UserVO extends Entity {
         verifyStringLength(avatar, propertyName);
 
         this.avatar = avatar;
+    }
+
+    public String dataToText() {
+        String textData = "";
+        String parsedPhoneNumber = DataConverter.getParsedPhoneNumber(
+            phoneNumber
+        );
+
+		textData += "- Nome: " + name + '\n';
+		textData += "- Email: " + email + '\n';
+		textData += "- Telefone: " + parsedPhoneNumber + '\n';
+
+        return textData;
     }
 }

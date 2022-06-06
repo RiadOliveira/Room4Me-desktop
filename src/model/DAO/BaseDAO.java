@@ -2,7 +2,7 @@ package model.DAO;
 
 //import io.github.cdimascio.dotenv.Dotenv;
 import model.VO.Entity;
-import utils.CamelCaseToSnakeCaseConverter;
+import utils.DataConverter;
 import utils.StatementFiller;
 
 import java.sql.SQLException;
@@ -19,7 +19,7 @@ public abstract class BaseDAO<VO extends Entity> implements IBaseDAO<VO> {
 	private final String entityName = this.getClass().getSimpleName().split("DAO")[0];
     private static final String url = "jdbc:postgresql://localhost:5432/Room4ME";
     private static final String user = "postgres";
-    private static final String password = "tradelous";//Dotenv.load().get("DATABASE_PASSWORD");
+    private static final String password = "1234";//Dotenv.load().get("DATABASE_PASSWORD");
 	
 	protected static Connection getConnection() throws SQLException {
 		if (connection == null) {
@@ -41,7 +41,7 @@ public abstract class BaseDAO<VO extends Entity> implements IBaseDAO<VO> {
         String query = "INSERT INTO Room4Me." + entityName + '(';
 
         for(int ind=0 ; ind<fieldsQuantity ; ind++) {
-            query += CamelCaseToSnakeCaseConverter.execute(fieldsNames.get(ind));
+            query += DataConverter.convertCamelCaseToSnakeCase(fieldsNames.get(ind));
             if(ind != fieldsQuantity - 1) query += ", ";
             else query += ") values (";
         }
@@ -85,7 +85,7 @@ public abstract class BaseDAO<VO extends Entity> implements IBaseDAO<VO> {
         List<String> fieldsNames = entity.getFieldsNames();
 
         for(int ind=0 ; ind<fieldsNames.size() ; ind++) {
-            query += CamelCaseToSnakeCaseConverter.execute(fieldsNames.get(ind));
+            query += DataConverter.convertCamelCaseToSnakeCase(fieldsNames.get(ind));
             query += "=?";
 
             if(ind != fieldsNames.size() - 1) query += ", ";

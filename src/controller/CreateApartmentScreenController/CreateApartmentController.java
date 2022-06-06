@@ -13,7 +13,7 @@ import utils.ScreensName;
 import view.CreateApartmentScreen;
 
 public class CreateApartmentController extends BaseController {
-    public static UserVO owner = BaseController.user;
+    public static UserVO owner = user;
 
     public static AddressVO address = new AddressVO();
     public static AspectsVO aspects = new AspectsVO();
@@ -26,14 +26,7 @@ public class CreateApartmentController extends BaseController {
 
     @FXML
     void conclude(ActionEvent event) {
-        try {
-            apartmentBO.insert(apartment);
-            CreateApartmentScreen.fechar();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-        
-       
+        CreateApartmentScreen.fechar();             
     }
 
     

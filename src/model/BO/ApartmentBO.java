@@ -1,7 +1,10 @@
 package model.BO;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.UUID;
 
 import filter.FilterList;
@@ -10,7 +13,10 @@ import model.VO.AddressVO;
 import model.VO.ApartmentVO;
 import model.VO.AspectsVO;
 import model.VO.UserVO;
-import utils.VerifyFilter;
+import utils.ApartmentDataToFilter;
+import utils.DataConverter;
+import utils.FilterChecker;
+import utils.SearchApartmentData;
 
 public class ApartmentBO extends BaseBO<ApartmentVO> {
 	private static ApartmentDAO apartmentDAO = new ApartmentDAO();
@@ -80,7 +86,6 @@ public class ApartmentBO extends BaseBO<ApartmentVO> {
 
 			return apartmentsList;
 		} catch (Exception exception) {
-			System.out.println(exception.getMessage());
 			return null;
 		}
 	}
@@ -98,51 +103,162 @@ public class ApartmentBO extends BaseBO<ApartmentVO> {
 		}
 	}
 
-	public FilterList<ApartmentVO> FilterGender(AddressVO adress, AspectsVO aspects) {
-		FilterList<ApartmentVO> apartmentsList = new FilterList<ApartmentVO>();
+	private String getApartmentDataAsText(ApartmentVO apartment) {
+		String contentString = "";
+
+		//Apartment Owner
+		contentString += "Dono do apartamento: " + '\n';
+		contentString += apartment.getOwner().dataToText();
+		contentString += '\n';
+
+		//Apartment Address
+		contentString += "Endereço do apartamento: " + '\n';
+		contentString += apartment.getAddress().dataToText();
+		contentString += '\n';
+
+		//Apartment Aspects
+		contentString += "Aspectos do apartamento: " + '\n';
+		contentString += apartment.getAspects().dataToText();
+		contentString += '\n';
+
+		//Apartment Rent
+		String currencyValue = DataConverter.convertNumberToCurrencyValue(
+			apartment.getRent()
+		);
+		contentString += "Aluguel: " + currencyValue + '\n';
+
+		return contentString;
+	}
+
+	public void generateFileWithApartmentsList(
+		FilterList<ApartmentVO> apartmentsList
+	) {
 		try {
-			ApartmentBO apartmentBO = new ApartmentBO();
-			FilterList<ApartmentVO> allApartment = apartmentBO.findAll();
+			BufferedWriter bufferedWriter = new BufferedWriter(
+				new FileWriter("tmp/searchedApartments.txt")
+			);
+	
+			String fileContent = "";
+			for(ApartmentVO apartment : apartmentsList) {
+				fileContent += getApartmentDataAsText(apartment);
 
-			for (int i = 0; i < allApartment.getSize(); i++) {
-				ApartmentVO apartment = allApartment.search(i);
-
-				if (apartment != null) {
-					boolean isAllowed = VerifyFilter.satisfyRequirements(apartment, adress, aspects);
-					if (isAllowed)
-						apartmentsList.add(apartment);
-				}
+				fileContent += '\n';
+				fileContent += "================================";
+				fileContent += "\n\n";
 			}
-			return apartmentsList;
-		} catch (Exception exception) {
-			return null;
+	
+			bufferedWriter.append(fileContent);
+			bufferedWriter.close();
+		} catch (Exception err) {
+			System.out.println(err.getMessage());
 		}
 	}
 
-	public ArrayList<ApartmentVO> OrderByRent() {
-		ApartmentBO apartmentBO = new ApartmentBO();
-		FilterList<ApartmentVO> allApartment = apartmentBO.findAll();
+	public FilterList<ApartmentVO> getFilteredApartmentsByRequirements(
+		FilterList<ApartmentVO> apartmentsList, SearchApartmentData searchData
+	) {
+		Iterator<ApartmentVO> iterator = apartmentsList.iterator();
+		FilterList<ApartmentVO> filteredList = new FilterList<ApartmentVO>();
+		
+		while(iterator.hasNext()) {
+			ApartmentVO apartment = iterator.next();
+			boolean satisfyRequirements = FilterChecker.verifyApartmentSatisfyRequirements(
+				apartment, searchData
+			);
 
-		ArrayList<ApartmentVO> array = new ArrayList<ApartmentVO>();
-		for (int i = 0; i < allApartment.getSize(); i++) {
-			array.add(allApartment.search(i));
+			if (satisfyRequirements) filteredList.add(apartment);
 		}
-		int tamanho = array.size();
 
-		while (tamanho > 0) {
-			int ultimoModificado = 0;
+		return filteredList;
+	}
 
-			for (int i = 0; i < array.size(); i++) {
-				if (array.get(i - 1).getRent().compareTo(array.get(i).getRent()) > 0) {
-					ApartmentVO aux = array.get(i - 1);
-					array.set((i - 1), array.get(i));
-					array.set(i, aux);
-					
-					ultimoModificado=i;
-				}
+	private boolean verifyBubbleSortNeedsToExchangePositions(
+		ApartmentDataToFilter apartmentDataToFilter,
+		ApartmentVO previousApartment,
+		ApartmentVO currentApartment
+	) {
+		switch(apartmentDataToFilter) {
+			case byRent: return previousApartment.getRent() > currentApartment.getRent();
+			case byCity: {
+				String previousCity = previousApartment.getAddress().getCity();
+				String currentCity = currentApartment.getAddress().getCity();
+
+				return previousCity.compareTo(currentCity) >= 1;
 			}
-			tamanho = ultimoModificado;
+			case byState: {
+				String previousState = previousApartment.getAddress().getState();
+				String currentState = currentApartment.getAddress().getState();
+
+				return previousState.compareTo(currentState) >= 1;
+			}
+			default: return false;
 		}
-		return array;
+	}
+
+	public FilterList<ApartmentVO> getSortedApartmentsList(
+		FilterList<ApartmentVO> apartmentsList,
+		ApartmentDataToFilter apartmentDataToFilter
+	) {
+		FilterList<ApartmentVO> sortedList = new FilterList<ApartmentVO>();
+		for(ApartmentVO apartment : apartmentsList) sortedList.add(apartment);
+
+		Iterator<ApartmentVO> iterator = sortedList.iterator();
+		int size = sortedList.getSize();
+
+		for(int ind=0 ; ind<size-1 ; ind++) {
+			ApartmentVO previousApartment = iterator.next();
+
+			while(iterator.hasNext()) {
+				ApartmentVO currentApartment = iterator.next();
+	
+				boolean bubbleSortNeedsToExchangePositions = 
+					verifyBubbleSortNeedsToExchangePositions(
+						apartmentDataToFilter, previousApartment,
+						currentApartment
+					);
+				
+				if(bubbleSortNeedsToExchangePositions) {
+					sortedList.exchangePositionWithPrevious(
+						currentApartment
+					);
+				}
+
+				previousApartment = currentApartment;
+			}
+		}
+
+		return sortedList;
+	}
+	public FilterList<ApartmentVO> filterByCity(FilterList<ApartmentVO> apartmentsList, String city){
+		FilterList<ApartmentVO> sortedList = new FilterList<ApartmentVO>();
+		
+		sortedList = getSortedApartmentsList(apartmentsList, ApartmentDataToFilter.byCity);
+		
+		FilterList<ApartmentVO> filteredList = new FilterList<ApartmentVO>();
+				
+		int inicio = 0;
+		int fim = sortedList.getSize();
+		int result = -1;
+		
+		while(inicio <= fim) {
+			int meio = inicio + fim /2;
+			String cityToCompare = DataConverter.normalizeTextToCompare(sortedList.search(meio).getAddress().getCity());
+			String cityNormalize = DataConverter.normalizeTextToCompare(city);
+			
+			if(cityNormalize.compareTo(cityToCompare) < 0) {
+				inicio = meio - 1;
+			}else {
+				if(cityNormalize.compareTo(cityToCompare) > 0) {	
+					inicio = meio + 1;
+				}else{
+					ApartmentVO apartmentToAdd = sortedList.search(meio);
+					sortedList.remove(meio);
+					filteredList.add(apartmentToAdd);
+					inicio++;
+				}
+			
+			}
+		}
+		return filteredList;
 	}
 }

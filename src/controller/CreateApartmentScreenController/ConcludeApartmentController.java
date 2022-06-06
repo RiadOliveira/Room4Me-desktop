@@ -6,7 +6,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
-import model.BO.ApartmentBO;
 import utils.ScreensName;
 import view.CreateApartmentScreen;
 
@@ -25,12 +24,13 @@ public class ConcludeApartmentController extends CreateApartmentController {
         
 
         try {
-            CreateApartmentController.apartment.setOwner(CreateApartmentController.owner);
-            CreateApartmentController.apartment.setAddress(CreateApartmentController.address);
-            CreateApartmentController.apartment.setAspects(CreateApartmentController.aspects);
+            apartment.setOwner(owner);
+            apartment.setAddress(address);
+            apartment.setAspects(aspects);
             double rent = Double.parseDouble(rentField.getText());
-            CreateApartmentController.apartment.setRent(rent);
+            apartment.setRent(rent);
             
+            apartmentBO.insert(apartment);
             CreateApartmentScreen.load(ScreensName.ConcludeMesage);
             
 

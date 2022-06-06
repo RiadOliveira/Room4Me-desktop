@@ -26,7 +26,7 @@
       </VBox>
       <VBox prefHeight="980.0" prefWidth="1860.0">
          <children>
-            <HBox alignment="CENTER" prefHeight="120.0" prefWidth="1920.0">
+            <HBox alignment="CENTER" prefHeight="128.0" prefWidth="1860.0">
                <children>
                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="400.0">
                      <children>
@@ -67,7 +67,7 @@
                   </HBox>
                   <HBox alignment="CENTER_RIGHT" prefHeight="120.0" prefWidth="400.0" HBox.hgrow="NEVER">
                      <children>
-                        <Label fx:id="userName" textFill="#407899">
+                        <Label fx:id="userName" prefHeight="50.0" prefWidth="202.0" textFill="#407899">
                            <font>
                               <Font name="Microsoft YaHei Bold" size="36.0" />
                            </font>
@@ -91,13 +91,13 @@
                   <Insets left="80.0" right="80.0" />
                </padding>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="120.0" prefWidth="1860.0" spacing="64.0">
+            <HBox alignment="CENTER" prefHeight="120.0" prefWidth="1860.0" spacing="32.0">
                <children>
-                  <VBox alignment="CENTER_LEFT" prefHeight="120.0" prefWidth="180.0">
+                  <VBox alignment="CENTER_LEFT" prefHeight="77.0" prefWidth="180.0">
                      <children>
                         <Label text="Valor" textFill="#ff6700">
                            <font>
-                              <Font name="Microsoft YaHei Bold" size="24.0" />
+                              <Font name="Microsoft YaHei Bold" size="18.0" />
                            </font>
                         </Label>
                         <ChoiceBox fx:id="valorBox" prefHeight="32.0" prefWidth="180.0" style="-fx-background-color: rgba(183, 168, 199, 1); -fx-background-radius: 16; -fx-text-fill: rgba(255, 103, 0, 1); -fx-font-family: 'Open Sans'; -fx-font-size: 18;" />
@@ -105,9 +105,19 @@
                   </VBox>
                   <VBox alignment="CENTER_LEFT" prefHeight="120.0" prefWidth="180.0">
                      <children>
+                        <Label text="Bairro" textFill="#407899">
+                           <font>
+                              <Font name="Microsoft YaHei Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <ChoiceBox fx:id="bairroBox" prefHeight="40.0" prefWidth="180.0" style="-fx-background-color: rgba(183, 168, 199, 1); -fx-background-radius: 16; -fx-text-fill: rgba(255, 103, 0, 1); -fx-font-family: 'Open Sans'; -fx-font-size: 18;" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER_LEFT" prefHeight="120.0" prefWidth="180.0">
+                     <children>
                         <Label text="Cidade" textFill="#407899">
                            <font>
-                              <Font name="Microsoft YaHei Bold" size="24.0" />
+                              <Font name="Microsoft YaHei Bold" size="18.0" />
                            </font>
                         </Label>
                         <ChoiceBox fx:id="cidadeBox" prefHeight="40.0" prefWidth="180.0" style="-fx-background-color: rgba(183, 168, 199, 1); -fx-background-radius: 16; -fx-text-fill: rgba(255, 103, 0, 1); -fx-font-family: 'Open Sans'; -fx-font-size: 18;" />
@@ -115,34 +125,34 @@
                   </VBox>
                   <VBox alignment="CENTER_LEFT" prefHeight="120.0" prefWidth="180.0">
                      <children>
-                        <Label text="Bairro" textFill="#407899">
+                        <Label text="Estado" textFill="#407899">
                            <font>
-                              <Font name="Microsoft YaHei Bold" size="24.0" />
+                              <Font name="Microsoft YaHei Bold" size="18.0" />
                            </font>
                         </Label>
-                        <ChoiceBox fx:id="bairroBox" prefHeight="40.0" prefWidth="180.0" style="-fx-background-color: rgba(183, 168, 199, 1); -fx-background-radius: 16; -fx-text-fill: rgba(255, 103, 0, 1); -fx-font-family: 'Open Sans'; -fx-font-size: 18;" />
+                        <ChoiceBox fx:id="estadoBox" prefHeight="40.0" prefWidth="180.0" style="-fx-background-color: rgba(183, 168, 199, 1); -fx-background-radius: 16; -fx-text-fill: rgba(255, 103, 0, 1); -fx-font-family: 'Open Sans'; -fx-font-size: 18;" />
                      </children>
                   </VBox>
-                  <HBox alignment="CENTER" prefHeight="120.0" prefWidth="632.0" spacing="36.0">
+                  <HBox alignment="CENTER" prefHeight="82.0" prefWidth="498.0" spacing="8.0">
                      <children>
-                        <CheckBox mnemonicParsing="false" prefHeight="51.0" prefWidth="219.0" style="-fx-region-background: rgba(183, 168, 199, 1);" text="Dividir Quarto" textFill="#407899">
+                        <CheckBox fx:id="availableToDivideCheck" mnemonicParsing="false" onAction="#availableToDivideChoice" prefHeight="51.0" prefWidth="219.0" style="-fx-region-background: rgba(183, 168, 199, 1);" text="Dividir Quarto" textFill="#407899">
                            <font>
                               <Font name="Microsoft YaHei Bold" size="24.0" />
                            </font>
                         </CheckBox>
-                        <CheckBox mnemonicParsing="false" prefHeight="51.0" prefWidth="125.0" style="-fx-region-background: rgba(183, 168, 199, 1);" text="Misto" textFill="#407899">
+                        <CheckBox fx:id="allowedGenderCheck" mnemonicParsing="false" onAction="#allowedGenderChoice" prefHeight="51.0" prefWidth="125.0" style="-fx-region-background: rgba(183, 168, 199, 1);" text="Misto" textFill="#407899">
                            <font>
                               <Font name="Microsoft YaHei Bold" size="24.0" />
                            </font>
                         </CheckBox>
-                        <HBox alignment="CENTER" prefHeight="120.0" prefWidth="216.0">
+                        <HBox alignment="CENTER" prefHeight="114.0" prefWidth="129.0">
                            <children>
                               <Label prefHeight="34.0" prefWidth="82.0" text="Grupo" textFill="#407899">
                                  <font>
                                     <Font name="Microsoft YaHei Bold" size="24.0" />
                                  </font>
                               </Label>
-                              <TextField prefHeight="48.0" prefWidth="120.0" promptText="1" style="-fx-background-color: rgba(183, 168, 199, 1); -fx-text-fill: rgba(255, 103, 0, 1); -fx-background-radius: 16;">
+                              <TextField fx:id="capacidadeField" prefHeight="48.0" prefWidth="57.0" promptText="1" style="-fx-background-color: rgba(183, 168, 199, 1); -fx-text-fill: rgba(255, 103, 0, 1); -fx-background-radius: 16;">
                                  <font>
                                     <Font name="Microsoft YaHei" size="18.0" />
                                  </font>
@@ -154,7 +164,37 @@
                         </HBox>
                      </children>
                   </HBox>
-                  <Button mnemonicParsing="false" prefHeight="64.0" prefWidth="180.0" style="-fx-background-color: rgba(255, 103, 0, 1); -fx-background-radius: 16;" text="Imprimir" textFill="#fffcf9">
+                  <Button fx:id="searchFiltredButton" mnemonicParsing="false" onAction="#searchFiltred" prefHeight="64.0" prefWidth="64.0" style="-fx-background-color: #407899; -fx-background-radius: 16;" textFill="#fffcf9">
+                     <font>
+                        <Font name="Microsoft YaHei Bold" size="24.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <graphic>
+                        <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/searchIcon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="searchDataButton" mnemonicParsing="false" onAction="#searchData" prefHeight="64.0" prefWidth="64.0" style="-fx-background-color: #407899; -fx-background-radius: 16;" textFill="#fffcf9">
+                     <font>
+                        <Font name="Microsoft YaHei Bold" size="24.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <graphic>
+                        <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/ultimaBusca.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="printButton" mnemonicParsing="false" onAction="#print" prefHeight="64.0" prefWidth="180.0" style="-fx-background-color: rgba(255, 103, 0, 1); -fx-background-radius: 16;" text="Imprimir" textFill="#fffcf9">
                      <font>
                         <Font name="Microsoft YaHei Bold" size="24.0" />
                      </font>

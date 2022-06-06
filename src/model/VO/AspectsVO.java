@@ -81,4 +81,16 @@ public class AspectsVO extends Entity {
 
         this.capacity = parsedCapacity;
     }
+
+    public String dataToText() {
+        String textData = "";
+
+        textData += "- Quantidade de quartos: " + bedroomsQuantity + '\n';
+		textData += "- Disponível para dividir: " + obtainAvailableToDivideText() + '\n';
+		textData += "- Descrição: " + description + '\n';
+		textData += "- Gênero permitido: " + allowedGender.toString() + '\n';
+		textData += "- Capacidade: " + capacity + '\n';
+
+        return textData;
+    }
 }

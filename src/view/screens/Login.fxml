@@ -39,7 +39,7 @@
       <VBox alignment="CENTER_LEFT" layoutX="1210.0" layoutY="10.0" prefHeight="970.0" prefWidth="320.0" spacing="16.0">
          <children>
             <Pane prefHeight="70.0" prefWidth="320.0" />
-            <Label fx:id="escuro" style="visibility: false;" text="Email ou Senha incorreto!" textFill="#9c3848">
+            <Label fx:id="errorMessage" style="visibility: false;" text="Email ou Senha incorreto!" textFill="#9c3848">
                <font>
                   <Font name="Microsoft YaHei Bold" size="24.0" />
                </font>

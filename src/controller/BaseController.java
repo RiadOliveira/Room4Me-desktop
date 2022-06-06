@@ -12,7 +12,7 @@ public class BaseController extends LoginController{
     public static UserVO user = LoginController.userLogin;
 
     @FXML
-    private Label userName;
+    public Label userName;
     
     @FXML
     private Button announceButton;
