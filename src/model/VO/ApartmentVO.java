@@ -6,8 +6,8 @@ public class ApartmentVO extends Entity {
     private UserVO owner;
     private AddressVO address;
     private AspectsVO aspects;
-    private double rent;
-    private String image;
+    private Double rent;
+    private String image = null;
 
     public UserVO getOwner() {
         return owner;
@@ -36,7 +36,7 @@ public class ApartmentVO extends Entity {
         this.aspects = aspects;
     }
 
-    public double getRent() {
+    public Double getRent() {
         return rent;
     }
 
@@ -56,8 +56,12 @@ public class ApartmentVO extends Entity {
     }
 
     public void setImage(String image) throws ValidationException {
+        if(image == null) {
+            this.image = null;
+            return;
+        }
+
         String propertyName = "image";
-        verifyNull(image, propertyName);
         verifyStringLength(image, propertyName);
 
         this.image = image;

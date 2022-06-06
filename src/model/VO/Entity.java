@@ -1,5 +1,6 @@
 package model.VO;
 
+import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -9,7 +10,7 @@ import java.util.List;
 import java.util.UUID;
 import errors.ValidationException;
 
-public abstract class Entity {
+public abstract class Entity implements Serializable {
     private final String entityName = this.getClass().getSimpleName().split("VO")[0];
     private UUID id;
 
@@ -73,7 +74,7 @@ public abstract class Entity {
         List<Method> getterMethods = getGetterMethods();
         List<String> fieldsNames = getFieldsNames();
 
-        String propertiesString = "id: " + getId() + '\n';
+        String propertiesString = "\nid: " + getId() + '\n';
 
         for(int ind=0 ; ind<getterMethods.size() ; ind++) {
             Method method = getterMethods.get(ind);

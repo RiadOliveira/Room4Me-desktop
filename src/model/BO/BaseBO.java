@@ -1,9 +1,12 @@
 package model.BO;
 
+import java.sql.ResultSet;
+
 public abstract class BaseBO<VO> {
 	public abstract void insert(VO entity) throws Exception;
 	public abstract void update(VO entity) throws Exception;
 	public abstract void delete(VO entity) throws Exception;
+	public abstract VO getEntityFromResultSet(ResultSet findedEntityDB) throws Exception;
 	public abstract VO findById(VO entity);
 
 	protected void verifyIsNull(VO entity) throws Exception {
