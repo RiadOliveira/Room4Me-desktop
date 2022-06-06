@@ -146,6 +146,14 @@ public class SearchController extends BaseController implements Initializable{
         }
 
         searchTable.setItems(parsedApartments);
+
+        bairroBox.setValue(null);
+        cidadeBox.setValue(null);
+        estadoBox.setValue(null);
+        valorBox.setValue(null);
+        capacidadeField.setText("");
+        availableToDivideCheck.setSelected(false);
+        allowedGenderCheck.setSelected(false);
     }
 
     @FXML
@@ -200,11 +208,22 @@ public class SearchController extends BaseController implements Initializable{
             apartmentsList, searchData
         );
 
-        for(ApartmentVO apartmentVo : apartmentsFilteredList){
-            bairroBox.getItems().add(apartmentVo.getAddress().getDistrict());
-            cidadeBox.getItems().add(apartmentVo.getAddress().getCity());
-            estadoBox.getItems().add(apartmentVo.getAddress().getState());
-            valorBox.getItems().add(apartmentVo.getRent().toString());
+        for(ApartmentVO apartmentVo : apartmentsFilteredList) {
+            if(!bairroBox.getItems().contains(apartmentVo.getAddress().getDistrict())) {
+                bairroBox.getItems().add(apartmentVo.getAddress().getDistrict());
+            }
+
+            if(!cidadeBox.getItems().contains(apartmentVo.getAddress().getCity())) {
+                cidadeBox.getItems().add(apartmentVo.getAddress().getCity());
+            }
+
+            if(!estadoBox.getItems().contains(apartmentVo.getAddress().getState())) {
+                estadoBox.getItems().add(apartmentVo.getAddress().getState());
+            }
+
+            if(!valorBox.getItems().contains(apartmentVo.getRent().toString())) {
+                valorBox.getItems().add(apartmentVo.getRent().toString());
+            }
 
             searchTable.getItems().add(apartmentVo);
         }
