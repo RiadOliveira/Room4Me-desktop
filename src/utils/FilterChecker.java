@@ -41,7 +41,7 @@ public class FilterChecker {
 
 		if (
 			verifyBothGenders ||
-			searchedAspects.getAllowedGender() == comparativeAspects.getAllowedGender().getReverse()
+			searchedAspects.getAllowedGender().getReverse() == comparativeAspects.getAllowedGender()
 		) {
 			return false;
 		}
