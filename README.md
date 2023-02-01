@@ -5,7 +5,7 @@
 </h1>
 
 <p align="center">
-  An application designed to help students find apartments to rent or divide with other students. This project has been developed during Java classes at college.
+  An application designed to help students find apartments to rent or share with other students. This project has been developed during Java classes at college.
 </p>
 
 <h4 align="center">
