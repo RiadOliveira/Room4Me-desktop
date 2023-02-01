@@ -12,7 +12,7 @@
 	:house:&nbsp; Room4Me - Finished &nbsp; :house: </br>
 </h4>
 
-![image](https://img.shields.io/github/license/RiadOliveira/Room4Me)
+![image](https://img.shields.io/github/license/RiadOliveira/Room4Me-desktop)
 
 Contents
 =================
