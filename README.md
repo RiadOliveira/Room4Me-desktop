@@ -9,7 +9,7 @@
 </p>
 
 <h4 align="center">
-	:house:&nbsp; Room4Me - In development... &nbsp; :house: </br>
+	:house:&nbsp; Room4Me - Finished &nbsp; :house: </br>
 </h4>
 
 ![image](https://img.shields.io/github/license/RiadOliveira/Room4Me)
