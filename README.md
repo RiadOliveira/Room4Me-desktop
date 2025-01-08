@@ -38,21 +38,21 @@ Contents
 <!--te-->
 </br>
 <h2 id="proposal">💡 Proposal</h2>
+<p>
 Room4Me is a software developed mainly for university students, as it seeks to make it easier for them to find a place to live during their courses, with the differential of looking for apartments to share with other people (mainly other students). This simplicity can prove to be quite effective, given the difficulty, especially for students from other cities, to locate themselves in places close to their universities and in an economically viable way.
-</br> </br> 
+</p>
 
 <h2 id="technologies">🛠 Technologies</h2>
-Tools used on this project:
+<p>Tools used on this project:</p>
 
 - [Java](https://www.java.com/)
   - [Java-dotenv](https://jar-download.com/artifact-search/java-dotenv)
   - [PostgreSQL JDBC Driver](https://jdbc.postgresql.org/download.html)
   - [JavaFX](https://openjfx.io/)
-- [Postgresql](https://www.postgresql.org/) </br></br>
+- [Postgresql](https://www.postgresql.org/)
 
 <h2 id="architecture">🗂 Architecture</h2>
-This project uses the MVC (Model-View-Controller) architecture.
-</br> </br> 
+<p>This project uses the MVC (Model-View-Controller) architecture.</p>
 
 <h2 id="entities">:floppy_disk: Entities</h2>
 
@@ -99,17 +99,17 @@ This project uses the MVC (Model-View-Controller) architecture.
 
 <h2 id="features">:gear: Features</h2>
 
-- [ ] Accounts creation, update and delete. (Using JDBC)
+- [X] Accounts creation, update and delete. (Using JDBC)
   - Creation: It fills an object in Java, then sends it to the Database.
   - Update: After gets an user (Using find methods from database), updates the object with the new data, then sends it to the Database.
   - Delete: After gets an user (Using find methods from database), sends its ID with delete query to the Database.
-- [ ] Users can register, update and delete the apartments they own. (Using JDBC)
+- [X] Users can register, update and delete the apartments they own. (Using JDBC)
   - Register: It fills an object in Java, then sends it to the Database.
   - Update: After gets an apartment (Using find methods from database), updates the object with the new data, then sends it to the Database.
   - Delete: After gets an apartment (Using find methods from database), sends its ID with delete query to the Database.
-- [ ] Users can access contacts details from the owners of the apartments they searched for (When accessing some apartment data, its owner data is also present in the object).
-- [ ] Search apartments by(And/Or): name, preferences (bedrooms quantity, capacity, allowed gender and/or available to divide), price and location (Whenever a filter is changed, a new query is generated, and all specified apartments are obtained).
-- [ ] Generate a CSV file containing all apartments (Including their data) searched by the user.
+- [X] Users can access contacts details from the owners of the apartments they searched for (When accessing some apartment data, its owner data is also present in the object).
+- [X] Search apartments by(And/Or): name, preferences (bedrooms quantity, capacity, allowed gender and/or available to divide), price and location (Whenever a filter is changed, a new query is generated, and all specified apartments are obtained).
+- [X] Generate a CSV file containing all apartments (Including their data) searched by the user.
 
 </br>
 
