@@ -18,7 +18,7 @@ Contents
 =================
 <!--ts-->
    * [💡 Proposal](#proposal)
-   * [🛠 Technologies](#technologies)
+   * [🛠️ Technologies](#technologies)
    * [🗂  Architecture ](#architecture )
    * [:floppy_disk: Entities](#entities)
       * [User](#entity-user)
@@ -42,7 +42,7 @@ Contents
 Room4Me is a software developed mainly for university students, as it seeks to make it easier for them to find a place to live during their courses, with the differential of looking for apartments to share with other people (mainly other students). This simplicity can prove to be quite effective, given the difficulty, especially for students from other cities, to locate themselves in places close to their universities and in an economically viable way.
 </p>
 
-<h2 id="technologies">🛠 Technologies</h2>
+<h2 id="technologies">🛠️ Technologies</h2>
 <p>Tools used on this project:</p>
 
 - [Java](https://www.java.com/)
