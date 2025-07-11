@@ -1,9 +1,7 @@
 .env
 
-/bin
-
-/lib/*
-!/lib/.gitkeep
+/bin/*
+!/bin/.gitkeep
 
 /tmp/*
 !/tmp/.gitkeep
