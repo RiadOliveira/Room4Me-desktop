@@ -1,0 +1,33 @@
+{
+  "id": 0,
+  "name": "Room4Me-Desktop",
+  "description": " An application designed to help students find apartments to rent or share with other students.",
+  "displayData": {
+    "title": "Room4Me Desktop",
+    "extendedDescription": "Room4Me is a apartment rental and sharing platform designed specifically for university students. Developed during Java programming courses at college, it provides a complete digital solution for students seeking affordable housing options and roommate connections.",
+    "imageId": "1bbd891e-8d84-4083-b9b0-fd85c259f663",
+    "highlightColor": "amber",
+    "attachmentsUrl": true,
+    "technologies": [
+      "Java",
+      "PostgreSQL"
+    ],
+    "features": [
+      {
+        "name": "User Management",
+        "description": "Complete user registration and authentication system with profile management.",
+        "icon": "users"
+      },
+      {
+        "name": "Property Search",
+        "description": "Advanced apartment search with filters for location, price, capacity, and gender preferences.",
+        "icon": "searchLocation"
+      },
+      {
+        "name": "Contact & Export",
+        "description": "Direct owner contact access and CSV export capabilities.",
+        "icon": "fileExport"
+      }
+    ]
+  }
+}
