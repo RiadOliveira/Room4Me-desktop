@@ -8,7 +8,7 @@
   Room4Me is a apartment rental and sharing platform designed specifically for university students. Developed during Java programming courses at college, it provides a complete digital solution for students seeking affordable housing options and roommate connections.
 </p>
 
-![image](https://user-images.githubusercontent.com/88398990/158809949-26035b52-fd5a-4706-a3df-8ef2ee0ea901.png)
+![image](https://github.com/user-attachments/assets/e6740f5f-79ec-4ade-8e19-04f0d1e34762)
 ![image](https://img.shields.io/github/license/RiadOliveira/Room4Me-desktop)
 
 <br/>
