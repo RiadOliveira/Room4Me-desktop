@@ -1,178 +1,223 @@
 <h1 align="center">
 
-![Logo png](https://user-images.githubusercontent.com/88398990/156489186-24d246c7-fa32-4793-ae59-e29bc99e09ce.png)
+![image](https://user-images.githubusercontent.com/88398990/156489186-24d246c7-fa32-4793-ae59-e29bc99e09ce.png)
 
 </h1>
 
 <p align="center">
-  An application designed to help students find apartments to rent or share with other students. This project has been developed during Java classes at college.
+  Room4Me is a apartment rental and sharing platform designed specifically for university students. Developed during Java programming courses at college, it provides a complete digital solution for students seeking affordable housing options and roommate connections.
 </p>
 
-<h4 align="center">
-	:house:&nbsp; Room4Me - Finished &nbsp; :house: </br>
-</h4>
-
+![image](https://user-images.githubusercontent.com/88398990/158809949-26035b52-fd5a-4706-a3df-8ef2ee0ea901.png)
 ![image](https://img.shields.io/github/license/RiadOliveira/Room4Me-desktop)
+
+<br/>
 
 Contents
 =================
 <!--ts-->
-   * [💡 Proposal](#proposal)
-   * [🛠️ Technologies](#technologies)
-   * [🗂  Architecture ](#architecture )
-   * [:floppy_disk: Entities](#entities)
-      * [User](#entity-user)
-      * [Address](#entity-address)
-      * [Aspects](#entity-aspects)
-      * [Apartment](#entity-apartment)
-   * [:gear: Features](#features)
-   * [:camera: Wireframe](#wireframe)
-      * [Login](#login)
-      * [SignUp](#sign-up)
-      * [Search](#search)
-      * [Apartment Details](#apartment-details)
-      * [Announce](#announce)
-      * [Create Apartment](#create-apartment)
-   * [:memo: License](#license)
-   * [👨‍💻 Authors](#authors)
+* [💡 Project Overview](#overview)
+* [🛠️ Technologies](#technologies)
+* [🚀 Getting Started](#getting-started)
+	* [Prerequisites](#prerequisites)
+	* [Installation & Setup](#setup)
+* [⚙️ Features](#features)
+* [🗃️ Database Entities](#entities)
+	* [User](#entity-user)
+	* [Address](#entity-address)
+	* [Aspects](#entity-aspects)
+	* [Apartment](#entity-apartment)
+* [🏗️ Architecture](#architecture)
+* [📷 Application Screenshots](#screenshots)
+	* [Authentication](#login)
+	* [User Registration](#sign-up)
+	* [Apartment Search](#search)
+	* [Apartment Details](#apartment-details)
+	* [Property Management](#announce)
+	* [Apartment Registration](#create-apartment)
+ 		* [Address Information](#create-address)
+		* [Property Aspects](#create-aspects)
+		* [Registration Finalization](#create-finalization) 
+* [📝 License](#license)
+* [👨‍💻 Authors](#authors)
 <!--te-->
-</br>
-<h2 id="proposal">💡 Proposal</h2>
-<p>
-Room4Me is a software developed mainly for university students, as it seeks to make it easier for them to find a place to live during their courses, with the differential of looking for apartments to share with other people (mainly other students). This simplicity can prove to be quite effective, given the difficulty, especially for students from other cities, to locate themselves in places close to their universities and in an economically viable way.
-</p>
+<br/>
+
+<h2 id="overview">💡 Project Overview</h2>
+
+Room4Me addresses the critical housing challenges faced by university students, particularly those studying away from home. The platform simplifies the process of finding affordable accommodation and connecting with potential roommates, creating a supportive community for student housing needs. With its user-friendly interface and comprehensive search capabilities, Room4Me bridges the gap between students seeking housing and those offering shared living spaces.<br/><br/>
 
 <h2 id="technologies">🛠️ Technologies</h2>
-<p>Tools used on this project:</p>
+Built with:
 
-- [Java JDK 21](https://www.java.com/)
-  - [Java-dotenv (3.2.0)](https://github.com/cdimascio/dotenv-java)
-  - [PostgreSQL JDBC (42.2.23)](https://jdbc.postgresql.org/)
-  - [JavaFX SDK (17.0.0.1)](https://openjfx.io/)
-- [Postgresql](https://www.postgresql.org/)
+* [Java JDK 21](https://www.java.com/)
+	* [JavaFX SDK (17.0.0.1)](https://openjfx.io/)
+	* [PostgreSQL JDBC (42.2.23)](https://jdbc.postgresql.org/)
+	* [Java-dotenv (3.2.0)](https://github.com/cdimascio/dotenv-java)
+* [PostgreSQL](https://www.postgresql.org/) <br/><br/>
 
-<h2 id="architecture">🗂 Architecture</h2>
-<p>This project uses the MVC (Model-View-Controller) architecture.</p>
+<h2 id="getting-started">🚀 Getting Started</h2>
 
-<h2 id="entities">:floppy_disk: Entities</h2>
+<h3 id="prerequisites">Prerequisites</h3>
 
-- <h3 id="entity-user">User</h3>
+Before running the application, ensure the following tools are installed on your system:
+* [Git](https://git-scm.com)
+* [Java JDK 21](https://www.java.com/)
+* [PostgreSQL](https://www.postgresql.org/)
 
-  - id: UUID
-  - name: string
-  - email: string
-  - password: string
-  - phone_number: string
-  - avatar: string
-  - gender: int 
+**Note**: Project dependencies (JavaFX, PostgreSQL driver, and Java-dotenv) are already included in the project structure.
 
-- <h3 id="entity-address">Address</h3>
+<h3 id="setup">Installation & Setup</h3>
 
-  - id: UUID
-  - city: string
-  - district: string
-  - street: string
-  - complement: string/null
-  - apartment_number: string
-  - zip_code: integer
+```bash
+# Clone the repository
+$ git clone https://github.com/RiadOliveira/Room4Me-desktop.git
 
-- <h3 id="entity-aspects">Aspects</h3>
+# Navigate to project directory
+$ cd Room4Me-desktop
 
-  - id: UUID
-  - bedrooms_quantity: integer
-  - available_to_divide: boolean
-  - description: string
-  - capacity: integer
-  - allowed_gender: smallint
-  - description: text
+# Environment Configuration
+# Create and configure your .env file with database password
+$ cp .env.example .env
 
-- <h3 id="entity-apartment">Apartment</h3>
+# Configure your PostgreSQL database password in the .env file
+# Update the following variable:
+# DATABASE_PASSWORD=your_postgres_password
 
-  - id: UUID
-  - <a href="#entity-user">owner</a>: UUID
-  - <a href="#entity-address">address</a>: UUID
-  - <a href="#entity-aspects">aspects</a>: UUID
-  - rent: double
-  - image: string
+# Create the database in PostgreSQL
+# Connect to PostgreSQL and create the database:
+# CREATE DATABASE Room4ME;
 
-</br>
+# Compile the application and copy FXML views to the bin directory
+javac --module-path lib/javafx-sdk-* --add-modules javafx.controls,javafx.fxml -cp "lib/*:lib/javafx-sdk-*/*" -d bin $(find src -name "*.java") && cp -r src/view/images src/view/screens bin/view/
 
-<h2 id="features">:gear: Features</h2>
+# Run the application
+java --module-path lib/javafx-sdk-* --add-modules javafx.controls,javafx.fxml -cp "bin:lib/*:lib/javafx-sdk-*/*" view.MainScreen
+```
 
-- [X] Accounts creation, update and delete. (Using JDBC)
-  - Creation: It fills an object in Java, then sends it to the Database.
-  - Update: After gets an user (Using find methods from database), updates the object with the new data, then sends it to the Database.
-  - Delete: After gets an user (Using find methods from database), sends its ID with delete query to the Database.
-- [X] Users can register, update and delete the apartments they own. (Using JDBC)
-  - Register: It fills an object in Java, then sends it to the Database.
-  - Update: After gets an apartment (Using find methods from database), updates the object with the new data, then sends it to the Database.
-  - Delete: After gets an apartment (Using find methods from database), sends its ID with delete query to the Database.
-- [X] Users can access contacts details from the owners of the apartments they searched for (When accessing some apartment data, its owner data is also present in the object).
-- [X] Search apartments by(And/Or): name, preferences (bedrooms quantity, capacity, allowed gender and/or available to divide), price and location (Whenever a filter is changed, a new query is generated, and all specified apartments are obtained).
-- [X] Generate a CSV file containing all apartments (Including their data) searched by the user.
+<br/>
 
-</br>
+<h2 id="features">⚙️ Features</h2>
 
-<h2 id="wireframe">:camera: Wireframe</h2>
+- **Complete User Management** - Full account lifecycle including registration, profile updates, and secure authentication with password encryption.
+- **Advanced Search System** - Multi-criteria apartment search with filters for location, price range, bedroom quantity, capacity, gender preferences, and sharing availability.
+- **Property Management** - Comprehensive CRUD operations for apartment listings with detailed information management and image handling.
+- **Contact Integration** - Direct access to property owner contact information for seamless communication between students.
+- **Data Export Capabilities** - Generate CSV reports containing all searched apartments with complete property details for offline analysis.
+- **Gender-Based Filtering** - Specialized search options to accommodate gender-specific housing preferences and requirements.
+- **Sharing Options** - Dedicated features for students looking to share apartments with roommates or find individual accommodations. <br/><br/>
 
-- <h3 id="login">Login</h3>
-![LOGIN](https://user-images.githubusercontent.com/88398990/158809949-26035b52-fd5a-4706-a3df-8ef2ee0ea901.png)
+<h2 id="entities">🗃️ Database Entities</h2>
 
-- <h3 id="sign-up">SignUp</h3>
- ![CADASTRAR](https://user-images.githubusercontent.com/88398990/158810112-74159d52-bf73-4b9e-b991-4606f2abfcc4.png)
+<h3 id="entity-user">User</h3>
 
-- <h3 id="search">Search</h3>
-![PROCURAR](https://user-images.githubusercontent.com/88398990/160292004-c5debad7-c1b0-42c0-bc06-481c70850de3.png)
+- **id**: UUID
+- **name**: string
+- **email**: string
+- **password**: string
+- **phone_number**: string
+- **avatar**: string - Profile picture filename
+- **gender**: integer - Gender identifier (0: Male, 1: Female, 2: Other)
 
+<h3 id="entity-address">Address</h3>
 
-- <h3 id="apartment-details">Apartment Details</h3>
-![PROCURAR-MAX](https://user-images.githubusercontent.com/88398990/160292016-f734b579-61c9-4df1-b3bc-e30c99c1d060.png)
+- **id**: UUID
+- **city**: string
+- **district**: string
+- **street**: string
+- **complement**: string/null
+- **apartment_number**: string
+- **zip_code**: integer
 
+<h3 id="entity-aspects">Aspects</h3>
 
-- <h3 id="announce">Announce</h3>
-![ANUNCIAR](https://user-images.githubusercontent.com/88398990/160292025-526b5c8e-6af0-48bf-b0a4-3bcbd26a0db7.png)
+- **id**: UUID
+- **bedrooms_quantity**: integer
+- **available_to_divide**: boolean
+- **description**: text
+- **capacity**: integer
+- **allowed_gender**: smallint - Gender restrictions (0: Male only, 1: Female only, 2: Mixed)
 
+<h3 id="entity-apartment">Apartment</h3>
 
-- <h3 id="create-apartment">Create Apartment</h3>
+- **id**: UUID
+- **owner**: UUID
+- **address**: UUID
+- **aspects**: UUID
+- **rent**: double
+- **image**: string
 
-  - #### Address
-  ![Cadastrar-1](https://user-images.githubusercontent.com/88398990/158810857-365dd580-365f-4e69-be7d-e0354155cf12.png)
-  
-  - #### Aspects
-   ![Cadastrar-2](https://user-images.githubusercontent.com/88398990/160292032-4fc210cf-42f5-41b4-a9e9-3166e9be4cdc.png)
+<br/>
 
+<h2 id="architecture">🏗️ Architecture</h2>
 
-  - #### Finalization
-  ![Cadastrar-3](https://user-images.githubusercontent.com/88398990/158810885-cebbbd4c-601a-4b12-8b32-05bedcb6717d.png)
+Room4Me follows the **Model-View-Controller (MVC)** architectural pattern, ensuring clean separation of concerns and maintainable code structure. The application leverages JavaFX for the presentation layer, JDBC for data persistence, and implements robust business logic through well-defined service layers.
 
-</br>
+<br/>
 
-<h2 id="license">:memo: License</h2>
+<h2 id="screenshots">📷 Screenshots</h2>
+
+<h3 id="login">Authentication</h3>
+
+![image](https://user-images.githubusercontent.com/88398990/158809949-26035b52-fd5a-4706-a3df-8ef2ee0ea901.png)
+
+<h3 id="sign-up">User Registration</h3>
+
+![image](https://user-images.githubusercontent.com/88398990/158810112-74159d52-bf73-4b9e-b991-4606f2abfcc4.png)
+
+<h3 id="search">Apartment Search</h3>
+
+![image](https://user-images.githubusercontent.com/88398990/160292004-c5debad7-c1b0-42c0-bc06-481c70850de3.png)
+
+<h3 id="apartment-details">Apartment Details</h3>
+
+![image](https://user-images.githubusercontent.com/88398990/160292016-f734b579-61c9-4df1-b3bc-e30c99c1d060.png)
+
+<h3 id="announce">Property Management</h3>
+
+![image](https://user-images.githubusercontent.com/88398990/160292025-526b5c8e-6af0-48bf-b0a4-3bcbd26a0db7.png)
+
+<h3 id="create-apartment">Apartment Registration</h3>
+
+- <h4 id="create-address">Address Information</h4>
+
+![image](https://user-images.githubusercontent.com/88398990/158810857-365dd580-365f-4e69-be7d-e0354155cf12.png)
+
+- <h4 id="create-aspects">Property Aspects</h4>
+
+![image](https://user-images.githubusercontent.com/88398990/160292032-4fc210cf-42f5-41b4-a9e9-3166e9be4cdc.png)
+
+- <h4 id="create-finalization">Registration Finalization</h4>
+
+![image](https://user-images.githubusercontent.com/88398990/158810885-cebbbd4c-601a-4b12-8b32-05bedcb6717d.png)
+
+<br/>
+
+<h2 id="license">📝 License</h2>
 This project is MIT Licensed. See <a href="https://github.com/RiadOliveira/Room4Me-desktop/blob/main/LICENSE">LICENSE</a> file for more details.
 
-</br>
+<br/>
 
 <h2 id="authors">👨‍💻 Authors</h2>
 
-<table>
-  <tr>
-    <td align="center">
-      <a href="https://github.com/RiadOliveira">
-        <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/69125013?v=4" width="100px;" alt=""/>
-        <br /><sub><b>👨‍💻 Ríad Oliveira</b></sub>
-      </a>
-    </td>
-    <td align="center">
-      <a href="https://github.com/DaviEmanuelll">
-        <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/88398990?v=4" width="100px;" alt=""/>
-        <br /><sub><b>👨‍💻 Davi Emanuel</b></sub>
-      </a>
-    </td>
-    <td align="center">
-      <a href="https://github.com/isabeleLima">
-        <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/58983203?v=4" width="100px;" alt=""/>
-        <br /><sub><b>👩‍💻 Isabele Cristina</b></sub>
-      </a>
-    </td>
-  </tr>
-</table>
+<kbd>
+ <a href="https://github.com/RiadOliveira">
+   <img src="https://avatars.githubusercontent.com/u/69125013?v=4" width="100" alt="Ríad Oliveira"/>
+   <br/><br/>
+   <p align="center"><b>Ríad Oliveira</b></p>
+ </a>
+</kbd>
+<kbd>
+ <a href="https://github.com/DaviEmanuelll">
+   <img src="https://avatars.githubusercontent.com/u/88398990?v=4" width="100" alt="Davi Emanuel"/>
+   <br/><br/>
+   <p align="center"><b>Davi Emanuel</b></p>
+ </a>
+</kbd>
+<kbd>
+ <a href="https://github.com/isabeleLima">
+   <img src="https://avatars.githubusercontent.com/u/58983203?v=4" width="100" alt="Isabele Cristina"/>
+   <br/><br/>
+   <p align="center"><b>Isabele Cristina</b></p>
+ </a>
+</kbd>
