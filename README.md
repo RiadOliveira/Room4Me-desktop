@@ -45,10 +45,10 @@ Room4Me is a software developed mainly for university students, as it seeks to m
 <h2 id="technologies">🛠️ Technologies</h2>
 <p>Tools used on this project:</p>
 
-- [Java](https://www.java.com/)
-  - [Java-dotenv](https://github.com/cdimascio/dotenv-java)
-  - [PostgreSQL JDBC Driver](https://jdbc.postgresql.org/)
-  - [JavaFX](https://openjfx.io/)
+- [Java JDK 21](https://www.java.com/)
+  - [Java-dotenv (3.2.0)](https://github.com/cdimascio/dotenv-java)
+  - [PostgreSQL JDBC (42.2.23)](https://jdbc.postgresql.org/)
+  - [JavaFX SDK (17.0.0.1)](https://openjfx.io/)
 - [Postgresql](https://www.postgresql.org/)
 
 <h2 id="architecture">🗂 Architecture</h2>
