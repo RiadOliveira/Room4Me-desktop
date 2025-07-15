@@ -9,7 +9,7 @@
 </p>
 
 ![image](https://github.com/user-attachments/assets/aa25a607-2748-409c-9077-5ba38c1d216b)
-![image](https://img.shields.io/github/license/RiadOliveira/Room4Me-desktop)
+![image](https://img.shields.io/github/license/RiadOliveira/Room4Me)
 
 <br/>
 
@@ -71,10 +71,10 @@ Before running the application, ensure the following tools are installed on your
 
 ```bash
 # Clone the repository
-$ git clone https://github.com/RiadOliveira/Room4Me-desktop.git
+$ git clone https://github.com/RiadOliveira/Room4Me.git
 
 # Navigate to project directory
-$ cd Room4Me-desktop
+$ cd Room4Me
 
 # Environment Configuration
 # Create and configure your .env file with database password
@@ -192,7 +192,7 @@ Room4Me follows the **Model-View-Controller (MVC)** architectural pattern, ensur
 ![image](https://user-images.githubusercontent.com/88398990/158810885-cebbbd4c-601a-4b12-8b32-05bedcb6717d.png)
 
 <h2 id="license">📝 License</h2>
-This project is MIT Licensed. See <a href="https://github.com/RiadOliveira/Room4Me-desktop/blob/main/LICENSE">LICENSE</a> file for more details.
+This project is MIT Licensed. See <a href="https://github.com/RiadOliveira/Room4Me/blob/main/LICENSE">LICENSE</a> file for more details.
 
 <br/>
 
