@@ -191,8 +191,6 @@ Room4Me follows the **Model-View-Controller (MVC)** architectural pattern, ensur
 
 ![image](https://user-images.githubusercontent.com/88398990/158810885-cebbbd4c-601a-4b12-8b32-05bedcb6717d.png)
 
-<br/>
-
 <h2 id="license">📝 License</h2>
 This project is MIT Licensed. See <a href="https://github.com/RiadOliveira/Room4Me-desktop/blob/main/LICENSE">LICENSE</a> file for more details.
 
