@@ -155,7 +155,7 @@ Room4Me follows the **Model-View-Controller (MVC)** architectural pattern, ensur
 
 <br/>
 
-<h2 id="screenshots">📷 Screenshots</h2>
+<h2 id="screenshots">📷 Application Screenshots</h2>
 
 <h3 id="login">Authentication</h3>
 
