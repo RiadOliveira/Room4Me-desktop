@@ -1,6 +1,6 @@
 <h1 align="center">
 
-![image](https://user-images.githubusercontent.com/88398990/156489186-24d246c7-fa32-4793-ae59-e29bc99e09ce.png)
+![Logo](https://user-images.githubusercontent.com/88398990/156489186-24d246c7-fa32-4793-ae59-e29bc99e09ce.png)
 
 </h1>
 
@@ -8,8 +8,8 @@
   Room4Me is a apartment rental and sharing platform designed specifically for university students. Developed during Java programming courses at college, it provides a complete digital solution for students seeking affordable housing options and roommate connections.
 </p>
 
-![image](https://github.com/user-attachments/assets/aa25a607-2748-409c-9077-5ba38c1d216b)
-![image](https://img.shields.io/github/license/RiadOliveira/Room4Me)
+![Preview](https://github.com/user-attachments/assets/aa25a607-2748-409c-9077-5ba38c1d216b)
+![License](https://img.shields.io/github/license/RiadOliveira/Room4Me)
 
 <br/>
 
@@ -159,37 +159,37 @@ Room4Me follows the **Model-View-Controller (MVC)** architectural pattern, ensur
 
 <h3 id="login">Authentication</h3>
 
-![image](https://user-images.githubusercontent.com/88398990/158809949-26035b52-fd5a-4706-a3df-8ef2ee0ea901.png)
+![Authentication](https://user-images.githubusercontent.com/88398990/158809949-26035b52-fd5a-4706-a3df-8ef2ee0ea901.png)
 
 <h3 id="sign-up">User Registration</h3>
 
-![image](https://user-images.githubusercontent.com/88398990/158810112-74159d52-bf73-4b9e-b991-4606f2abfcc4.png)
+![User_Registration](https://user-images.githubusercontent.com/88398990/158810112-74159d52-bf73-4b9e-b991-4606f2abfcc4.png)
 
 <h3 id="search">Apartment Search</h3>
 
-![image](https://user-images.githubusercontent.com/88398990/160292004-c5debad7-c1b0-42c0-bc06-481c70850de3.png)
+![Apartment_Search](https://user-images.githubusercontent.com/88398990/160292004-c5debad7-c1b0-42c0-bc06-481c70850de3.png)
 
 <h3 id="apartment-details">Apartment Details</h3>
 
-![image](https://user-images.githubusercontent.com/88398990/160292016-f734b579-61c9-4df1-b3bc-e30c99c1d060.png)
+![Apartment_Details](https://user-images.githubusercontent.com/88398990/160292016-f734b579-61c9-4df1-b3bc-e30c99c1d060.png)
 
 <h3 id="announce">Property Management</h3>
 
-![image](https://user-images.githubusercontent.com/88398990/160292025-526b5c8e-6af0-48bf-b0a4-3bcbd26a0db7.png)
+![Property_Management](https://user-images.githubusercontent.com/88398990/160292025-526b5c8e-6af0-48bf-b0a4-3bcbd26a0db7.png)
 
 <h3 id="create-apartment">Apartment Registration</h3>
 
 - <h4 id="create-address">Address Information</h4>
 
-![image](https://user-images.githubusercontent.com/88398990/158810857-365dd580-365f-4e69-be7d-e0354155cf12.png)
+![Address_Information](https://user-images.githubusercontent.com/88398990/158810857-365dd580-365f-4e69-be7d-e0354155cf12.png)
 
 - <h4 id="create-aspects">Property Aspects</h4>
 
-![image](https://user-images.githubusercontent.com/88398990/160292032-4fc210cf-42f5-41b4-a9e9-3166e9be4cdc.png)
+![Property_Aspects](https://user-images.githubusercontent.com/88398990/160292032-4fc210cf-42f5-41b4-a9e9-3166e9be4cdc.png)
 
 - <h4 id="create-finalization">Registration Finalization</h4>
 
-![image](https://user-images.githubusercontent.com/88398990/158810885-cebbbd4c-601a-4b12-8b32-05bedcb6717d.png)
+![Registration_Finalization](https://user-images.githubusercontent.com/88398990/158810885-cebbbd4c-601a-4b12-8b32-05bedcb6717d.png)
 
 <h2 id="license">📝 License</h2>
 This project is MIT Licensed. See <a href="https://github.com/RiadOliveira/Room4Me/blob/main/LICENSE">LICENSE</a> file for more details.
